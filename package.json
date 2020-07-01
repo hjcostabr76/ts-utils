@@ -1,0 +1,46 @@
+{
+  "name": "@hjcostabr76/ts-utils",
+  "version": "1.0.0",
+  "description": "General purpose utility classes",
+  "homepage": "https://github.com/hjcostabr76/hj_ts-utils#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hjcostabr76/hj_ts-utils.git"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "author": "hjcostabr76 <hjcosta.dev@gmail.com>",
+  "bugs": {
+    "email": "hjcosta.dev@gmail.com"
+  },
+  "scripts": {
+    "test": "echo \"Error: So far, not good... There ain't no tests yet :(\" && exit 1",
+    "build": "yarn && npx tsc",
+    "push": "yarn build && yalc push",
+    "naming": "npx ts-node generate-naming-convention.ts",
+    "lint": "npx eslint --color --format table --quiet --fix --ext .ts .",
+    "lint:full": "npx eslint --color --format table --ext .ts .",
+    "lint:deprecated": "npx eslint-find-rules --deprecated .eslintrc.js",
+    "lint:unused": "npx eslint-find-rules --unused .eslintrc.js"
+  },
+  "dependencies": {
+    "@hjcostabr76/types": "file:.yalc/@hjcostabr76/types",
+    "eslint-ts-naming-convention": "file:.yalc/eslint-ts-naming-convention",
+    "moment-timezone": "^0.5.31",
+    "ts-morph": "^7.1.2"
+  },
+  "devDependencies": {
+    "@types/node": "^14.0.14",
+    "eslint": "^7.3.1",
+    "eslint-config-hjcostabr76": "file:.yalc/eslint-config-hjcostabr76",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.5"
+  },
+  "keywords": [
+    "utils"
+  ],
+  "files”": [
+    "dist/*"
+  ],
+  "license": "ISC"
+}

@@ -4,9 +4,7 @@ module.exports = {
         tsconfigRootDir: __dirname,
     },
     extends: [
-        'hjcostabr76/ts-package',
-        'hjcostabr76/spellcheck',
-        './.eslint-naming-convention.js'
+        'hjcostabr76'
     ],
-    ignorePatterns: ['generate-naming-convention.ts']
+    // ignorePatterns: ['generate-naming-convention.ts']
 }

@@ -24,15 +24,13 @@
     "lint:unused": "npx eslint-find-rules --unused .eslintrc.js"
   },
   "dependencies": {
-    "@hjcostabr76/types": "file:.yalc/@hjcostabr76/types",
-    "eslint-ts-naming-convention": "file:.yalc/eslint-ts-naming-convention",
     "moment-timezone": "^0.5.31",
     "ts-morph": "^7.1.2"
   },
   "devDependencies": {
     "@types/node": "^14.0.14",
     "eslint": "^7.3.1",
-    "eslint-config-hjcostabr76": "file:.yalc/eslint-config-hjcostabr76",
+    "eslint-config-hjcostabr76": "^1.0.2",
     "ts-node": "^8.10.2",
     "typescript": "^3.9.5"
   },

@@ -1,4 +1,4 @@
-module.exports = {
+module.exports = { // eslint-disable-line import/no-commonjs
     parserOptions: {
         project: './tsconfig.json',
         tsconfigRootDir: __dirname,

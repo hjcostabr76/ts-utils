@@ -62,6 +62,6 @@
         /* Unclassified */
         "forceConsistentCasingInFileNames": true,   // ?
     },
-    "include": ["src", "index.ts", ".eslintrc.js"],
+    "include": ["packages", "index.ts", ".eslintrc.js"],
     "exclude": ["node_modules", "dist", "generate-naming-convention.js"]
 }

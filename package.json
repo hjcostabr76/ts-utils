@@ -1,7 +1,7 @@
 {
   "name": "@hjcostabr76/ts-utils",
   "version": "1.0.0",
-  "description": "General purpose utility classes",
+  "description": "General purpose utility packages for typescript",
   "homepage": "https://github.com/hjcostabr76/hj_ts-utils#readme",
   "repository": {
     "type": "git",
@@ -15,25 +15,31 @@
   },
   "scripts": {
     "test": "echo \"Error: So far, not good... There ain't no tests yet :(\" && exit 1",
-    "build": "yarn && npx tsc",
-    "push": "yarn build && yalc push",
+    "build": "npm i && npx tsc",
     "publish:beta": "npx lerna publish --dist-tag beta",
     "publish:bypass": "npx lerna publish --ignore-scripts",
     "version": "npx lerna version --conventional-commits",
+    "version:release": "npm run version --create-release github",
     "naming": "npx ts-node generate-naming-convention.ts",
     "lint": "npx eslint --color --format table --quiet --fix --ext .ts .",
     "lint:full": "npx eslint --color --format table --ext .ts .",
     "lint:deprecated": "npx eslint-find-rules --deprecated .eslintrc.js",
-    "lint:unused": "npx eslint-find-rules --unused .eslintrc.js"
+    "lint:unused": "npx eslint-find-rules --unused .eslintrc.js",
+    "prepare": "husky install"
   },
   "dependencies": {
     "moment-timezone": "^0.5.31",
     "ts-morph": "^7.1.2"
   },
   "devDependencies": {
+    "@commitlint/cli": "^12.0.1",
+    "@commitlint/config-conventional": "^12.0.1",
     "@types/node": "^14.0.14",
+    "commitizen": "^4.2.3",
+    "cz-conventional-changelog": "^3.3.0",
     "eslint": "^7.3.1",
     "eslint-config-hjcostabr76": "^1.0.2",
+    "husky": "^5.1.3",
     "lerna": "^3.22.1",
     "ts-node": "^8.10.2",
     "typescript": "^3.9.5"

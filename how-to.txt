@@ -33,5 +33,9 @@
 > Publish
     https://github.com/lerna/lerna/tree/main/commands/publish#usage
 
+> Version
+    - https://github.com/lerna/lerna/tree/main/commands/version#lernaversion      // geral
+    - https://github.com/lerna/lerna/tree/main/commands/version#lifecycle-scripts // hooks
+
 > Serve para centralizar dependencias locais de todos os pacotes
     lerna link convert

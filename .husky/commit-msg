@@ -1,5 +1,4 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-# npm test
-echo "1, 2, 3, testando..."
+npx --no-install commitlint --edit $1

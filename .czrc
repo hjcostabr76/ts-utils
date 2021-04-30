@@ -1,3 +1,46 @@
 {
-  "path": "./node_modules/cz-conventional-changelog"
+  "path": "./node_modules/cz-conventional-changelog",
+  "disableScopeLowerCase": false,
+  "disableSubjectLowerCase": false,
+  "maxHeaderWidth": 100,
+  "maxLineWidth": 100,
+  "defaultType": "feat",
+  "defaultScope": "",
+  "defaultSubject": "",
+  "defaultBody": "",
+  "defaultIssues": "",
+  "types": {
+    "feat": {
+      "description": "A new feature",
+      "title": "Features"
+    },
+    "fix": {
+      "description": "Correção de Bugs",
+      "title": "Correção"
+    },
+    "refactor": {
+      "description": "Refatoração de código",
+      "title": "Refatoração"
+    },
+    "config": {
+      "description": "Modificação de configuração, build, deploy, etc.",
+      "title": "Config / build / deploy"
+    },
+    "docs": {
+      "description": "Atualização de documentação",
+      "title": "Documentação"
+    },
+    "style": {
+      "description": "Alterações de estilo",
+      "title": "Reverter"
+    },
+    "test": {
+      "description": "Testes automatizados",
+      "title": "Teste"
+    },
+    "revert": {
+      "description": "Reverter modicações anteriores",
+      "title": "Reverter"
+    }
+  }
 }

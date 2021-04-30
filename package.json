@@ -2,10 +2,10 @@
   "name": "@hjcostabr76/ts-utils",
   "version": "1.0.0",
   "description": "General purpose utility packages for typescript",
-  "homepage": "https://github.com/hjcostabr76/hj_ts-utils#readme",
+  "homepage": "https://github.com/hjcostabr76/s-utils#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hjcostabr76/hj_ts-utils.git"
+    "url": "git+https://github.com/hjcostabr76/ts-utils.git"
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -19,7 +19,7 @@
     "publish:beta": "npx lerna publish --dist-tag beta",
     "publish:bypass": "npx lerna publish --ignore-scripts",
     "version": "npx lerna version --conventional-commits",
-    "version:release": "npm run version --create-release github",
+    "version:release": "npm run version --conventional-commits --create-release github",
     "naming": "npx ts-node generate-naming-convention.ts",
     "lint": "npx eslint --color --format table --quiet --fix --ext .ts .",
     "lint:full": "npx eslint --color --format table --ext .ts .",
@@ -50,5 +50,5 @@
   "files”": [
     "dist/*"
   ],
-  "license": "ISC"
+  "license": "MIT"
 }

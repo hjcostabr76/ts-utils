@@ -6,7 +6,8 @@
   "allowBranch": "main",
   "command": {
     "publish": {
-      "ignoreChanges": ["*.md", "*.test"]
+      "ignoreChanges": ["*.md", "*.test"],
+      "message": "feat: publish"
     },
     "bootstrap": {
       "ignore": "",

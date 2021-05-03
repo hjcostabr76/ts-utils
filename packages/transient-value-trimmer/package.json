@@ -1,0 +1,39 @@
+{
+  "name": "transient-value-trimmer",
+  "version": "1.0.0",
+  "description": "Allows to catch the 'permanent' value of something after a specified delay avoiding undesired transient changes.",
+  "homepage": "https://github.com/hjcostabr76/hj_transient-value-trimmer#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hjcostabr76/hj_transient-value-trimmer.git"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "author": "hjcostabr76 <hjcosta.dev@gmail.com>",
+  "bugs": {
+    "email": "hjcosta.dev@gmail.com"
+  },
+  "scripts": {
+    "test": "echo \"Error: So far, not good... There ain't no tests yet :(\" && exit 1",
+    "build": "yarn && npx tsc",
+    "upgrade": "npx npm-check-updates -u && npm i"
+  },
+  "keywords": [
+    "trimmer",
+    "transient",
+    "temporary",
+    "transitory",
+    "debounce"
+  ],
+  "files”": [
+    "dist/*"
+  ],
+  "devDependencies": {
+    "eslint": "^7.3.1",
+    "typescript": "^3.9.5"
+  },
+  "dependencies": {
+    "lodash": "^4.17.15"
+  },
+  "license": "MIT"
+}

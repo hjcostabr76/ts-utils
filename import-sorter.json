@@ -1,0 +1,64 @@
+{
+    "exclude": [],
+    "sortOnBeforeSave": true,
+    "sortConfiguration": {
+        "joinImportPaths": true,
+        "removeUnusedImports": true,
+        "removeUnusedDefaultImports": true,
+        "importMembers": {
+            "order": "caseInsensitive",
+            "direction": "asc"
+        },
+        "importPaths": {
+            "order": "lowercaseLast",
+            "direction": "asc"
+        },
+        "customOrderingRules": {
+            "defaultNumberOfEmptyLinesAfterGroup": 1,
+            "defaultOrderLevel": 20,
+            "disableDefaultOrderSort": false,
+            "rules": [
+                {
+                    "type": "importMember",
+                    "regex": "^$",
+                    "orderLevel": 10,
+                    "disableSort": false
+                },
+                {
+                    "regex": "^@config",
+                    "orderLevel": 30
+                },
+                {
+                    "regex": "^@module",
+                    "orderLevel": 40
+                },
+                {
+                    "regex": "^@project",
+                    "orderLevel": 50
+                },
+                {
+                    "regex": "^@system",
+                    "orderLevel": 60
+                }
+            ]
+        }
+    },
+    "importStringConfiguration": {
+        "quoteMark": "single",
+        "hasSemicolon": false,
+        "trailingComma": "none",
+        "tabType": "space",
+        "tabSize": 4,
+        "numberOfEmptyLinesAfterAllImports": 1,
+        "spacingPerImportExpression": {
+            "beforeComma": 0,
+            "afterComma": 1,
+            "beforeEndingBracket": 1,
+            "afterStartingBracket": 1
+        },
+        "maximumNumberOfImportExpressionsPerLine": {
+            "count": 170,
+            "type": "maxLineLength"
+        }
+    }
+}

@@ -1,17 +1,21 @@
 {
     "name": "@hjcostabr76/i18n",
     "description": "The easiest way to make make a multi language application",
+    "homepage": "https://github.com/hjcostabr76/ts-utils/packages/i18n#readme",
     "author": "hjcostabr76 <hjcosta.dev@gmail.com>",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "version": "0.0.1",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/hjcostabr76/ts-utils.git"
+    },
     "scripts": {
         "test": "echo \"Error: So far, not good... There ain't no tests yet :(\"",
-        "build": "npm i && npx tsc"
+        "build": "npm i && npx tsc",
+        "upgrade": "npx npm-check-updates -u && npm i"
     },
     "devDependencies": {
-        "eslint": "^7.3.1",
-        "eslint-config-hjcostabr76": "^1.0.2",
         "typescript": "^4.2.4"
     },
     "keywords": ["i18n"],

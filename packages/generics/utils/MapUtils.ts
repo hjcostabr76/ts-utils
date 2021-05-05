@@ -1,4 +1,4 @@
-import { OrUndefT } from '@hjcostabr/generics/type'
+import { OrUndefT } from '../type'
 
 import { ArrayUtils } from './ArrayUtils'
 

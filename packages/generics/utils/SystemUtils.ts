@@ -1,6 +1,5 @@
-import { AnyObjT, ConstructorT, SequentialStepErrorConfigT, OrFunctionT, OrNullishT, OrUndefT } from '@hjcostabr76/generics/type'
-
-import { InvalidArgsError } from '@system/error/InvalidArgsError'
+import { InvalidArgsError } from '../error'
+import { AnyObjT, ConstructorT, SequentialStepErrorConfigT, OrFunctionT, OrNullishT, OrUndefT } from '../type'
 
 /**
  * UTILS

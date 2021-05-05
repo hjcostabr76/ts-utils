@@ -1,6 +1,8 @@
-import fs from 'fs' // eslint-disable-line no-restricted-imports
+import * as fs from 'fs'
 
-import { MimeTypeEnum, InvalidArgsError, AnyObjT } from '@hjcostabr76/generics'
+import { MimeTypeEnum } from '../enum'
+import { InvalidArgsError } from '../error'
+import { AnyObjT } from '../type'
 
 import { StringUtils } from './StringUtils'
 

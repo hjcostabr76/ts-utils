@@ -1,5 +1,7 @@
-import { DateFormatEnum, TimeBaseEnum, OrUndefT } from '@hjcostabr76/generics'
 import moment from 'moment-timezone'
+
+import { DateFormatEnum, TimeBaseEnum } from '../enum'
+import { OrUndefT } from '../type'
 
 /**
  * UTILS

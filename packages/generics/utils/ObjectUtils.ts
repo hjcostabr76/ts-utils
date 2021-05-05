@@ -1,4 +1,5 @@
-import { InvalidArgsError, AnyObjT, ConstructorT, OrUndefT } from '@hjcostabr76/generics'
+import { InvalidArgsError } from '../error'
+import { AnyObjT, ConstructorT, OrUndefT } from '../type'
 
 /**
  * UTILS

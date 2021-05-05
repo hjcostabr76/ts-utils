@@ -1,4 +1,4 @@
-import { InvalidArgsError, AnyObjTP, ConstructorTP, OrUndefTP } from '@hjcostabr76/generics'
+import { InvalidArgsError, AnyObjT, ConstructorT, OrUndefT } from '@hjcostabr76/generics'
 
 /**
  * UTILS
@@ -7,7 +7,7 @@ import { InvalidArgsError, AnyObjTP, ConstructorTP, OrUndefTP } from '@hjcostabr
 export const ObjectUtils = {
 
     /** Determina & retorna quantidde de niveis aninhados dentro de 01 objeto. */
-    getDepth(obj: AnyObjTP): number {
+    getDepth(obj: AnyObjT): number {
 
         if (typeof obj !== 'object')
             throw new InvalidArgsError('Parametro object deveria ser 01 objeto')
@@ -23,20 +23,20 @@ export const ObjectUtils = {
     },
 
     /** Retorna nome da classe instanciada por 01 objeto. */
-    getInstanceClassName(obj: AnyObjTP): OrUndefTP<string> {
-        return Object.create(obj)?.constructor?.name as OrUndefTP<string>
+    getInstanceClassName(obj: AnyObjT): OrUndefT<string> {
+        return Object.create(obj)?.constructor?.name as OrUndefT<string>
     },
 
     /** Retorna nome da classe associada a 01 funcao do tipo 'construtor'. */
-    getConstructorClassName(constructor: ConstructorTP<any> | Function): OrUndefTP<string> {
-        return constructor.prototype?.constructor?.name as OrUndefTP<string>
+    getConstructorClassName(constructor: ConstructorT<any> | Function): OrUndefT<string> {
+        return constructor.prototype?.constructor?.name as OrUndefT<string>
     },
 
     /**
      * Retorna nome de 01 classe com base num parametro que pode ser seu construtor ou o proprio
      * valor desejado (util para simplicacao & overloading de funcoes / metodos).
      */
-    getClassName(nameOrConstructor: string | ConstructorTP<any>): string {
+    getClassName(nameOrConstructor: string | ConstructorT<any>): string {
         return (typeof nameOrConstructor === 'function')
             ? ObjectUtils.getConstructorClassName(nameOrConstructor) ?? ''
             : nameOrConstructor
@@ -63,7 +63,7 @@ export const ObjectUtils = {
     },
 
     /** Retorna copia de 01 objeto removendo 01 lista de propriedaades do mesmo. */
-    getObjWithoutSomeProps<ObjGTP = AnyObjTP>(obj: ObjGTP, propsToRemoveList: Array<keyof ObjGTP>): Partial<ObjGTP> {
+    getObjWithoutSomeProps<ObjGTP = AnyObjT>(obj: ObjGTP, propsToRemoveList: Array<keyof ObjGTP>): Partial<ObjGTP> {
         const clearedObj = { ...obj }
         for (const propToRemove of propsToRemoveList)
             delete clearedObj[propToRemove]
@@ -71,7 +71,7 @@ export const ObjectUtils = {
     },
 
     /** Encapsula pre-tratamento possivelmente necessario junto a conversao de string json em objeto. */
-    parseJson(jsonString: string): OrUndefTP<AnyObjTP> {
+    parseJson(jsonString: string): OrUndefT<AnyObjT> {
         try {
 
             jsonString = jsonString
@@ -79,7 +79,7 @@ export const ObjectUtils = {
                 .replace(/'/g, '"')                         // Garante aspas duplas
                 .replace(/,\s}/g, '}')                      // Remover ultima virgula
 
-            return JSON.parse(jsonString) as AnyObjTP
+            return JSON.parse(jsonString) as AnyObjT
 
         } catch (error) {}
     }

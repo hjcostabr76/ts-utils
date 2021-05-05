@@ -1,8 +1,8 @@
-import { OrUndefTP } from '@hjcostabr/generics/type'
+import { OrUndefT } from '@hjcostabr/generics/type'
 
 import { ArrayUtils } from './ArrayUtils'
 
-type MapTP<MapValuesTP> = Map<string | number, MapValuesTP>
+type MapT<T> = Map<string | number, T>
 
 /**
  * UTILITARIOS para manipulacao de mapas.
@@ -12,25 +12,25 @@ type MapTP<MapValuesTP> = Map<string | number, MapValuesTP>
 export const MapUtils = {
 
     /** Gera & retorna 01 vetor com todos os valores de 01 mapa. */
-    getArray<MapValuesTP = any>(map: MapTP<MapValuesTP>): MapValuesTP[] {
-        const valuesArray: MapValuesTP[] = []
+    getArray<T = any>(map: MapT<T>): T[] {
+        const valuesArray: T[] = []
         map.forEach(mapValue => valuesArray.push(mapValue))
         return valuesArray
     },
 
     /** Captura & retorna valor da 1a chave de 01 mapa. */
-    getFirstValue<MapValuesTP = any>(map: MapTP<MapValuesTP>): OrUndefTP<MapValuesTP> {
+    getFirstValue<T = any>(map: MapT<T>): OrUndefT<T> {
         return MapUtils.getNthValue(map, 0)
     },
 
     /** Captura & retorna valor da ultima chave de 01 mapa. */
-    getLastValue<MapValuesTP = any>(map: MapTP<MapValuesTP>): OrUndefTP<MapValuesTP> {
+    getLastValue<T = any>(map: MapT<T>): OrUndefT<T> {
         const mapValuesArray = MapUtils.getArray(map)
         return mapValuesArray[ArrayUtils.getLastIndex(mapValuesArray)]
     },
 
     /** Captura & retorna valor n-esimo valor de 01 map. */
-    getNthValue<MapValuesTP = any>(map: MapTP<MapValuesTP>, n: number): OrUndefTP<MapValuesTP> {
+    getNthValue<T = any>(map: MapT<T>, n: number): OrUndefT<T> {
         return MapUtils.getArray(map)[n]
     },
 }

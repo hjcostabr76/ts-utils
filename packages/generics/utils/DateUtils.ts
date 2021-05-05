@@ -1,4 +1,4 @@
-import { DateFormatEnum, TimeBaseEnum, OrUndefinedTP } from '@hjcostabr76/generics'
+import { DateFormatEnum, TimeBaseEnum, OrUndefT } from '@hjcostabr76/generics'
 import moment from 'moment-timezone'
 
 /**
@@ -14,7 +14,7 @@ export const DateUtils = {
         date: Date | string,
         format: DateFormatEnum = DateFormatEnum.US,
         timezone: string
-    ): OrUndefinedTP<Date> {
+    ): OrUndefT<Date> {
         return moment(moment.tz(date, timezone).format(format)).toDate()
     },
 
@@ -58,10 +58,8 @@ export const DateUtils = {
 
     /** Obtem hora:minuros do horario de uma data. */
     getTimeString(date: Date): string {
-
         const hour = `${moment(date).get(TimeBaseEnum.HOUR)}`.padStart(2, '0')
         const minute = `${moment(date).get(TimeBaseEnum.MINUTE)}`.padStart(2, '0')
-
         return `${hour}:${minute}`
     },
 
@@ -83,7 +81,7 @@ export const DateUtils = {
     /** Retorna hora & minutos extraidos de 01 string que venha na forma [hora]:[minutos]. */
     getHourAndMinutes(timeString: string): { hour: number, minutes: number } {
 
-        let timeArray: OrUndefinedTP<[number, number]>
+        let timeArray: OrUndefT<[number, number]>
         if (/^((2[0-3])|([01]\d)):([0-5]\d)$/.test(timeString))
             timeArray = timeString.split(':').map(timeUnit => +timeUnit) as [number, number]
 

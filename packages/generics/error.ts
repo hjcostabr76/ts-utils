@@ -1,7 +1,7 @@
 import { I18n } from '@hjcostabr76/I18n'
 import { HttpStatusEnum } from '@hjcostabr76/generics/enum'
 
-import { HttpStatusMsgI18n } from './i18n/HttpStatusMsgI18n'
+import { gen_HttpStatusMsgI18n } from './i18n/gen_HttpStatusMsgI18n'
 
 /* =================================================================== */
 /* -- ERROS HTTP ----------------------------------------------------- */
@@ -31,7 +31,7 @@ export class BadRequestError extends HttpError {
     readonly name: string
 
     constructor(message?: string, name?: string) {
-        super(message ?? I18n.getText<HttpStatusMsgI18n>(HttpStatusMsgI18n.CONTEXT, 'badRequest'), HttpStatusEnum.BAD_REQUEST)
+        super(message ?? I18n.getText<gen_HttpStatusMsgI18n>(gen_HttpStatusMsgI18n.CONTEXT, 'badRequest'), HttpStatusEnum.BAD_REQUEST)
         this.name = name ?? 'BadRequestError' // eslint-disable-line unicorn/custom-error-definition
     }
 }
@@ -45,7 +45,7 @@ export class ForbiddenError extends HttpError {
     readonly name = 'ForbiddenError'
 
     constructor(message?: string) {
-        super(message ?? I18n.getText<HttpStatusMsgI18n>(HttpStatusMsgI18n.CONTEXT, 'forbidden'), HttpStatusEnum.FORBIDDEN)
+        super(message ?? I18n.getText<gen_HttpStatusMsgI18n>(gen_HttpStatusMsgI18n.CONTEXT, 'forbidden'), HttpStatusEnum.FORBIDDEN)
     }
 }
 
@@ -58,7 +58,7 @@ export class UnauthorizedError extends HttpError {
     readonly name = 'UnauthorizedError'
 
     constructor(message?: string) {
-        super(message ?? I18n.getText<HttpStatusMsgI18n>(HttpStatusMsgI18n.CONTEXT, 'unauthorized'), HttpStatusEnum.UNAUTHORIZED)
+        super(message ?? I18n.getText<gen_HttpStatusMsgI18n>(gen_HttpStatusMsgI18n.CONTEXT, 'unauthorized'), HttpStatusEnum.UNAUTHORIZED)
     }
 }
 
@@ -105,7 +105,7 @@ export class InvalidActionError extends Error {
     readonly name = 'InvalidActionError'
 
     constructor(message?: string) {
-        super(message ?? I18n.getText<HttpStatusMsgI18n>(HttpStatusMsgI18n.CONTEXT, 'unprocessableEntity'))
+        super(message ?? I18n.getText<gen_HttpStatusMsgI18n>(gen_HttpStatusMsgI18n.CONTEXT, 'unprocessableEntity'))
     }
 }
 

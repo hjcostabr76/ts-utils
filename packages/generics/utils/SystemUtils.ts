@@ -1,4 +1,4 @@
-import { AnyObjTP, ConstructorTP, ErrorHandlingConfigTP, OrFunctionTP, OrNullishTP, OrUndefTP } from '@hjcostabr76/generics/type'
+import { AnyObjT, ConstructorT, SequentialStepErrorConfigT, OrFunctionT, OrNullishT, OrUndefT } from '@hjcostabr76/generics/type'
 
 import { InvalidArgsError } from '@system/error/InvalidArgsError'
 
@@ -24,8 +24,8 @@ export const SystemUtils = {
      * Retorna 01 detrminado valore apenas se 01 condicao for verdadeira, caso contrario
      * retorna 01 valor padrao opcional (pode ser indefinido).
      */
-    nvl<T = any>(condition: boolean, value: OrNullishTP<OrFunctionTP<T>>, defaultValue?: T): OrUndefTP<T> { // eslint-disable-line @typescript-eslint/naming-convention
-        let valueToReturn: OrNullishTP<T>
+    nvl<T = any>(condition: boolean, value: OrNullishT<OrFunctionT<T>>, defaultValue?: T): OrUndefT<T> { // eslint-disable-line @typescript-eslint/naming-convention
+        let valueToReturn: OrNullishT<T>
         if (condition)
             valueToReturn = (typeof value === 'function') ? (value as Function)() : value
         return valueToReturn ?? defaultValue
@@ -42,7 +42,7 @@ export const SystemUtils = {
 
         return (
             (Array.isArray(value) && !!value.length)
-            || (typeof value === 'object' && !!Object.values(value as AnyObjTP).find(prop => !!prop))
+            || (typeof value === 'object' && !!Object.values(value as AnyObjT).find(prop => !!prop))
         )
     },
 
@@ -53,19 +53,19 @@ export const SystemUtils = {
      *
      * NOTE: Permite usar 01 unico bloco 'try -> catch' para tratar 1+ excecoes
      */
-    throwSequentialStepsError<StepsGTP>(
-        steps: Array<ErrorHandlingConfigTP<StepsGTP>>,
-        concludedSteps: StepsGTP[],
+    throwSequentialStepsError<StepT>(
+        steps: Array<SequentialStepErrorConfigT<StepT>>,
+        concludedSteps: StepT[],
         error: unknown,
-        defaultException: ConstructorTP<Error> = InvalidArgsError,
+        defaultException: ConstructorT<Error> = InvalidArgsError,
 
     ): void {
 
-        type ConcludedStepsTP = Array<StepsGTP | 'default'>
+        type ConcludedStepT = Array<StepT | 'default'>
 
         for (const step of steps) {
 
-            if (step.name !== 'default' && (concludedSteps as ConcludedStepsTP).includes(step.name))
+            if (step.name !== 'default' && (concludedSteps as ConcludedStepT).includes(step.name))
                 continue
 
             const errMsg = step.errorMsg ?? 'Unexpected failure'

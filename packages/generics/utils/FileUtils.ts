@@ -1,6 +1,6 @@
 import fs from 'fs' // eslint-disable-line no-restricted-imports
 
-import { MimeTypeEnum, InvalidArgsError, AnyObjTP } from '@hjcostabr76/generics'
+import { MimeTypeEnum, InvalidArgsError, AnyObjT } from '@hjcostabr76/generics'
 
 import { StringUtils } from './StringUtils'
 
@@ -13,7 +13,7 @@ export const FileUtils = {
      * Gera / sobrescreve 01 arquivo .json.
      * @throws
      */
-    async saveJsonFile(json: AnyObjTP, savingPath: string): Promise<void> {
+    async saveJsonFile(json: AnyObjT, savingPath: string): Promise<void> {
         const extension = '.json'
         const content = JSON.stringify(json, undefined, 4)
         savingPath = StringUtils.stripRepeatedEnding(`${savingPath}${extension}`, extension)
@@ -32,10 +32,10 @@ export const FileUtils = {
      * Le & retorna objeto extraido de 01 arquivo json.
      * @throws
      */
-    async getObjFromJson<ObjGTP>(filePath: string): Promise<ObjGTP> {
+    async getObjFromJson<ObjT>(filePath: string): Promise<ObjT> {
         try {
             const fileContent = await fs.promises.readFile(filePath, { encoding: 'utf-8' })
-            return JSON.parse(fileContent) as ObjGTP
+            return JSON.parse(fileContent) as ObjT
 
         } catch (error) {
             throw new InvalidArgsError(`Falha ao tentar capturar objeto do arquivo "${filePath}"`, error)

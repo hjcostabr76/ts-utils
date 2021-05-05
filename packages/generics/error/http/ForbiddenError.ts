@@ -1,13 +1,13 @@
-import { HttpStatusEnum } from '@system/enum/HttpStatusEnum'
-import { HttpError } from '@system/error/http/HttpError'
-import { HttpStatusMsgI18n } from '@system/http-status-i18n/HttpStatusMsgI18n'
-import { I18n } from '@system/i18n/I18n'
+import { I18n } from '@hjcostabr76/I18n'
+import { HttpStatusEnum } from '@hjcostabr76/generics/enum'
+
+import { HttpError } from './HttpError'
+
+import { HttpStatusMsgI18n } from './i18n/HttpStatusMsgI18n'
 
 /**
  * EXCECAO
  * Falha do tipo: Acesso NAO permitido.
- *
- * @author hjcostabr
  */
 export class ForbiddenError extends HttpError {
 

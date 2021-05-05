@@ -1,8 +1,6 @@
 /**
  * EXCECAO
  * Falha por passagem invalida de parametros.
- *
- * @author hjcostabr
  */
 export class InvalidArgsError extends Error {
 

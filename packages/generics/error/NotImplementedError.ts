@@ -1,8 +1,6 @@
 /**
  * EXCECAO
  * Falha do tipo: Metodo/funcionalidade ainda nao implementada.
- *
- * @author hjcostabr
  */
 export class NotImplementedError extends Error {
 

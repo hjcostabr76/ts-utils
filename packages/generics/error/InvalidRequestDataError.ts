@@ -1,10 +1,8 @@
-import { BadRequestError } from '@system/error/http/BadRequestError'
+import { BadRequestError } from './http/BadRequestError'
 
 /**
  * EXCECAO
  * Falha por passagem invalida de parametros.
- *
- * @author hjcostabr
  */
 export class InvalidRequestDataError extends BadRequestError {
 

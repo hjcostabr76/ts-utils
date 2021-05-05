@@ -1,5 +1,6 @@
-import { HttpStatusMsgI18n } from '@system/http-status-i18n/HttpStatusMsgI18n'
-import { I18n } from '@system/i18n/I18n'
+import { I18n } from '@hjcostabr76/I18n'
+
+import { HttpStatusMsgI18n } from './i18n/HttpStatusMsgI18n'
 
 /**
  * EXCECAO

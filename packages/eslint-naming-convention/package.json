@@ -15,9 +15,12 @@
         "build": "npm i && npx tsc",
         "upgrade": "npx npm-check-updates -u && npm i"
     },
+    "dependencies": {
+        "@hjcostabr76/generics": "^0.0.1"
+    },
     "devDependencies": {
-        "@types/node": "^14.0.5",
-        "ts-node": "^8.10.1",
+        "@types/node": "^15.0.2",
+        "ts-node": "^9.1.1",
         "typescript": "^4.2.4"
     },
     "keywords": [
@@ -26,6 +29,8 @@
         "typescript",
         "naming-convention"
     ],
-    "files”": ["dist/*"],
+    "files”": [
+        "dist/*"
+    ],
     "license": "MIT"
 }

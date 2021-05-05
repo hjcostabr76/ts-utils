@@ -1,5 +1,5 @@
 import { DateFormatEnum, InvalidArgsError, OrUndefT, DateUtils } from '@hjcostabr76/generics'
-import colors from 'colors'
+import * as colors from 'colors'
 
 import { ILogger, LogLevelT } from './log_abstract'
 
@@ -7,7 +7,7 @@ import { ILogger, LogLevelT } from './log_abstract'
  * LOGGER
  * Centraliza emissao de logs da aplicacao.
  */
-export class Logger implements ILogger {    // eslint-disable-line @typescript-eslint/naming-convention
+export class Logger implements ILogger {
 
     private static instances?: Map<OrUndefT<string>, Logger>
 
@@ -28,7 +28,7 @@ export class Logger implements ILogger {    // eslint-disable-line @typescript-e
         return this.instances.get(context) as Logger
     }
 
-    static info(...logs: any[]): void { // eslint-disable-line @typescript-eslint/naming-convention
+    static info(...logs: any[]): void {
         Logger.infoWithContext(undefined, ...logs)
     }
 
@@ -36,7 +36,7 @@ export class Logger implements ILogger {    // eslint-disable-line @typescript-e
         Logger.warnWithContext(undefined, ...logs)
     }
 
-    static error(...logs: any[]): void {    // eslint-disable-line @typescript-eslint/naming-convention
+    static error(...logs: any[]): void {
         Logger.errorWithContext(undefined, ...logs)
     }
 
@@ -45,7 +45,7 @@ export class Logger implements ILogger {    // eslint-disable-line @typescript-e
             Logger.executeLogging(['\n'])
     }
 
-    info(...logs: any[]): void {    // eslint-disable-line @typescript-eslint/naming-convention
+    info(...logs: any[]): void {
         Logger.infoWithContext(this.context, ...logs)
     }
 
@@ -53,15 +53,15 @@ export class Logger implements ILogger {    // eslint-disable-line @typescript-e
         Logger.warnWithContext(this.context, ...logs)
     }
 
-    error(...logs: any[]): void {   // eslint-disable-line @typescript-eslint/naming-convention
+    error(...logs: any[]): void {
         Logger.errorWithContext(this.context, ...logs)
     }
 
-    divider(times?: number): void { // eslint-disable-line class-methods-use-this
+    divider(times?: number): void {
         Logger.divider(times)
     }
 
-    private static infoWithContext(context?: string, ...logs: any[]): void {    // eslint-disable-line @typescript-eslint/naming-convention
+    private static infoWithContext(context?: string, ...logs: any[]): void {
         Logger.logWithContext('info', context, ...logs)
     }
 
@@ -69,11 +69,11 @@ export class Logger implements ILogger {    // eslint-disable-line @typescript-e
         Logger.logWithContext('warn', context, ...logs)
     }
 
-    private static errorWithContext(context?: string, ...logs: any[]): void {   // eslint-disable-line @typescript-eslint/naming-convention
+    private static errorWithContext(context?: string, ...logs: any[]): void {
         Logger.logWithContext('error', context, ...logs)
     }
 
-    private static logWithContext(level: LogLevelT, context?: string, ...logs: any[]): void {  // eslint-disable-line @typescript-eslint/naming-convention
+    private static logWithContext(level: LogLevelT, context?: string, ...logs: any[]): void {
 
         let logFunction: Function
         let colorFunction: (input: string) => string

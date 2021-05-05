@@ -1,4 +1,4 @@
-import { OrUndefT } from 'hjcostabr76/generics/type'
+import { OrUndefT } from '@hjcostabr76/generics/type'
 
 /*
  * ======================================================

@@ -1,8 +1,9 @@
-import { I18n } from '@hjcostabr76/I18n'
-import { AnyObjTP } from '@hjcostabr76/generics/type'
+import { I18n } from '@hjcostabr76/i18n'
+
 import { registerDecorator, ValidationOptions, ValidatorConstraint, ValidatorConstraintInterface, ValidationArguments } from 'class-validator'
 
 import { gen_ValidationRulesErrMsgI18n } from './i18n/gen_ValidationRulesErrMsgI18n'
+import { AnyObjT } from './type'
 
 /* =============================================================================== */
 /* ------------------------------------------------------------------------------- */
@@ -17,7 +18,7 @@ import { gen_ValidationRulesErrMsgI18n } from './i18n/gen_ValidationRulesErrMsgI
  * TODO: Transformar num decorator generico (incluir outros caracteres alem de espaco)
  */
 export function HasNoSpace(validationOptions?: ValidationOptions) { // eslint-disable-line @typescript-eslint/naming-convention
-    return (object: AnyObjTP, propertyName: string) => {
+    return (object: AnyObjT, propertyName: string) => {
         registerDecorator({
             target: object.constructor,
             propertyName,
@@ -52,7 +53,7 @@ class HasNoSpaceValidator implements ValidatorConstraintInterface { // eslint-di
  * DECORATOR de VALIDACAO: e-mail
  */
 export function IsEmail(validationOptions?: ValidationOptions) {    // eslint-disable-line @typescript-eslint/naming-convention
-    return (object: AnyObjTP, propertyName: string) => {
+    return (object: AnyObjT, propertyName: string) => {
         registerDecorator({
             target: object.constructor,
             propertyName,
@@ -88,7 +89,7 @@ class IsEmailValidator implements ValidatorConstraintInterface {    // eslint-di
  * Campo obrigatorio.
  */
 export function IsRequired(validationOptions?: ValidationOptions) { // eslint-disable-line @typescript-eslint/naming-convention
-    return (object: AnyObjTP, propertyName: string) => {
+    return (object: AnyObjT, propertyName: string) => {
         registerDecorator({
             target: object.constructor,
             propertyName,
@@ -124,7 +125,7 @@ class IsRequiredValidator implements ValidatorConstraintInterface { // eslint-di
  * Tipo deve ser string.
  */
 export function IsString(validationOptions?: ValidationOptions) {   // eslint-disable-line @typescript-eslint/naming-convention
-    return (object: AnyObjTP, propertyName: string) => {
+    return (object: AnyObjT, propertyName: string) => {
         registerDecorator({
             target: object.constructor,
             propertyName,
@@ -160,7 +161,7 @@ class IsStringValidator implements ValidatorConstraintInterface {   // eslint-di
  * Comprimento minimo.
  */
 export function MinLength(validationOptions?: ValidationOptions) {  // eslint-disable-line @typescript-eslint/naming-convention
-    return (object: AnyObjTP, propertyName: string) => {
+    return (object: AnyObjT, propertyName: string) => {
         registerDecorator({
             target: object.constructor,
             propertyName,

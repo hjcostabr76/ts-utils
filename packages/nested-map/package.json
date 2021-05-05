@@ -24,6 +24,9 @@
   "files”": [
     "dist/*"
   ],
+  "dependencies": {
+    "@hjcostabr76/generics": "^0.0.1"
+  },
   "devDependencies": {
     "typescript": "^4.2.4"
   },

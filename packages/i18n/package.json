@@ -15,10 +15,17 @@
         "build": "npm i && npx tsc",
         "upgrade": "npx npm-check-updates -u && npm i"
     },
+    "dependencies": {
+        "@hjcostabr76/generics": "^0.0.1"
+    },
     "devDependencies": {
         "typescript": "^4.2.4"
     },
-    "keywords": ["i18n"],
-    "files”": ["dist/*"],
+    "keywords": [
+        "i18n"
+    ],
+    "files”": [
+        "dist/*"
+    ],
     "license": "MIT"
 }

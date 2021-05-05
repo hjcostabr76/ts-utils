@@ -1,17 +1,14 @@
-import { I18n } from '@hjcostabr76/I18n'
-import { HttpStatusEnum } from '@hjcostabr76/generics/enum'
+import { I18n } from '@hjcostabr76/i18n'
+
+import { HttpStatusEnum } from './enum'
 
 import { gen_HttpStatusMsgI18n } from './i18n/gen_HttpStatusMsgI18n'
-
-/* =================================================================== */
-/* -- ERROS HTTP ----------------------------------------------------- */
-/* =================================================================== */
 
 /**
  * EXCECAO
  * Classe mae a ser extendida por classes que definem erros relacionados a 01 codigo de erro http.
  */
-export abstract class HttpError extends Error {
+abstract class HttpError extends Error {
 
     name = 'HttpError'
     readonly status: HttpStatusEnum
@@ -61,10 +58,6 @@ export class UnauthorizedError extends HttpError {
         super(message ?? I18n.getText<gen_HttpStatusMsgI18n>(gen_HttpStatusMsgI18n.CONTEXT, 'unauthorized'), HttpStatusEnum.UNAUTHORIZED)
     }
 }
-
-/* =================================================================== */
-/* -- ERROS Customizados --------------------------------------------- */
-/* =================================================================== */
 
 /**
  * EXCECAO

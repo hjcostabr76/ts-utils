@@ -2,7 +2,7 @@
   "name": "@hjcostabr76/ts-utils",
   "version": "1.0.0",
   "description": "Awesome typescript packages",
-  "homepage": "https://github.com/hjcostabr76/s-utils#readme",
+  "homepage": "https://github.com/hjcostabr76/ts-utils#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hjcostabr76/ts-utils.git"
@@ -16,33 +16,31 @@
   "scripts": {
     "test": "echo \"Error: So far, not good... There ain't no tests yet :(\" && exit 1",
     "build": "npm i && npx tsc",
-    "publish:beta": "npx lerna publish --dist-tag beta",
-    "publish:bypass": "npx lerna publish --ignore-scripts",
+    "bootstrap": "npx lerna bootstrap --hoist --strict --force-local",
     "version": "npx lerna version --conventional-commits",
     "version:release": "npm run version --conventional-commits --create-release github",
+    "publish:beta": "npx lerna publish --dist-tag beta",
+    "publish:bypass": "npx lerna publish --ignore-scripts",
     "naming": "npx ts-node generate-naming-convention.ts",
     "lint": "npx eslint --color --format table --quiet --fix --ext .ts .",
     "lint:full": "npx eslint --color --format table --ext .ts .",
     "lint:deprecated": "npx eslint-find-rules --deprecated .eslintrc.js",
     "lint:unused": "npx eslint-find-rules --unused .eslintrc.js",
-    "prepare": "husky install"
-  },
-  "dependencies": {
-    "moment-timezone": "^0.5.31",
-    "ts-morph": "^7.1.2"
+    "prepare": "husky install",
+    "upgrade": "npx npm-check-updates -u && npm i"
   },
   "devDependencies": {
     "@commitlint/config-lerna-scopes": "^12.1.1",
-    "@types/node": "^14.0.14",
+    "@types/node": "^15.0.2",
     "commitizen": "^4.2.3",
     "commitlint": "^12.1.1",
     "cz-conventional-changelog": "^3.3.0",
-    "eslint": "^7.3.1",
+    "eslint": "^7.25.0",
     "eslint-config-hjcostabr76": "^1.0.2",
     "husky": "^6.0.0",
-    "lerna": "^3.22.1",
-    "ts-node": "^8.10.2",
-    "typescript": "^3.9.5"
+    "lerna": "^4.0.0",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.2.4"
   },
   "keywords": [
     "utils"
@@ -50,5 +48,6 @@
   "files”": [
     "dist/*"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {}
 }

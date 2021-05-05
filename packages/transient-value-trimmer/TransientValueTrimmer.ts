@@ -1,8 +1,6 @@
 import * as _ from 'lodash'
 
-import { ConfigTP } from './type/ConfigTP'
-import { ArrayInputConfigTP } from './type/ArrayInputConfigTP'
-import { DebugActiveTP } from './type/DebugActiveTP'
+import { tvt_ArrayInputConfigT, tvt_ConfigT, tvt_DebugActiveT } from './tvt_types'
 
 /**
  * Eliminador de valor transitorio:
@@ -10,24 +8,22 @@ import { DebugActiveTP } from './type/DebugActiveTP'
  *
  * - Modo 'normal': Captura-se o ultimo valor detectado que permanecer estavel pelo intervalo configurado;
  * - Modo 'invertido': captura-se 1o valor detectado que sera retornado apos intervalo configurado;
- * 
- * TODO: Publicar
  */
-export class TransientValueTrimmer<InputTP, OutputTP = InputTP> {   // eslint-disable-line @typescript-eslint/naming-convention
+export class TransientValueTrimmer<InputT, OutputT = InputT> {
 
-    private value: InputTP
+    private value: InputT
     private timeoutID: number
 
-    private readonly onFinish: (definitiveValue: OutputTP) => void
+    private readonly onFinish: (definitiveValue: OutputT) => void
     private readonly delay: number
     private readonly isReversed: boolean
 
     private readonly shouldDebugTransient: boolean
     private readonly shouldDebugPermanent: boolean
     private readonly debugNameTxt: string
-    private readonly arrayInputConfig?: ArrayInputConfigTP
+    private readonly arrayInputConfig?: tvt_ArrayInputConfigT
 
-    constructor(config: ConfigTP<OutputTP>) {
+    constructor(config: tvt_ConfigT<OutputT>) {
 
         this.delay = config.delay
         this.onFinish = config.onFinish
@@ -36,36 +32,36 @@ export class TransientValueTrimmer<InputTP, OutputTP = InputTP> {   // eslint-di
 
         const debugType = config.debugType ?? 'disabled'
 
-        this.debugNameTxt = !!config.debugName ? `::${config.debugName}` : ''
+        this.debugNameTxt = config.debugName ? `::${config.debugName}` : ''
         this.shouldDebugTransient = ['transient', 'full'].includes(debugType)
         this.shouldDebugPermanent = ['permanent', 'full'].includes(debugType)
     }
 
-    onChange(transientValue: InputTP): void {
+    onChange(transientValue: InputT): void {
         if (this.isReversed)
             this._onChangeReversed(transientValue)
         else
             this._onChangeNotReversed(transientValue)
     }
 
-    private _onChangeReversed(transientValue: InputTP): void {
+    private _onChangeReversed(transientValue: InputT): void {
 
         if (this.shouldDebugTransient && this._valueHasChanged(transientValue))
             this._debugTransient(transientValue)
 
-        if (!!this.timeoutID)
+        if (this.timeoutID)
             return
 
         this.value = transientValue
         this._setTrimmerTimeout()
     }
 
-    private _onChangeNotReversed(transientValue: InputTP): void {
+    private _onChangeNotReversed(transientValue: InputT): void {
 
         if (!this._valueHasChanged(transientValue))
             return
 
-        if (!!this.timeoutID)
+        if (this.timeoutID)
             clearTimeout(this.timeoutID)
 
         this.value = transientValue
@@ -76,7 +72,7 @@ export class TransientValueTrimmer<InputTP, OutputTP = InputTP> {   // eslint-di
         this._setTrimmerTimeout()
     }
 
-    private _valueHasChanged(newTempValue: InputTP): boolean {
+    private _valueHasChanged(newTempValue: InputT): boolean {
 
         // Avalia entrada de valor simples
         if (!this.value)
@@ -86,7 +82,7 @@ export class TransientValueTrimmer<InputTP, OutputTP = InputTP> {   // eslint-di
             return !_.isEqual(newTempValue, this.value)
 
         // Avalia entrada de valores multiplos (array)
-        if (!(newTempValue instanceof Array)) {
+        if (!(Array.isArray(newTempValue))) {
             throw {
                 message: 'FALHA - TransientValueTrimmer._valueHasChanged: Valor de entrada invalido!',
                 value: newTempValue
@@ -119,19 +115,19 @@ export class TransientValueTrimmer<InputTP, OutputTP = InputTP> {   // eslint-di
         )
     }
 
-    private _getPermanentValue(): OutputTP {
+    private _getPermanentValue(): OutputT {
 
         if (!this.arrayInputConfig || !this.arrayInputConfig.valuesToUse)
-            return (this.value as unknown) as OutputTP
+            return (this.value as unknown) as OutputT
 
         if (this.arrayInputConfig.valuesToUse.length === 1)
             return this.value[this.arrayInputConfig.valuesToUse[0]]
 
         return _.get(this, '_value', [])
-            .filter((value: any, index: number) => this.arrayInputConfig!.valuesToUse!.includes(index)) as OutputTP
+            .filter((value: any, index: number) => this.arrayInputConfig!.valuesToUse!.includes(index)) as OutputT
     }
 
-    private _debugTransient(transientValue: InputTP): void {
+    private _debugTransient(transientValue: InputT): void {
         const baseLogMsg = this._getDebugChangeMsg('transient')
         console.log(`${baseLogMsg} = `, transientValue) // eslint-disable-line no-console
     }
@@ -141,7 +137,7 @@ export class TransientValueTrimmer<InputTP, OutputTP = InputTP> {   // eslint-di
         console.log(`${baseLogMsg} | stored value: `, this.value, ' | output: ', this._getPermanentValue())    // eslint-disable-line no-console
     }
 
-    private _getDebugChangeMsg(type: DebugActiveTP): string {
+    private _getDebugChangeMsg(type: tvt_DebugActiveT): string {
         const reversedSign = this.isReversed ? '(reversed)' : ''
         return `DEBUG | (${type}) ${reversedSign} TransientValueTrimmer${this.debugNameTxt}`
     }

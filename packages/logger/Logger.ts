@@ -57,7 +57,7 @@ export class Logger implements ILogger {
         Logger.errorWithContext(this.context, ...logs)
     }
 
-    divider(times?: number): void {
+    divider(times?: number): void { // eslint-disable-line class-methods-use-this
         Logger.divider(times)
     }
 
@@ -100,7 +100,7 @@ export class Logger implements ILogger {
 
         const logPrefixes: string[] = [
             colorFunction(`[${level.toUpperCase()}]`),
-            colors.green(`[${DateUtils.getFormatted(new Date(), DateFormatEnum.US_DATE_TIME_H_M_S)}]`).dim,
+            colors.green(`[${DateUtils.getFormatted(new Date(), DateFormatEnum.US_DATE_TIME_H_M_S)}]`)?.dim as string,
         ]
 
         if (context)

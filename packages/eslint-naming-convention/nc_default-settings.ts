@@ -1,14 +1,14 @@
-import { GeneralSettingsTP } from './types'
+import { nc_GeneralSettingsT } from './nc_types'
 
-export const DEFAULT_SETTINGS: Required<GeneralSettingsTP> = {
-    
+export const nc_DEFAULT_SETTINGS: Required<nc_GeneralSettingsT> = {
+
     classSuffixes: [],
-    
+
     enumSuffixes: ['Enum'],
     interfacePrefixes: ['I'],
     typeSuffixes: ['TP'],
     typeSuffixesGenerics: ['GTP'],
-    
+
     arraySuffixesUC: ['S', 'ARRAY', 'LIST'],
     arraySuffixesLC: ['s', 'Array', 'List'],
     booleanPrefixesUC: ['IS', 'ENABLE', 'REQUIRE', 'FORCE', 'DONT'],

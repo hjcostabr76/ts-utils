@@ -51,3 +51,14 @@ export type OrNullTP<T> = T | null
  * Tipo de dados que pode ser de 01 determinado tipo OU indefinido.
  */
 export type OrUndefTP<T> = T | undefined
+
+/**
+ * Parametros para tratamento de 01 erro ocorrido durante 01 procedimento divido em etapas sequenciais.
+ * @see SystemUtils
+ */
+export type ErrorHandlingConfigTP<StepsTP> = {
+    name: StepsTP | 'default',
+    errorMsg?: string,
+    errorHandler?: (err: any, errMsg: string) => void,
+    exception?: ConstructorTP<Error>,
+}

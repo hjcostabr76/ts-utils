@@ -1,0 +1,20 @@
+{
+    "name": "@hjcostabr76/generics",
+    "description": "Utilitários & tipos abstratos comuns",
+    "author": "hjcostabr76 <hjcosta.dev@gmail.com>",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "version": "0.0.1",
+    "scripts": {
+        "test": "echo \"Error: So far, not good... There ain't no tests yet :(\"",
+        "build": "npm i && npx tsc"
+    },
+    "devDependencies": {
+        "eslint": "^7.3.1",
+        "eslint-config-hjcostabr76": "^1.0.2",
+        "typescript": "^4.2.4"
+    },
+    "keywords": [],
+    "files”": ["dist/*"],
+    "license": "MIT"
+}

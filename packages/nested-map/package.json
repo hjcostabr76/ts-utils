@@ -1,0 +1,31 @@
+{
+  "name": "@hjcostabr76/nested-map",
+  "version": "0.0.1",
+  "description": "Two level map structure",
+  "homepage": "https://github.com/hjcostabr76/ts-utils/packages/nested-map#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hjcostabr76/ts-utils.git"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "author": "hjcostabr76 <hjcosta.dev@gmail.com>",
+  "bugs": {
+    "email": "hjcosta.dev@gmail.com"
+  },
+  "scripts": {
+    "test": "echo \"Error: So far, not good... There ain't no tests yet :(\" && exit 1",
+    "build": "npm i && npx tsc",
+    "upgrade": "npx npm-check-updates -u && npm i"
+  },
+  "keywords": [
+    "map"
+  ],
+  "files”": [
+    "dist/*"
+  ],
+  "devDependencies": {
+    "typescript": "^4.2.4"
+  },
+  "license": "MIT"
+}

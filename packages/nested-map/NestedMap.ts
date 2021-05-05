@@ -1,9 +1,8 @@
-import { ObjKeyTP } from '@system/type/ObjKeyTP'
-import { OrUndefinedTP } from '@system/type/OrUndefinedTP'
+import { ObjKeyT, OrUndefT } from '@hjcostabr76/generics/type'
 
-type KeysTupleTP<Key1GTP extends ObjKeyTP = string, Key2GTP extends ObjKeyTP = Key1GTP> = [Key1GTP, Key2GTP]
-type NestedMapTP<ValueGTP, Key1GTP extends ObjKeyTP = string, Key2GTP extends ObjKeyTP = Key1GTP> = Map<Key1GTP, NestedMapInnerTP<ValueGTP, Key2GTP>>
-type NestedMapInnerTP<ValueGTP, Key2GTP extends ObjKeyTP> = Map<Key2GTP, ValueGTP | Set<ValueGTP>>
+type KeysTupleT<Key1T extends ObjKeyT = string, Key2T extends ObjKeyT = Key1T> = [Key1T, Key2T]
+type NestedMapT<ValueT, Key1T extends ObjKeyT = string, Key2T extends ObjKeyT = Key1T> = Map<Key1T, NestedMapInnerT<ValueT, Key2T>>
+type NestedMapInnerT<ValueT, Key2T extends ObjKeyT> = Map<Key2T, ValueT | Set<ValueT>>
 
 /**
  * MAPA ANINHADO
@@ -12,30 +11,30 @@ type NestedMapInnerTP<ValueGTP, Key2GTP extends ObjKeyTP> = Map<Key2GTP, ValueGT
  * - Cada valor eh indexado pela combinacao unica de 02 chaves;
  * - Equivale a 01 mapa dentro de outro mapa;
  */
-export class NestedMap<ValueTP, Key1TP extends ObjKeyTP = string, Key2TP extends ObjKeyTP = Key1TP> {   // eslint-disable-line @typescript-eslint/naming-convention
+export class NestedMap<ValueT, Key1T extends ObjKeyT = string, Key2T extends ObjKeyT = Key1T> {   // eslint-disable-line @typescript-eslint/naming-convention
 
-    private readonly nestedMap: NestedMapTP<ValueTP, Key1TP, Key2TP> = new Map()
+    private readonly nestedMap: NestedMapT<ValueT, Key1T, Key2T> = new Map()
     private readonly shouldConcatenate: boolean
 
     constructor(shouldConcatenate?: boolean) {
         this.shouldConcatenate = shouldConcatenate ?? false
     }
 
-    has(key1: Key1TP, key2?: Key2TP): boolean {
+    has(key1: Key1T, key2?: Key2T): boolean {
         const aux = this.nestedMap.get(key1)
         return !key2 ? !!aux : !!aux?.get(key2)
     }
 
-    get(key1: Key1TP, key2: Key2TP): OrUndefinedTP<ValueTP> {
+    get(key1: Key1T, key2: Key2T): OrUndefT<ValueT> {
         return this.getParsedValue(this.nestedMap.get(key1)?.get(key2))
     }
 
-    set(key1: Key1TP, key2: Key2TP, value: ValueTP): NestedMap<ValueTP, Key1TP, Key2TP> {
+    set(key1: Key1T, key2: Key2T, value: ValueT): NestedMap<ValueT, Key1T, Key2T> {
 
-        const innerMap: NestedMapInnerTP<ValueTP, Key2TP> = this.nestedMap.get(key1) ?? new Map()
+        const innerMap: NestedMapInnerT<ValueT, Key2T> = this.nestedMap.get(key1) ?? new Map()
 
         if (this.shouldConcatenate) {
-            const currentValueSet: Set<ValueTP> = (innerMap.get(key2) as Set<ValueTP>) ?? new Set()
+            const currentValueSet: Set<ValueT> = (innerMap.get(key2) as Set<ValueT>) ?? new Set()
             currentValueSet.add(value)
             innerMap.set(key2, currentValueSet)
 
@@ -46,26 +45,26 @@ export class NestedMap<ValueTP, Key1TP extends ObjKeyTP = string, Key2TP extends
         return this
     }
 
-    keys(): Array<KeysTupleTP<Key1TP, Key2TP>> { // eslint-disable-line @typescript-eslint/naming-convention
+    keys(): Array<KeysTupleT<Key1T, Key2T>> { // eslint-disable-line @typescript-eslint/naming-convention
 
-        const keysTuples: Array<KeysTupleTP<Key1TP, Key2TP>> = []
+        const keysTuples: Array<KeysTupleT<Key1T, Key2T>> = []
 
         for (const [key1, innerMap] of this.nestedMap.entries()) {
             const key2List = Array.from(innerMap.keys())
-            keysTuples.push(...key2List.map<KeysTupleTP<Key1TP, Key2TP>>(key2 => [key1, key2]))
+            keysTuples.push(...key2List.map<KeysTupleT<Key1T, Key2T>>(key2 => [key1, key2]))
         }
 
         return keysTuples
     }
 
-    values(): ValueTP[] { // eslint-disable-line @typescript-eslint/naming-convention
-        const uniqueList: ValueTP[] = []
+    values(): ValueT[] { // eslint-disable-line @typescript-eslint/naming-convention
+        const uniqueList: ValueT[] = []
         for (const innerMap of this.nestedMap.values())
             uniqueList.push(...Array.from(innerMap.values(), value => this.getParsedValue(value)!))
         return uniqueList
     }
 
-    private getParsedValue(value?: ValueTP | Set<ValueTP>): OrUndefinedTP<ValueTP> {
-        return (this.shouldConcatenate ? Array.from(value as Set<ValueTP>) : value) as ValueTP
+    private getParsedValue(value?: ValueT | Set<ValueT>): OrUndefT<ValueT> {
+        return (this.shouldConcatenate ? Array.from(value as Set<ValueT>) : value) as ValueT
     }
 }

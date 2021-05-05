@@ -1,7 +1,4 @@
-import { InvalidArgsError } from '@system/error/InvalidArgsError'
-import { AnyObjTP } from '@system/type/AnyObjTP'
-import { ConstructorTP } from '@system/type/ConstructorTP'
-import { OrUndefinedTP } from '@system/type/OrUndefinedTP'
+import { InvalidArgsError, AnyObjTP, ConstructorTP, OrUndefTP } from '@hjcostabr76/generics'
 
 /**
  * UTILS
@@ -19,20 +16,20 @@ export const ObjectUtils = {
 
         for (const key of Object.keys(obj)) {
             if (typeof obj[key] === 'object')
-                depth = Math.max((ObjectUtils.getDepth(obj[key] as AnyObjTP) + 1), depth)
+                depth = Math.max((ObjectUtils.getDepth(obj[key]) + 1), depth)
         }
 
         return depth
     },
 
     /** Retorna nome da classe instanciada por 01 objeto. */
-    getInstanceClassName(obj: AnyObjTP): OrUndefinedTP<string> {
-        return Object.create(obj)?.constructor?.name as OrUndefinedTP<string>
+    getInstanceClassName(obj: AnyObjTP): OrUndefTP<string> {
+        return Object.create(obj)?.constructor?.name as OrUndefTP<string>
     },
 
     /** Retorna nome da classe associada a 01 funcao do tipo 'construtor'. */
-    getConstructorClassName(constructor: ConstructorTP<any> | Function): OrUndefinedTP<string> {
-        return constructor.prototype?.constructor?.name as OrUndefinedTP<string>
+    getConstructorClassName(constructor: ConstructorTP<any> | Function): OrUndefTP<string> {
+        return constructor.prototype?.constructor?.name as OrUndefTP<string>
     },
 
     /**
@@ -74,7 +71,7 @@ export const ObjectUtils = {
     },
 
     /** Encapsula pre-tratamento possivelmente necessario junto a conversao de string json em objeto. */
-    parseJson(jsonString: string): OrUndefinedTP<AnyObjTP> {
+    parseJson(jsonString: string): OrUndefTP<AnyObjTP> {
         try {
 
             jsonString = jsonString

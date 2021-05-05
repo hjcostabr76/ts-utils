@@ -1,15 +1,12 @@
-import { SystemUtils } from '@system/utils/SystemUtils'
+import { SystemUtils } from './SystemUtils'
 
 /**
  * UTILITARIOS para manipular vetores.
  */
 export const ArrayUtils = {
 
-    /**
-     * Realiza ordenacao simples de listas de objetos. Usando 01 propriedade do
-     * mesmo como criterio.
-     */
-    sortObjects<ObjGTP>(objectList: ObjGTP[], sortKey: keyof ObjGTP): ObjGTP[] {
+    /** Realiza ordenacao simples de listas de objetos. Usando 01 propriedade do mesmo como criterio. */
+    sortObjects<T>(objectList: T[], sortKey: keyof T): T[] {
         return objectList.sort((object1, object2) => {
 
             const value1 = object1[sortKey]
@@ -41,12 +38,12 @@ export const ArrayUtils = {
     },
 
     /** Transforma vetor de strings numericas num vetor de numeros. */
-    toNumberList(list: string[]): number[] { // eslint-disable-line @typescript-eslint/naming-convention
+    toNumberList(list: string[]): number[] {
         return list.map(item => +item).filter(item => !Number.isNaN(item))
     },
 
     /** Transforma vetor de numeros num vetor de strings numericas. */
-    toStringList(list: number[]): string[] { // eslint-disable-line @typescript-eslint/naming-convention
+    toStringList(list: number[]): string[] {
         return list.map(item => item.toString())
     },
 }

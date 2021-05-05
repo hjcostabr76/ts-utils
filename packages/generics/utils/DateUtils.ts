@@ -1,14 +1,11 @@
-import moment from 'moment-timezone' // eslint-disable-line no-restricted-imports
-
-import { AppCFG } from '@config/AppCFG'
-
-import { DateFormatEnum } from '@system/enum/DateFormatEnum'
-import { TimeBaseEnum } from '@system/enum/TimeBaseEnum'
-import { OrUndefinedTP } from '@system/type/OrUndefinedTP'
+import { DateFormatEnum, TimeBaseEnum, OrUndefinedTP } from '@hjcostabr76/generics'
+import moment from 'moment-timezone'
 
 /**
  * UTILS
  * Reune funcoes utilitarias para manipular datas.
+ *
+ * TODO: Substituir moment.js
  */
 export const DateUtils = {
 
@@ -16,7 +13,7 @@ export const DateUtils = {
     fixTimeZone(
         date: Date | string,
         format: DateFormatEnum = DateFormatEnum.US,
-        timezone: string = AppCFG.getInstance().timeZone
+        timezone: string
     ): OrUndefinedTP<Date> {
         return moment(moment.tz(date, timezone).format(format)).toDate()
     },
@@ -35,7 +32,7 @@ export const DateUtils = {
     },
 
     /** Transforma string data. */
-    toDate(dateString: string, dateStringFormat: DateFormatEnum): Date { // eslint-disable-line @typescript-eslint/naming-convention
+    toDate(dateString: string, dateStringFormat: DateFormatEnum): Date {
         return moment(dateString, dateStringFormat).toDate()
     },
 

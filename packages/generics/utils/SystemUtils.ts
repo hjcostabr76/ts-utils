@@ -1,10 +1,6 @@
+import { AnyObjTP, ConstructorTP, ErrorHandlingConfigTP, OrFunctionTP, OrNullishTP, OrUndefTP } from '@hjcostabr76/generics/type'
+
 import { InvalidArgsError } from '@system/error/InvalidArgsError'
-import { AnyObjTP } from '@system/type/AnyObjTP'
-import { ConstructorTP } from '@system/type/ConstructorTP'
-import { ErrorHandlingConfigTP } from '@system/type/ErrorHandlingConfigTP'
-import { OrFunctionTP } from '@system/type/OrFunction'
-import { OrNullishTP } from '@system/type/OrNullishTP'
-import { OrUndefTP } from '@system/type/OrUndefTP'
 
 /**
  * UTILS

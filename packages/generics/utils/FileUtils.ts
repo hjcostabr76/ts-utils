@@ -1,13 +1,11 @@
 import fs from 'fs' // eslint-disable-line no-restricted-imports
 
-import { MimeTypeEnum } from '@system/enum/MimeTypeEnum'
-import { InvalidArgsError } from '@system/error/InvalidArgsError'
-import { AnyObjTP } from '@system/type/AnyObjTP'
-import { StringUtils } from '@system/utils/StringUtils'
+import { MimeTypeEnum, InvalidArgsError, AnyObjTP } from '@hjcostabr76/generics'
+
+import { StringUtils } from './StringUtils'
 
 /**
  * UTILITARIOS para manipulacao de arquivos.
- *
  */
 export const FileUtils = {
 

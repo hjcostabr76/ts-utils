@@ -1,8 +1,6 @@
 /**
  * UTILS
  * Encapsula logica auxiliar para uso operacoes matematicas.
- *
- * @author hjcostabr
  */
 export const MathUtils = {
 

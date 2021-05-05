@@ -2,6 +2,7 @@
   "name": "eslint-config-hjcostabr76",
   "version": "1.0.2",
   "description": "Custom eslint configurations",
+  "homepage": "https://github.com/hjcostabr76/ts-utils/packages/eslint-config#readme",
   "main": "index.js",
   "author": "hjcostabr76 <hjcosta.dev@gmail.com>",
   "scripts": {
@@ -10,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/hjcostabr76/hj_eslint-config.git"
+    "url": "git+https://github.com/hjcostabr76/ts-utils.git"
   },
   "engines": {
     "node": ">= 12.0.0",

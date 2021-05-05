@@ -1,5 +1,6 @@
-import { LanguageEnum } from '@system/enum/LanguageEnum'
-import { I18n } from '@system/i18n/I18n'
+import { LanguageEnum } from '@hjcostabr76/generics/enum'
+
+import { I18n } from './I18n'
 
 /**
  * DECORATOR (I18n)

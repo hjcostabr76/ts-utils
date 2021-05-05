@@ -1,5 +1,4 @@
-import { LanguageEnum } from '@system/enum/LanguageEnum'
-import { InvalidArgsError } from '@system/error/InvalidArgsError'
+import { LanguageEnum, InvalidArgsError } from '@hjcostabr76/generics'
 
 /**
  * I18n

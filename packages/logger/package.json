@@ -1,0 +1,30 @@
+{
+    "name": "@hjcostabr76/logger",
+    "description": "One more logging library",
+    "homepage": "https://github.com/hjcostabr76/ts-utils/packages/logger#readme",
+    "author": "hjcostabr76 <hjcosta.dev@gmail.com>",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "version": "1.2.1",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/hjcostabr76/ts-utils.git"
+    },
+    "scripts": {
+        "test": "echo \"Error: So far, not good... There ain't no tests yet :(\"",
+        "build": "npm i && npx tsc",
+        "upgrade": "npx npm-check-updates -u && npm i"
+    },
+    "devDependencies": {
+        "@types/node": "^14.0.5",
+        "ts-node": "^8.10.1",
+        "typescript": "^4.2.4"
+    },
+    "keywords": [
+        "logs",
+        "logging",
+        "logger"
+    ],
+    "files”": ["dist/*"],
+    "license": "MIT"
+}

@@ -1,11 +1,7 @@
+import { DateFormatEnum, InvalidArgsError, OrUndefT, DateUtils } from '@hjcostabr76/generics'
 import colors from 'colors'
 
-import { DateFormatEnum } from '@system/enum/DateFormatEnum'
-import { InvalidArgsError } from '@system/error/InvalidArgsError'
-import { ILogger } from '@system/logging/ILogger'
-import { LogLevelTP } from '@system/logging/LogLevelTP'
-import { OrUndefinedTP } from '@system/type/OrUndefinedTP'
-import { DateUtils } from '@system/utils/DateUtils'
+import { ILogger, LogLevelT } from './log_abstract'
 
 /**
  * LOGGER
@@ -13,7 +9,7 @@ import { DateUtils } from '@system/utils/DateUtils'
  */
 export class Logger implements ILogger {    // eslint-disable-line @typescript-eslint/naming-convention
 
-    private static instances?: Map<OrUndefinedTP<string>, Logger>
+    private static instances?: Map<OrUndefT<string>, Logger>
 
     private readonly context?: string
 
@@ -24,7 +20,7 @@ export class Logger implements ILogger {    // eslint-disable-line @typescript-e
     static getInstance(context?: string): Logger {
 
         if (!this.instances)
-            this.instances = new Map<OrUndefinedTP<string>, Logger>()
+            this.instances = new Map<OrUndefT<string>, Logger>()
 
         if (!this.instances.get(context))
             this.instances.set(context, new Logger(context))
@@ -77,7 +73,7 @@ export class Logger implements ILogger {    // eslint-disable-line @typescript-e
         Logger.logWithContext('error', context, ...logs)
     }
 
-    private static logWithContext(level: LogLevelTP, context?: string, ...logs: any[]): void {  // eslint-disable-line @typescript-eslint/naming-convention
+    private static logWithContext(level: LogLevelT, context?: string, ...logs: any[]): void {  // eslint-disable-line @typescript-eslint/naming-convention
 
         let logFunction: Function
         let colorFunction: (input: string) => string
@@ -120,7 +116,7 @@ export class Logger implements ILogger {    // eslint-disable-line @typescript-e
     }
 
     private static executeLogging(logs: any[], logFunction?: Function): void {
-        logFunction = logFunction ?? console.log    // eslint-disable-line no-console
+        logFunction = logFunction ?? console.log // eslint-disable-line no-console
         logFunction(...logs)
     }
 }

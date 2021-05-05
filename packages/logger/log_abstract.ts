@@ -7,3 +7,9 @@ export interface ILogger {
     warn: (...message: any[]) => void
     error: (...message: any[]) => void
 }
+
+/**
+ * TYPE
+ * Determina niveis para emissao de logs na aplicacao.
+ */
+export type LogLevelT = 'info' | 'warn' | 'error'

@@ -11,10 +11,13 @@ import { OrUndefT } from '../type'
  */
 export const DateUtils = {
 
-    /** Retorna uma instancia de Data de acordo com valor, formato e timezone passados. */
+    /**
+     * Retorna uma instancia de Data de acordo com valor, formato e timezone passados.
+     * TODO: 2021-05-06 - Definir valores padrao para os parametros
+     */
     fixTimeZone(
         date: Date | string,
-        format: DateFormatEnum = DateFormatEnum.US,
+        format: DateFormatEnum,
         timezone: string
     ): OrUndefT<Date> {
         return moment(moment.tz(date, timezone).format(format)).toDate()

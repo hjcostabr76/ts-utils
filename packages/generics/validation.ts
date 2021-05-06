@@ -2,7 +2,7 @@ import { I18n } from '@hjcostabr76/i18n'
 
 import { registerDecorator, ValidationOptions, ValidatorConstraint, ValidatorConstraintInterface, ValidationArguments } from 'class-validator'
 
-import { gen_ValidationRulesErrMsgI18n } from './i18n/gen_ValidationRulesErrMsgI18n'
+import { GenValidationRulesErrMsgI18n } from './i18n/GenValidationRulesErrMsgI18n'
 import { AnyObjT } from './type'
 
 /**
@@ -32,7 +32,7 @@ class HasNoSpaceValidator implements ValidatorConstraintInterface {
     }
 
     defaultMessage(): string { // eslint-disable-line @typescript-eslint/naming-convention
-        return I18n.getText<gen_ValidationRulesErrMsgI18n>(gen_ValidationRulesErrMsgI18n.CONTEXT, 'hasNoSpace')
+        return I18n.getText<GenValidationRulesErrMsgI18n>(GenValidationRulesErrMsgI18n.CONTEXT, 'hasNoSpace')
     }
     /* eslint-enable class-methods-use-this */
 }
@@ -61,7 +61,7 @@ class IsEmailValidator implements ValidatorConstraintInterface {
     }
 
     defaultMessage(): string { // eslint-disable-line @typescript-eslint/naming-convention
-        return I18n.getText<gen_ValidationRulesErrMsgI18n>(gen_ValidationRulesErrMsgI18n.CONTEXT, 'isEmail')
+        return I18n.getText<GenValidationRulesErrMsgI18n>(GenValidationRulesErrMsgI18n.CONTEXT, 'isEmail')
     }
     /* eslint-enable class-methods-use-this */
 }
@@ -91,7 +91,7 @@ class IsRequiredValidator implements ValidatorConstraintInterface {
     }
 
     defaultMessage(): string { // eslint-disable-line @typescript-eslint/naming-convention
-        return I18n.getText<gen_ValidationRulesErrMsgI18n>(gen_ValidationRulesErrMsgI18n.CONTEXT, 'isRequired')
+        return I18n.getText<GenValidationRulesErrMsgI18n>(GenValidationRulesErrMsgI18n.CONTEXT, 'isRequired')
     }
     /* eslint-enable class-methods-use-this */
 }
@@ -121,7 +121,7 @@ class IsStringValidator implements ValidatorConstraintInterface {
     }
 
     defaultMessage(): string { // eslint-disable-line @typescript-eslint/naming-convention
-        return I18n.getText<gen_ValidationRulesErrMsgI18n>(gen_ValidationRulesErrMsgI18n.CONTEXT, 'isString')
+        return I18n.getText<GenValidationRulesErrMsgI18n>(GenValidationRulesErrMsgI18n.CONTEXT, 'isString')
     }
     /* eslint-enable class-methods-use-this */
 }
@@ -151,7 +151,7 @@ class MinLengthValidator implements ValidatorConstraintInterface {
     }
 
     defaultMessage(args: ValidationArguments): string { // eslint-disable-line @typescript-eslint/naming-convention
-        return I18n.getText<gen_ValidationRulesErrMsgI18n>(gen_ValidationRulesErrMsgI18n.CONTEXT, 'minLength')
+        return I18n.getText<GenValidationRulesErrMsgI18n>(GenValidationRulesErrMsgI18n.CONTEXT, 'minLength')
             .replace('#', args.constraints[0])
     }
     /* eslint-enable class-methods-use-this */

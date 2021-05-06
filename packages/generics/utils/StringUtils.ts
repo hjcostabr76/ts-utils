@@ -5,7 +5,7 @@
 export const StringUtils = {
 
     /** Retorna string minuscaula sem espacos e nem caracters especiais. */
-    toLowerCaseWithNoSpaces(string: string): string { // eslint-disable-line @typescript-eslint/naming-convention
+    toLowerCaseWithNoSpaces(string: string): string {
         return StringUtils.removeSpecialCharacters(string, true).toLowerCase()
     },
 
@@ -26,7 +26,7 @@ export const StringUtils = {
     },
 
     /** Altera & retorna 01 string na forma 'camel-case'. */
-    toCamelCase(string: string): string { // eslint-disable-line @typescript-eslint/naming-convention
+    toCamelCase(string: string): string {
 
         if (!string.includes('-'))
             return string

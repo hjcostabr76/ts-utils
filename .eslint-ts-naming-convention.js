@@ -210,7 +210,7 @@
             "format": ["camelCase"],
             "custom": {
                 "match": true,
-                "regex": "^(add|are|bond|build|check|concat|create|debug|delete|disable|divide|does|enable|execute|find|finish|fix|get|grant|handle|has|initialize|is|list|merge|mount|multiply|onChange|onError|parse|preValidate|register|remove|run|save|search|send|set|sort|split|start|strip|subtract|sum|throw|transform|update|validate|verify|warn)"
+                "regex": "^(add|are|bond|build|check|concat|create|debug|delete|disable|divide|does|enable|execute|find|finish|fix|get|grant|handle|has|initialize|is|list|merge|mount|multiply|onChange|onError|parse|preValidate|register|remove|run|save|search|send|set|sort|split|start|strip|subtract|sum|throw|to|transform|update|validate|verify|warn)"
             }
         },
         {

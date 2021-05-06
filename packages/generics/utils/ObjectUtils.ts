@@ -48,11 +48,11 @@ export const ObjectUtils = {
      * retornar 01 novo objeto que possui propriedades de mesmos nomes mas com valores e/ou tipos
      * modificados pela funcao de transformacao.
      */
-    transform<ObjGTP, PropGTP = any>(obj: ObjGTP, transformer: (prop: any) => PropGTP): Record<keyof ObjGTP, PropGTP> {
-        const objKeys = Object.keys(obj) as Array<keyof ObjGTP>
-        const returnObj: Partial<Record<keyof ObjGTP, PropGTP>> = {}
+    transform<ObjT, PropT = any>(obj: ObjT, transformer: (prop: any) => PropT): Record<keyof ObjT, PropT> {
+        const objKeys = Object.keys(obj) as Array<keyof ObjT>
+        const returnObj: Partial<Record<keyof ObjT, PropT>> = {}
         objKeys.forEach(key => { returnObj[key] = transformer(obj[key]) })
-        return returnObj as Record<keyof ObjGTP, PropGTP>
+        return returnObj as Record<keyof ObjT, PropT>
     },
 
     /**
@@ -64,7 +64,7 @@ export const ObjectUtils = {
     },
 
     /** Retorna copia de 01 objeto removendo 01 lista de propriedaades do mesmo. */
-    getObjWithoutSomeProps<ObjGTP = AnyObjT>(obj: ObjGTP, propsToRemoveList: Array<keyof ObjGTP>): Partial<ObjGTP> {
+    getObjWithoutSomeProps<ObjT = AnyObjT>(obj: ObjT, propsToRemoveList: Array<keyof ObjT>): Partial<ObjT> {
         const clearedObj = { ...obj }
         for (const propToRemove of propsToRemoveList)
             delete clearedObj[propToRemove]

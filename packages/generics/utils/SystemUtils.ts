@@ -1,5 +1,5 @@
 import { InvalidArgsError } from '../error'
-import { AnyObjT, ConstructorT, SequentialStepErrorConfigT, OrFunctionT, OrNullishT, OrUndefT } from '../type'
+import { AnyObjT, ConstructorT, SequentialStepErrorConfigT, OrFunctionT, OrNullishT, OrUndefT, AnyFuncT } from '../type'
 
 /**
  * UTILS
@@ -8,10 +8,10 @@ import { AnyObjT, ConstructorT, SequentialStepErrorConfigT, OrFunctionT, OrNulli
 export const SystemUtils = {
 
     async sleep(time: number): Promise<void> { // eslint-disable-line @typescript-eslint/naming-convention
-        await new Promise(resolve => setTimeout(() => resolve(), time))
+        await new Promise(resolve => setTimeout(() => resolve(true), time))
     },
 
-    debug(...messages: any[]): void { // eslint-disable-line @typescript-eslint/naming-convention
+    debug(...messages: any[]): void {
         /* eslint-disable no-console */
         console.log('\n\n')
         console.log(...messages)
@@ -24,14 +24,16 @@ export const SystemUtils = {
      * retorna 01 valor padrao opcional (pode ser indefinido).
      */
     nvl<T = any>(condition: boolean, value: OrNullishT<OrFunctionT<T>>, defaultValue?: T): OrUndefT<T> { // eslint-disable-line @typescript-eslint/naming-convention
-        let valueToReturn: OrNullishT<T>
-        if (condition)
-            valueToReturn = (typeof value === 'function') ? (value as Function)() : value
+
+        const valueToReturn: OrNullishT<T> = condition
+            ? ((typeof value === 'function') ? (value as AnyFuncT<T>)() : value)
+            : undefined
+
         return valueToReturn ?? defaultValue
     },
 
     isNullish(value: any): boolean {
-        return [null, undefined].includes(value)    // eslint-disable-line unicorn/no-null
+        return [null, undefined].includes(value) // eslint-disable-line unicorn/no-null
     },
 
     isEmpty(value: unknown): boolean {

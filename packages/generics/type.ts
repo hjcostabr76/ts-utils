@@ -12,6 +12,8 @@ export type AnyFunctionT<ReturnT = unknown> = (...args: any[]) => ReturnT
  */
 export type AnyObjT = Record<string, unknown>
 
+export type AnyFuncT<ReturnT = any> = (...args: any[]) => ReturnT
+
 /**
  * Representa 01 funcao do tipo 'construtor' de 01 determinada classe.
  */
@@ -25,7 +27,7 @@ export type ObjKeyT = string | number
 /**
  * Tipo auxiliar para determinar dinamicamente se 01 valor de 01 determinado tipo sera opcional ou nao.
  */
-export type Optional<T, IsOptional extends boolean> = IsOptional extends true ? OrUndefT<T> : T
+export type Optional<T, IsOptional extends boolean> = IsOptional extends true ? OrUndefT<T> : T // eslint-disable-line @typescript-eslint/naming-convention
 
 /**
  * Alias para tipar algo que pode ser 01 unidade de 01 determinado tipo OU 01 lista de itens do mesmo tipo.

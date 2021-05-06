@@ -1,4 +1,8 @@
 /**
+ * TODO: 2021-05-06 - Verificar porque ha erro de linting sendo acusado
+ */
+
+/**
  * Determina formatos de data utilizados na aplicacao.
  */
 export enum DateFormatEnum {

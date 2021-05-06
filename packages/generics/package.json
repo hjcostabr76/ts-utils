@@ -17,7 +17,8 @@
         "publish:local": "npm run build & npx yalc push --changed --replace"
     },
     "dependencies": {
-        "class-validator": "^0.13.1"
+        "class-validator": "^0.13.1",
+        "@hjcostabr76/i18n": "^0.0.1"
     },
     "devDependencies": {
         "@types/node": "^15.0.2",

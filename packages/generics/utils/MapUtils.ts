@@ -6,7 +6,6 @@ type MapT<T> = Map<string | number, T>
 
 /**
  * UTILITARIOS para manipulacao de mapas.
- *
  * @see Map
  */
 export const MapUtils = {

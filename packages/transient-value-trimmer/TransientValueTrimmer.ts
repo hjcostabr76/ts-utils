@@ -11,8 +11,8 @@ import { tvt_ArrayInputConfigT, tvt_ConfigT, tvt_DebugActiveT } from './tvt_type
  */
 export class TransientValueTrimmer<InputT, OutputT = InputT> {
 
-    private value: InputT
-    private timeoutID: number
+    private value?: InputT
+    private timeoutID?: number
 
     private readonly onFinish: (definitiveValue: OutputT) => void
     private readonly delay: number
@@ -39,26 +39,26 @@ export class TransientValueTrimmer<InputT, OutputT = InputT> {
 
     onChange(transientValue: InputT): void {
         if (this.isReversed)
-            this._onChangeReversed(transientValue)
+            this.onChangeReversed(transientValue)
         else
-            this._onChangeNotReversed(transientValue)
+            this.onChangeNotReversed(transientValue)
     }
 
-    private _onChangeReversed(transientValue: InputT): void {
+    private onChangeReversed(transientValue: InputT): void {
 
-        if (this.shouldDebugTransient && this._valueHasChanged(transientValue))
-            this._debugTransient(transientValue)
+        if (this.shouldDebugTransient && this.hasValueChanged(transientValue))
+            this.debugTransient(transientValue)
 
         if (this.timeoutID)
             return
 
         this.value = transientValue
-        this._setTrimmerTimeout()
+        this.setTrimmerTimeout()
     }
 
-    private _onChangeNotReversed(transientValue: InputT): void {
+    private onChangeNotReversed(transientValue: InputT): void {
 
-        if (!this._valueHasChanged(transientValue))
+        if (!this.hasValueChanged(transientValue))
             return
 
         if (this.timeoutID)
@@ -67,12 +67,12 @@ export class TransientValueTrimmer<InputT, OutputT = InputT> {
         this.value = transientValue
 
         if (this.shouldDebugTransient)
-            this._debugTransient(transientValue)
+            this.debugTransient(transientValue)
 
-        this._setTrimmerTimeout()
+        this.setTrimmerTimeout()
     }
 
-    private _valueHasChanged(newTempValue: InputT): boolean {
+    private hasValueChanged(newTempValue: InputT): boolean {
 
         // Avalia entrada de valor simples
         if (!this.value)
@@ -89,10 +89,10 @@ export class TransientValueTrimmer<InputT, OutputT = InputT> {
             }
         }
 
-        if (!this.arrayInputConfig.valuesToListen)
+        if (!this.arrayInputConfig.valuesToListenList)
             return !_.isEqual(this.value, newTempValue)
 
-        for (const indexToEvaluate of this.arrayInputConfig.valuesToListen) {
+        for (const indexToEvaluate of this.arrayInputConfig.valuesToListenList) {
             if (!_.isEqual(this.value[indexToEvaluate], newTempValue[indexToEvaluate]))
                 return true
         }
@@ -100,44 +100,52 @@ export class TransientValueTrimmer<InputT, OutputT = InputT> {
         return false
     }
 
-    private _setTrimmerTimeout(): void {
+    private setTrimmerTimeout(): void {
 
         this.timeoutID = window.setTimeout(
             () => {
 
                 if (this.shouldDebugPermanent)
-                    this._debugPermanent()
+                    this.debugPermanent()
 
-                this.onFinish(this._getPermanentValue())
+                this.onFinish(this.getPermanentValue())
                 this.timeoutID = 0
             },
             this.delay
         )
     }
 
-    private _getPermanentValue(): OutputT {
+    /**
+     * FIXME: 2021-05-06 - Corrigir este metodo
+     */
+    private getPermanentValue(): OutputT {
 
-        if (!this.arrayInputConfig || !this.arrayInputConfig.valuesToUse)
+        if (!this.arrayInputConfig || !this.arrayInputConfig.valuesToUseList)
             return (this.value as unknown) as OutputT
 
-        if (this.arrayInputConfig.valuesToUse.length === 1)
-            return this.value[this.arrayInputConfig.valuesToUse[0]]
+        if (this.arrayInputConfig.valuesToUseList.length === 1)
+            return this.value[this.arrayInputConfig.valuesToUseList[0]]
 
-        return _.get(this, '_value', [])
-            .filter((value: any, index: number) => this.arrayInputConfig!.valuesToUse!.includes(index)) as OutputT
+        const valueAsArray = this.value ?? []
+
+        if (!Array.isArray(this.value))
+            throw new Error('Valor inválido para "value"')
+
+        return (valueAsArray as any[])
+            .filter((value: any, index: number) => this.arrayInputConfig!.valuesToUseList!.includes(index)) as OutputT
     }
 
-    private _debugTransient(transientValue: InputT): void {
-        const baseLogMsg = this._getDebugChangeMsg('transient')
+    private debugTransient(transientValue: InputT): void {
+        const baseLogMsg = this.getDebugChangeMsg('transient')
         console.log(`${baseLogMsg} = `, transientValue) // eslint-disable-line no-console
     }
 
-    private _debugPermanent(): void {
-        const baseLogMsg = this._getDebugChangeMsg('permanent')
-        console.log(`${baseLogMsg} | stored value: `, this.value, ' | output: ', this._getPermanentValue())    // eslint-disable-line no-console
+    private debugPermanent(): void {
+        const baseLogMsg = this.getDebugChangeMsg('permanent')
+        console.log(`${baseLogMsg} | stored value: `, this.value, ' | output: ', this.getPermanentValue())    // eslint-disable-line no-console
     }
 
-    private _getDebugChangeMsg(type: tvt_DebugActiveT): string {
+    private getDebugChangeMsg(type: tvt_DebugActiveT): string {
         const reversedSign = this.isReversed ? '(reversed)' : ''
         return `DEBUG | (${type}) ${reversedSign} TransientValueTrimmer${this.debugNameTxt}`
     }

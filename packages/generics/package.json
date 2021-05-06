@@ -14,10 +14,9 @@
         "test": "echo \"Error: So far, not good... There ain't no tests yet :(\"",
         "build": "npm i && npx tsc",
         "upgrade": "npx npm-check-updates -u && npm i",
-        "publish:local": "npm run build & npx yalc push --changed --update"
+        "publish:local": "npm run build & npx yalc push --changed --replace"
     },
     "dependencies": {
-        "@hjcostabr76/i18n": "^0.0.1",
         "class-validator": "^0.13.1"
     },
     "devDependencies": {

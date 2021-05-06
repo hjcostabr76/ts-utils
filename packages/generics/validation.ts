@@ -5,12 +5,6 @@ import { registerDecorator, ValidationOptions, ValidatorConstraint, ValidatorCon
 import { gen_ValidationRulesErrMsgI18n } from './i18n/gen_ValidationRulesErrMsgI18n'
 import { AnyObjT } from './type'
 
-/* =============================================================================== */
-/* ------------------------------------------------------------------------------- */
-/* -- Has no Space --------------------------------------------------------------- */
-/* ------------------------------------------------------------------------------- */
-/* =============================================================================== */
-
 /**
  * DECORATOR de VALIDACAO
  * Valida SE 01 string NAO contem espacos.
@@ -30,7 +24,7 @@ export function HasNoSpace(validationOptions?: ValidationOptions) { // eslint-di
 }
 
 @ValidatorConstraint({ name: 'Must have no spaces' })
-class HasNoSpaceValidator implements ValidatorConstraintInterface { // eslint-disable-line @typescript-eslint/naming-convention
+class HasNoSpaceValidator implements ValidatorConstraintInterface {
 
     /* eslint-disable class-methods-use-this */
     validate(value: unknown): boolean {
@@ -43,16 +37,10 @@ class HasNoSpaceValidator implements ValidatorConstraintInterface { // eslint-di
     /* eslint-enable class-methods-use-this */
 }
 
-/* =============================================================================== */
-/* ------------------------------------------------------------------------------- */
-/* -- Is email ------------------------------------------------------------------- */
-/* ------------------------------------------------------------------------------- */
-/* =============================================================================== */
-
 /**
  * DECORATOR de VALIDACAO: e-mail
  */
-export function IsEmail(validationOptions?: ValidationOptions) {    // eslint-disable-line @typescript-eslint/naming-convention
+export function IsEmail(validationOptions?: ValidationOptions) { // eslint-disable-line @typescript-eslint/naming-convention
     return (object: AnyObjT, propertyName: string) => {
         registerDecorator({
             target: object.constructor,
@@ -65,7 +53,7 @@ export function IsEmail(validationOptions?: ValidationOptions) {    // eslint-di
 }
 
 @ValidatorConstraint({ name: 'Must be an e-mail' })
-class IsEmailValidator implements ValidatorConstraintInterface {    // eslint-disable-line @typescript-eslint/naming-convention
+class IsEmailValidator implements ValidatorConstraintInterface {
 
     /* eslint-disable class-methods-use-this */
     validate(value: unknown): boolean {
@@ -77,12 +65,6 @@ class IsEmailValidator implements ValidatorConstraintInterface {    // eslint-di
     }
     /* eslint-enable class-methods-use-this */
 }
-
-/* =============================================================================== */
-/* ------------------------------------------------------------------------------- */
-/* -- Is required ---------------------------------------------------------------- */
-/* ------------------------------------------------------------------------------- */
-/* =============================================================================== */
 
 /**
  * DECORATOR de VALIDACAO:
@@ -101,7 +83,7 @@ export function IsRequired(validationOptions?: ValidationOptions) { // eslint-di
 }
 
 @ValidatorConstraint({ name: 'Required Field' })
-class IsRequiredValidator implements ValidatorConstraintInterface { // eslint-disable-line @typescript-eslint/naming-convention
+class IsRequiredValidator implements ValidatorConstraintInterface {
 
     /* eslint-disable class-methods-use-this */
     validate(value: unknown): boolean {
@@ -114,17 +96,11 @@ class IsRequiredValidator implements ValidatorConstraintInterface { // eslint-di
     /* eslint-enable class-methods-use-this */
 }
 
-/* =============================================================================== */
-/* ------------------------------------------------------------------------------- */
-/* -- Is string ------------------------------------------------------------------ */
-/* ------------------------------------------------------------------------------- */
-/* =============================================================================== */
-
 /**
  * DECORATOR de VALIDACAO:
  * Tipo deve ser string.
  */
-export function IsString(validationOptions?: ValidationOptions) {   // eslint-disable-line @typescript-eslint/naming-convention
+export function IsString(validationOptions?: ValidationOptions) { // eslint-disable-line @typescript-eslint/naming-convention
     return (object: AnyObjT, propertyName: string) => {
         registerDecorator({
             target: object.constructor,
@@ -137,7 +113,7 @@ export function IsString(validationOptions?: ValidationOptions) {   // eslint-di
 }
 
 @ValidatorConstraint({ name: 'Must be a string' })
-class IsStringValidator implements ValidatorConstraintInterface {   // eslint-disable-line @typescript-eslint/naming-convention
+class IsStringValidator implements ValidatorConstraintInterface {
 
     /* eslint-disable class-methods-use-this */
     validate(value: unknown): boolean {
@@ -150,17 +126,11 @@ class IsStringValidator implements ValidatorConstraintInterface {   // eslint-di
     /* eslint-enable class-methods-use-this */
 }
 
-/* =============================================================================== */
-/* ------------------------------------------------------------------------------- */
-/* -- Min length ----------------------------------------------------------------- */
-/* ------------------------------------------------------------------------------- */
-/* =============================================================================== */
-
 /**
  * DECORATOR de VALIDACAO:
  * Comprimento minimo.
  */
-export function MinLength(validationOptions?: ValidationOptions) {  // eslint-disable-line @typescript-eslint/naming-convention
+export function MinLength(validationOptions?: ValidationOptions) { // eslint-disable-line @typescript-eslint/naming-convention
     return (object: AnyObjT, propertyName: string) => {
         registerDecorator({
             target: object.constructor,
@@ -173,7 +143,7 @@ export function MinLength(validationOptions?: ValidationOptions) {  // eslint-di
 }
 
 @ValidatorConstraint({ name: 'Must have length greater than or equal to value' })
-class MinLengthValidator implements ValidatorConstraintInterface {  // eslint-disable-line @typescript-eslint/naming-convention
+class MinLengthValidator implements ValidatorConstraintInterface {
 
     /* eslint-disable class-methods-use-this */
     validate(value: unknown, args: ValidationArguments): boolean {

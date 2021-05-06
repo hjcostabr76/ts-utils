@@ -28,7 +28,7 @@ export class Logger implements ILogger {
         return this.instances.get(context) as Logger
     }
 
-    static info(...logs: any[]): void {
+    static info(...logs: any[]): void { // eslint-disable-line @typescript-eslint/naming-convention
         Logger.infoWithContext(undefined, ...logs)
     }
 
@@ -36,7 +36,7 @@ export class Logger implements ILogger {
         Logger.warnWithContext(undefined, ...logs)
     }
 
-    static error(...logs: any[]): void {
+    static error(...logs: any[]): void { // eslint-disable-line @typescript-eslint/naming-convention
         Logger.errorWithContext(undefined, ...logs)
     }
 
@@ -45,7 +45,7 @@ export class Logger implements ILogger {
             Logger.executeLogging(['\n'])
     }
 
-    info(...logs: any[]): void {
+    info(...logs: any[]): void { // eslint-disable-line @typescript-eslint/naming-convention
         Logger.infoWithContext(this.context, ...logs)
     }
 
@@ -53,7 +53,7 @@ export class Logger implements ILogger {
         Logger.warnWithContext(this.context, ...logs)
     }
 
-    error(...logs: any[]): void {
+    error(...logs: any[]): void { // eslint-disable-line @typescript-eslint/naming-convention
         Logger.errorWithContext(this.context, ...logs)
     }
 
@@ -61,7 +61,7 @@ export class Logger implements ILogger {
         Logger.divider(times)
     }
 
-    private static infoWithContext(context?: string, ...logs: any[]): void {
+    private static infoWithContext(context?: string, ...logs: any[]): void { // eslint-disable-line @typescript-eslint/naming-convention
         Logger.logWithContext('info', context, ...logs)
     }
 
@@ -69,11 +69,11 @@ export class Logger implements ILogger {
         Logger.logWithContext('warn', context, ...logs)
     }
 
-    private static errorWithContext(context?: string, ...logs: any[]): void {
+    private static errorWithContext(context?: string, ...logs: any[]): void { // eslint-disable-line @typescript-eslint/naming-convention
         Logger.logWithContext('error', context, ...logs)
     }
 
-    private static logWithContext(level: LogLevelT, context?: string, ...logs: any[]): void {
+    private static logWithContext(level: LogLevelT, context?: string, ...logs: any[]): void { // eslint-disable-line @typescript-eslint/naming-convention
 
         let logFunction: Function
         let colorFunction: (input: string) => string

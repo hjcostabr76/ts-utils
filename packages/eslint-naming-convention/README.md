@@ -136,8 +136,8 @@ export const DEFAULT_SETTINGS: Required<GeneralSettingsTP> = {
     
     enumSuffixes: ['Enum'],
     interfacePrefixes: ['I'],
-    typeSuffixes: ['TP'],
-    typeSuffixesGenerics: ['GTP'],
+    typeSuffixes: ['T'],
+    typeSuffixesGenerics: ['T'],
     
     arraySuffixesUC: ['S', 'ARRAY', 'LIST'],
     arraySuffixesLC: ['s', 'array', 'Array', 'List'],

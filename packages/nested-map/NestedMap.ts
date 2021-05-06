@@ -11,7 +11,7 @@ type NestedMapInnerT<ValueT, Key2T extends ObjKeyT> = Map<Key2T, ValueT | Set<Va
  * - Cada valor eh indexado pela combinacao unica de 02 chaves;
  * - Equivale a 01 mapa dentro de outro mapa;
  */
-export class NestedMap<ValueT, Key1T extends ObjKeyT = string, Key2T extends ObjKeyT = Key1T> {   // eslint-disable-line @typescript-eslint/naming-convention
+export class NestedMap<ValueT, Key1T extends ObjKeyT = string, Key2T extends ObjKeyT = Key1T> {
 
     private readonly nestedMap: NestedMapT<ValueT, Key1T, Key2T> = new Map()
     private readonly shouldConcatenate: boolean

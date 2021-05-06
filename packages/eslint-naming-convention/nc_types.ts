@@ -6,14 +6,14 @@ import { OrUndefT } from '@hjcostabr76/generics/type'
  * ======================================================
  */
 
-export type ncSettingsT = {
-    reportLevel: ncReportLevelT,
+export type nc_SettingsT = {
+    reportLevel: nc_ReportLevelT,
     filePath?: string,
     general?: nc_GeneralSettingsT,
-    specifics?: ncConfigT[],
+    specific?: nc_ConfigT[],
 }
 
-export type ncVarsT =
+export type nc_VarsT =
     & Required<Omit<nc_GeneralForArrayT, 'typeSuffixesGenerics'>>
     & Record<keyof Omit<nc_GeneralForRegexT, 'arraySuffixesLC' | 'arraySuffixesUC'>, OrUndefT<string>>
     & Record<'typeGenericsRegex' | 'booleanPrefixes' | 'arrayRegex' | 'arrayRegexUC' | 'arrayRegexLC', OrUndefT<string>>
@@ -22,15 +22,11 @@ export type nc_GeneralSettingsT = Partial<Record<keyof nc_GeneralForRegexT | key
 
 // General settings configured as regex
 export type nc_GeneralForRegexT = {
-
     functionPrefixes?: string[],
-
-    /* eslint-disable @typescript-eslint/naming-convention */
     booleanPrefixesLC?: string[],
     booleanPrefixesUC?: string[],
     arraySuffixesLC?: string[],
     arraySuffixesUC?: string[],
-    /* eslint-enable @typescript-eslint/naming-convention */
 }
 
 // General settings configured as arrays
@@ -48,68 +44,68 @@ export type nc_GeneralForArrayT = {
  * ======================================================
  */
 
-export type ncRuleT = {
-    '@typescript-eslint/naming-convention': [ncReportLevelT, ...ncConfigT[]], // eslint-disable-line @typescript-eslint/naming-convention
+export type nc_RuleT = {
+    '@typescript-eslint/naming-convention': [nc_ReportLevelT, ...nc_ConfigT[]],
 }
 
-export type ncConfigT = VarLikeConfigT | MemberLikeConfigT | TypeLikeConfigT
+export type nc_ConfigT = VarLikeConfigTP | MemberLikeConfigTP | TypeLikeConfigTP
 
-type VarLikeConfigT = VariableConfigT | ParameterConfigT | FunctionConfigT
-type TypeLikeConfigT = ClassConfigT | InterfaceConfigT | TypeAliasConfigT | TypeParamConfigT | EnumConfigT
-type MemberLikeConfigT = PropertyConfigT | AccessorConfigT | ParamPropConfigT | MethodConfigT | EnumMemberConfigT
+type VarLikeConfigTP = VariableConfigTP | ParameterConfigTP | FunctionConfigTP
+type TypeLikeConfigTP = ClassConfigTP | InterfaceConfigTP | TypeAliasConfigTP | TypeParamConfigTP | EnumConfigTP
+type MemberLikeConfigTP = PropertyConfigTP | AccessorConfigTP | ParamPropConfigTP | MethodConfigTP | EnumMemberConfigTP
 
 // Config [variable like]
-type VariableConfigT = VarLikeBaseT
-type ParameterConfigT = VarLikeBaseT
-type FunctionConfigT = VarLikeBaseT<undefined>
+type VariableConfigTP = VarLikeBaseTP
+type ParameterConfigTP = VarLikeBaseTP
+type FunctionConfigTP = VarLikeBaseTP<undefined>
 
-type VarLikeBaseT<BaseT extends OrUndefT<VarTypeT> = VarTypeT> = ConfigBaseT<undefined, BaseT>
+type VarLikeBaseTP<TypeGTP extends OrUndefT<TypeTP> = TypeTP> = ConfigBaseTP<undefined, TypeGTP>
 
 // Config [member like]
-type PropertyConfigT = MemberLikeBaseT
-type AccessorConfigT = MemberLikeBaseT
-type ParamPropConfigT = MemberLikeBaseT<Exclude<ClassModifierT, 'abstract' | 'static'>>
-type MethodConfigT = MemberLikeBaseT<ClassModifierT, undefined>
-type EnumMemberConfigT = MemberLikeBaseT<undefined, undefined>
+type PropertyConfigTP = MemberLikeBaseTP
+type AccessorConfigTP = MemberLikeBaseTP
+type ParamPropConfigTP = MemberLikeBaseTP<Exclude<ModifierTP, 'abstract' | 'static'>>
+type MethodConfigTP = MemberLikeBaseTP<ModifierTP, undefined>
+type EnumMemberConfigTP = MemberLikeBaseTP<undefined, undefined>
 
-type MemberLikeBaseT<ModifierParamT extends OrUndefT<ClassModifierT> = ClassModifierT, T extends OrUndefT<VarTypeT> = VarTypeT> = ConfigBaseT<ModifierParamT, T>
+type MemberLikeBaseTP<ModifierGTP extends OrUndefT<ModifierTP> = ModifierTP, TypeGTP extends OrUndefT<TypeTP> = TypeTP> = ConfigBaseTP<ModifierGTP, TypeGTP>
 
 // Config [type like]
-type ClassConfigT = TypeLikeBaseT<'abstract'>
-type InterfaceConfigT = TypeLikeBaseT
-type TypeAliasConfigT = TypeLikeBaseT
-type TypeParamConfigT = TypeLikeBaseT
-type EnumConfigT = TypeLikeBaseT
+type ClassConfigTP = TypeLikeBaseTP<'abstract'>
+type InterfaceConfigTP = TypeLikeBaseTP
+type TypeAliasConfigTP = TypeLikeBaseTP
+type TypeParamConfigTP = TypeLikeBaseTP
+type EnumConfigTP = TypeLikeBaseTP
 
-type TypeLikeBaseT<ModifierT extends OrUndefT<ClassModifierT> = undefined> = ConfigBaseT<ModifierT, undefined>
+type TypeLikeBaseTP<ModifierGTP extends OrUndefT<ModifierTP> = undefined> = ConfigBaseTP<ModifierGTP, undefined>
 
-type ConfigBaseT<ModifierT extends OrUndefT<ClassModifierT> = ClassModifierT, TypeGTP extends OrUndefT<VarTypeT> = VarTypeT> = {
+type ConfigBaseTP<ModifierGTP extends OrUndefT<ModifierTP> = ModifierTP, TypeGTP extends OrUndefT<TypeTP> = TypeTP> = {
 
-    selector?: SelectorT | 'default',
-    modifiers?: ModifierT[],
+    selector?: SelectorTP | 'default',
+    modifiers?: ModifierGTP[],
     types?: TypeGTP[],
 
-    format?: FormatT[],
-    custom?: CustomRegexT,
+    format?: FormatTP[],
+    custom?: CustomRegexTP,
     prefix?: string[],
     suffix?: string[],
 
-    leadingUnderscore?: UnderscoreT,
-    trailingUnderscore?: UnderscoreT,
+    leadingUnderscore?: UnderscoreTP,
+    trailingUnderscore?: UnderscoreTP,
     // filter?: any,   // NOTE: Existe mas nao vamos utilzar
 }
 
-type CustomRegexT = { regex: string, match: boolean }
+type CustomRegexTP = { regex: string, match: boolean }
 
-type UnderscoreT = 'forbid' | 'allow' | 'require'
-type VarTypeT = 'boolean' | 'string' | 'number' | 'function' | 'array'
-type ClassModifierT = 'public' | 'protected' | 'private' | 'readonly' | 'static' | 'abstract'
-type FormatT = 'camelCase' | 'strictCamelCase' | 'PascalCase' | 'StrictPascalCase' | 'snake_case' | 'UPPER_CASE'
+type UnderscoreTP = 'forbid' | 'allow' | 'require'
+type TypeTP = 'boolean' | 'string' | 'number' | 'function' | 'array'
+type ModifierTP = 'public' | 'protected' | 'private' | 'readonly' | 'static' | 'abstract'
+type FormatTP = 'camelCase' | 'strictCamelCase' | 'PascalCase' | 'StrictPascalCase' | 'snake_case' | 'UPPER_CASE'
 
-type SelectorT = SelectorVarLikeT | SelectorMemberLikeT | SelectorTypeLikeT | 'enum'
-type SelectorVarLikeT = 'variable' | 'function' | 'parameter'
-type SelectorTypeLikeT = 'class' | 'interface' | 'typeAlias' | 'enum' | 'typeParameter'
-type SelectorMemberLikeT = 'property' | 'parameterProperty' | 'method' | 'accessor' | 'enumMember'
+type SelectorTP = SelectorVarLikeTP | SelectorMemberLikeTP | SelectorTypeLikeTP | 'enum'
+type SelectorVarLikeTP = 'variable' | 'function' | 'parameter'
+type SelectorTypeLikeTP = 'class' | 'interface' | 'typeAlias' | 'enum' | 'typeParameter'
+type SelectorMemberLikeTP = 'property' | 'parameterProperty' | 'method' | 'accessor' | 'enumMember'
 
 /*
  * ======================================================
@@ -117,4 +113,4 @@ type SelectorMemberLikeT = 'property' | 'parameterProperty' | 'method' | 'access
  * ======================================================
  */
 
-export type ncReportLevelT = 'error' | 'warn' | 'off'
+export type nc_ReportLevelT = 'error' | 'warn' | 'off'

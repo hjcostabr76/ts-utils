@@ -1,27 +1,24 @@
 import * as fs from 'fs'
 
-import { ncReportLevelT, ncSettingsT, ncRuleT } from './nc_types'
-import { ncGetConfigs } from './nc_utils'
+import { nc_ReportLevelT, nc_SettingsT, nc_RuleT } from './nc_types'
+import { NC_getConfigs } from './nc_utils'
 
-export function ncMain(reportLevel: ncReportLevelT, settings?: Exclude<ncSettingsT, 'reportLevel' | 'filePath'>): Promise<ncRuleT>
-export function ncMain(reportLevel: ncReportLevelT, settings?: Exclude<ncSettingsT, 'reportLevel'>): Promise<void>
-export function ncMain(settings: ncSettingsT): Promise<void>
+export function nc_main(reportLevel: nc_ReportLevelT, settings?: Exclude<nc_SettingsT, 'reportLevel' | 'filePath'>): Promise<nc_RuleT>
+export function nc_main(reportLevel: nc_ReportLevelT, settings?: Exclude<nc_SettingsT, 'reportLevel'>): Promise<void>
+export function nc_main(settings: nc_SettingsT): Promise<void>
 
-export async function ncMain(param1: ncReportLevelT | ncSettingsT, settings?: Partial<ncSettingsT>): Promise<ncRuleT | void> {
+export async function nc_main(param1: nc_ReportLevelT | nc_SettingsT, settings?: Partial<nc_SettingsT>): Promise<nc_RuleT | void> {
 
-    // Identifica parametros
-    settings = settings ?? (param1 as ncSettingsT)
-    const reportLevel: ncReportLevelT = (settings as ncSettingsT)?.reportLevel ?? param1
+    settings = settings ?? (param1 as nc_SettingsT)
+    const reportLevel: nc_ReportLevelT = (settings as nc_SettingsT)?.reportLevel ?? param1
 
-    // Gera config
-    const rule: ncRuleT = {
-        '@typescript-eslint/naming-convention': [reportLevel, ...ncGetConfigs(settings)] // eslint-disable-line @typescript-eslint/naming-convention
+    const rule: nc_RuleT = {
+        '@typescript-eslint/naming-convention': [reportLevel, ...NC_getConfigs(settings)]
     }
 
-    if (!settings?.filePath) // Se nenhum arquivo for especificado retorna JSON programaticamente
+    if (!settings?.filePath)
         return rule
 
-    // Gera arquivo
     const ruleAsString = JSON.stringify(rule, undefined, 4)
     settings.filePath = `${settings.filePath}.js`.replace(/(\.js)+$/, '$1')
 

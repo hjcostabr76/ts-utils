@@ -62,6 +62,7 @@ export const nc_DEFAULT_SETTINGS: Required<nc_GeneralSettingsT> = { // eslint-di
         'subtract',
         'sum',
         'throw',
+        'to',
         'transform',
         'update',
         'validate',

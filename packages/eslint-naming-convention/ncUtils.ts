@@ -1,5 +1,5 @@
-import { nc_DEFAULT_SETTINGS } from './nc_default-settings'
-import { ncSettingsT, ncConfigT, nc_GeneralSettingsT, ncVarsT, nc_GeneralForRegexT, nc_GeneralForArrayT } from './nc_types'
+import { nc_DEFAULT_SETTINGS } from './ncDefaultSettings'
+import { ncSettingsT, ncConfigT, nc_GeneralSettingsT, ncVarsT, nc_GeneralForRegexT, nc_GeneralForArrayT } from './ncTypes'
 
 /** Gera & retorna configuracao da regra. */
 export function ncGetConfigs(settings?: Partial<ncSettingsT>): ncConfigT[] { // eslint-disable-line max-lines-per-function

@@ -1,7 +1,7 @@
 import * as fs from 'fs'
 
-import { ncReportLevelT, ncSettingsT, ncRuleT } from './nc_types'
-import { ncGetConfigs } from './nc_utils'
+import { ncReportLevelT, ncSettingsT, ncRuleT } from './ncTypes'
+import { ncGetConfigs } from './ncUtils'
 
 export function ncMain(reportLevel: ncReportLevelT, settings?: Exclude<ncSettingsT, 'reportLevel' | 'filePath'>): Promise<ncRuleT>
 export function ncMain(reportLevel: ncReportLevelT, settings?: Exclude<ncSettingsT, 'reportLevel'>): Promise<void>

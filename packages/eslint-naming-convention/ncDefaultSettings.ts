@@ -1,4 +1,4 @@
-import { nc_GeneralSettingsT } from './nc_types'
+import { nc_GeneralSettingsT } from './ncTypes'
 
 export const nc_DEFAULT_SETTINGS: Required<nc_GeneralSettingsT> = { // eslint-disable-line @typescript-eslint/naming-convention
 

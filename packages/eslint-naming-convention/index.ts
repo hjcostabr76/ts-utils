@@ -1,5 +1,5 @@
-import { ncMain } from './nc_main'
-import { ncConfigT, nc_GeneralSettingsT, ncReportLevelT, ncRuleT, ncSettingsT } from './nc_types'
+import { ncMain } from './ncMain'
+import { ncConfigT, nc_GeneralSettingsT, ncReportLevelT, ncRuleT, ncSettingsT } from './ncTypes'
 
 export const generateNamingConventions = ncMain
 export {

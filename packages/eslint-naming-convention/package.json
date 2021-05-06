@@ -13,7 +13,8 @@
     "scripts": {
         "test": "echo \"Error: So far, not good... There ain't no tests yet :(\"",
         "build": "npm i && npx tsc",
-        "upgrade": "npx npm-check-updates -u && npm i"
+        "upgrade": "npx npm-check-updates -u && npm i",
+        "publish:local": "npm run build & npx yalc push --changed --update"
     },
     "dependencies": {
         "@hjcostabr76/generics": "^0.0.1"

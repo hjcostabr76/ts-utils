@@ -1,17 +1,14 @@
-module.exports = { // eslint-disable-line import/no-commonjs
+module.exports = {
     parserOptions: {
         project: './tsconfig.json',
         tsconfigRootDir: __dirname,
     },
-    extends: [
-        'hjcostabr76'
-    ],
-    // ignorePatterns: ['generate-naming-convention.ts']
+    extends: ['hjcostabr76/ts-package'],
     rules: {
-        'import/no-unused-modules': ['warn', {
-            // missingExports: true,    // nao funciona (acusa falso positivo)
-            unusedExports: true,
-            src: ['packages/**/**/*.ts'],
-        }],
+        'import/no-unused-modules': ['off'],
+        'import/no-commonjs': ['off'],
+
+        // TODO: Remover
+        'max-classes-per-file': ['off'],
     }
 }

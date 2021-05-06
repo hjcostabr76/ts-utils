@@ -6,8 +6,8 @@
  * @see TransientValueTrimmerConfigTP
  */
 export type tvt_ArrayInputConfigT = {
-    valuesToListenList?: number[],
-    valuesToUseList?: number[],
+    valuesToListen?: number[],
+    valuesToUse?: number[],
 }
 
 /**

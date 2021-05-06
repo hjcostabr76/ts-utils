@@ -1,11 +1,12 @@
 import { nc_DEFAULT_SETTINGS } from './nc_default-settings'
-import { nc_SettingsT, nc_ConfigT, nc_GeneralSettingsT, nc_VarsT, nc_GeneralForRegexT, nc_GeneralForArrayT } from './nc_types'
+import { ncSettingsT, ncConfigT, nc_GeneralSettingsT, ncVarsT, nc_GeneralForRegexT, nc_GeneralForArrayT } from './nc_types'
 
 /** Gera & retorna configuracao da regra. */
-export function NC_getConfigs(settings?: Partial<nc_SettingsT>): nc_ConfigT[] {    // eslint-disable-line max-lines-per-function
+export function ncGetConfigs(settings?: Partial<ncSettingsT>): ncConfigT[] { // eslint-disable-line max-lines-per-function
 
     const vars = getVars(settings?.general)
 
+    /* eslint-disable @typescript-eslint/naming-convention */
     return [
 
         // global
@@ -191,12 +192,13 @@ export function NC_getConfigs(settings?: Partial<nc_SettingsT>): nc_ConfigT[] { 
         },
 
         // custom
-        ...(settings?.specific ?? [])
+        ...(settings?.specifics ?? [])
     ]
+    /* eslint-enable @typescript-eslint/naming-convention */
 }
 
 /** Processa & retorna variaveis utilizadas na configuracao da regra. */
-function getVars(generalSettings?: nc_GeneralSettingsT): nc_VarsT {
+function getVars(generalSettings?: nc_GeneralSettingsT): ncVarsT {
 
     // Booleanos concatenados
     const booleanPrefixesLC = getValueForRegexList('booleanPrefixesLC', generalSettings)

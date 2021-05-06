@@ -5,7 +5,7 @@
  *
  * NOTE: This file is generated
  */
-module.exports = {
+ module.exports = {
     rules: {
     "@typescript-eslint/naming-convention": [
         "error",

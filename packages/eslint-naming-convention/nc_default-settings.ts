@@ -1,18 +1,20 @@
 import { nc_GeneralSettingsT } from './nc_types'
 
-export const nc_DEFAULT_SETTINGS: Required<nc_GeneralSettingsT> = {
+export const nc_DEFAULT_SETTINGS: Required<nc_GeneralSettingsT> = { // eslint-disable-line @typescript-eslint/naming-convention
 
     classSuffixes: [],
 
     enumSuffixes: ['Enum'],
     interfacePrefixes: ['I'],
-    typeSuffixes: ['TP'],
-    typeSuffixesGenerics: ['GTP'],
+    typeSuffixes: ['T'],
+    typeSuffixesGenerics: ['T'],
 
+    /* eslint-disable @typescript-eslint/naming-convention */
     arraySuffixesUC: ['S', 'ARRAY', 'LIST'],
     arraySuffixesLC: ['s', 'Array', 'List'],
     booleanPrefixesUC: ['IS', 'ENABLE', 'REQUIRE', 'FORCE', 'DONT'],
     booleanPrefixesLC: ['is', 'are', 'should', 'must', 'can', 'have', 'has', 'did', 'dont', 'will', 'enable', 'require', 'force'],
+    /* eslint-enable @typescript-eslint/naming-convention */
 
     functionPrefixes: [
         'add',
@@ -22,6 +24,7 @@ export const nc_DEFAULT_SETTINGS: Required<nc_GeneralSettingsT> = {
         'check',
         'concat',
         'create',
+        'debug',
         'delete',
         'disable',
         'divide',

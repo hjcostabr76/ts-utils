@@ -1,6 +1,4 @@
-/**
- * TODO: 2021-05-06 - Verificar porque ha erro de linting sendo acusado
- */
+/* eslint-disable no-shadow */
 
 /**
  * Determina formatos de data utilizados na aplicacao.
@@ -109,3 +107,4 @@ export enum TimeBaseEnum {
     MONTH = 'month',
     YEAR = 'year',
 }
+/* eslint-enable no-shadow */

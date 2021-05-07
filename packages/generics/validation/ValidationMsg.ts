@@ -4,10 +4,11 @@ import { LanguageEnum } from '../enum'
 
 /**
  * LABELS
- * Determina referencia para mensagens de erro utilizados
- * pelas regras de validacao customizadas.
+ * Determina referencia para mensagens de erro utilizados pelas regras de validacao customizadas.
+ *
+ * TODO: 2021-05-07 - Possibilitar de fato a internacionalizacao
  */
-export class GenValidationRulesErrMsgI18n {
+export class ValidationMsg {
 
     static readonly CONTEXT = 'VALIDATION_ERR_MSG'
 
@@ -22,9 +23,11 @@ export class GenValidationRulesErrMsgI18n {
  * VALIDACAO
  * Mensagens de erro para regras customizadas no idioma
  * pt-BR.
+ *
+ * FIXME: 2021-05-07 - Isso aqui nao vai funcionar...
  */
-@I18nMap(GenValidationRulesErrMsgI18n.CONTEXT, LanguageEnum.PT_BR)
-export class GenValidationRulesErrMsgPtBr extends GenValidationRulesErrMsgI18n {
+@I18nMap(ValidationMsg.CONTEXT, LanguageEnum.PT_BR)
+/* export  */class ValidationMsgPtBr extends ValidationMsg {
     readonly isRequired: string = 'Campo obrigatório'
     readonly isString: string = 'Campo deve ser do tipo texto'
     readonly isEmail: string = 'e-mail inválido'

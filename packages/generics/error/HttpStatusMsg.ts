@@ -5,8 +5,10 @@ import { LanguageEnum } from '../enum'
 /**
  * LABELS
  * Determina referencia para mensagens de retorno da aplicacao.
+ *
+ * TODO: 2021-05-07 - Possibilitar de fato a internacionalizacao
  */
-export class GenHttpStatusMsgI18n {
+export class HttpStatusMsg {
 
     static readonly CONTEXT = 'RETURN_MSG_CONTEXT'
 
@@ -26,9 +28,11 @@ export class GenHttpStatusMsgI18n {
 /**
  * MENSAGENS de RETORNO: pt-BR.
  * Define textos para mensagens de retorno padrao da aplicacao.
+ *
+ * FIXME: 2021-05-07 - Isso aqui nao vai funcionar
  */
-@I18nMap(GenHttpStatusMsgI18n.CONTEXT, LanguageEnum.PT_BR)
-export class GenHttpStatusMsgI18nPtBr extends GenHttpStatusMsgI18n {
+@I18nMap(HttpStatusMsg.CONTEXT, LanguageEnum.PT_BR)
+/* export  */class GenHttpStatusMsgI18nPtBr extends HttpStatusMsg {
     readonly ok = 'OK'
     readonly created = 'Novo(s) registro(s) criado(s)'
     readonly noContent = 'Nada a retornar'

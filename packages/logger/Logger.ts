@@ -1,4 +1,4 @@
-import { DateFormatEnum, InvalidArgsError, OrUndefT, DateUtils } from '@hjcostabr76/generics'
+import { InvalidArgsError, OrUndefT } from '@hjcostabr76/generics'
 import * as colors from 'colors'
 
 import { ILogger, LogLevelT } from './log_abstract'
@@ -100,7 +100,12 @@ export class Logger implements ILogger {
 
         const logPrefixes: string[] = [
             colorFunction(`[${level.toUpperCase()}]`),
-            colors.green(`[${DateUtils.getFormatted(new Date(), DateFormatEnum.US_DATE_TIME_H_M_S)}]`)?.dim as string,
+
+            /**
+             * TODO: 2021-05-07 - Reincluir essa acao quando o utilitario de datas for atualizado
+             * @see DateUtils
+             */
+            // colors.green(`[${DateUtils.getFormatted(new Date(), DateFormatEnum.US_DATE_TIME_H_M_S)}]`)?.dim,
         ]
 
         if (context)

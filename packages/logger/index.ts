@@ -1,2 +1,2 @@
 export { Logger } from './Logger'
-export * from './logerAbstractTypes'
+export * from './loggerAbstractTypes'

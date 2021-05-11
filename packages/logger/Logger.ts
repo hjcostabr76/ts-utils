@@ -1,7 +1,7 @@
 import { InvalidArgsError, OrUndefT } from '@hjcostabr76/generics'
-import * as colors from 'colors'
+import colors from 'colors/safe'
 
-import { ILogger, LogLevelT } from './logerAbstractTypes'
+import { ILogger, LogLevelT } from './loggerAbstractTypes'
 
 /**
  * LOGGER

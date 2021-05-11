@@ -49,10 +49,11 @@ export type OrNullishT<T> = OrNullT<OrUndefT<T>>
  */
 export type OrNullT<T> = T | null
 
-/**
- * Tipo de dados que pode ser de 01 determinado tipo OU indefinido.
- */
+/** Tipo de dados que pode ser de 01 determinado tipo OU indefinido. */
 export type OrUndefT<T> = T | undefined
+
+/** Propriedades de 01 tipo excluindo funcoes / metodos. */
+export type NonFunctionPropsT<T> = string & NonNullable<{ [K in keyof T]: T[K] extends Function ? never : K }[keyof T]>
 
 /**
  * Parametros para tratamento de 01 erro ocorrido durante 01 procedimento divido em etapas sequenciais.

@@ -48,7 +48,6 @@ buck-out/
 *.jsbundle
 
 # lock files
-# yarn.lock
 yalc.lock
 package-json.lock
 
@@ -61,3 +60,6 @@ node_modules/
 
 # yalc
 .yalc
+
+# build
+*.tsbuildinfo

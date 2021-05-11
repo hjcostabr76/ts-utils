@@ -21,7 +21,7 @@
 
       // ---
       "target": "ES2018", // https://www.typescriptlang.org/tsconfig#target
-      "lib": ["ESNext"], // https://www.typescriptlang.org/tsconfig#lib
+      "lib": ["ESNext", "DOM"], // https://www.typescriptlang.org/tsconfig#lib
       // ---
 
       /**
@@ -55,7 +55,7 @@
       "noFallthroughCasesInSwitch": false, // https://www.typescriptlang.org/tsconfig#noFallthroughCasesInSwitch
       "noImplicitAny": true, // https://www.typescriptlang.org/tsconfig#noImplicitAny
       // "noImplicitOverride": true, // https://www.typescriptlang.org/tsconfig#noImplicitOverride
-      "noImplicitReturns": true, // https://www.typescriptlang.org/tsconfig#noImplicitReturns
+      "noImplicitReturns": false, // https://www.typescriptlang.org/tsconfig#noImplicitReturns
       "noImplicitThis": true, // https://www.typescriptlang.org/tsconfig#noImplicitThis
       // "noPropertyAccessFromIndexSignature": true, // https://www.typescriptlang.org/tsconfig#noPropertyAccessFromIndexSignature
       // "noUncheckedIndexedAccess": true, // https://www.typescriptlang.org/tsconfig#noUncheckedIndexedAccess

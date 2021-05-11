@@ -1,12 +1,23 @@
 import { validate, ValidationError } from 'class-validator'
 
 import { AnyObjT, OrUndefT } from '../type'
+import { ValidationMsgEnUS } from './ValidationMsgEnUS'
 import { ValidationErrorT, ValidationMsgT } from './validationTypes'
 
 /**
  * Wrapper que executa efetivamente as validacoes.
  */
 export class Validator {
+
+    private static defaultMsgs?: ValidationMsgT
+
+    static setDefaultValidationMessages(i18nConfig: ValidationMsgT): void {
+        this.defaultMsgs = i18nConfig
+    }
+
+    static getErrorMessage(validationType: keyof ValidationMsgT): string {
+        return this.defaultMsgs?.[validationType] ?? ValidationMsgEnUS[validationType]
+    }
 
     static async validate(object: AnyObjT, shouldThrowOnError = true): Promise<OrUndefT<ValidationErrorT[]>> {
 

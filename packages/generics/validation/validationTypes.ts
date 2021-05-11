@@ -10,7 +10,7 @@ export type ValidationMsgT = {
     readonly isRequired: string,
     readonly isEmail: string,
     readonly isString: string,
-    readonly hasNoChar: string,
+    readonly hasNoChars: string,
     readonly minLength: string,
 }
 

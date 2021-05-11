@@ -1,7 +1,7 @@
 import { registerDecorator, ValidationArguments, ValidatorConstraint, ValidatorConstraintInterface } from 'class-validator'
 
 import { AnyObjT, ConstructorT } from '../type'
-import { ValidationMsgEnUS } from './ValidationMsgEnUS'
+import { Validator as hjValidator } from './Validator'
 import { ValidationDecoratorConfigT } from './validationTypes'
 
 /* eslint-disable class-methods-use-this, @typescript-eslint/naming-convention */
@@ -23,7 +23,7 @@ class HasNoSpaceValidator implements ValidatorConstraintInterface {
     }
 
     defaultMessage(args: ValidationArguments): string {
-        return ValidationMsgEnUS.hasNoChar.replace('#', args.constraints[0])
+        return hjValidator.getErrorMessage('hasNoChars').replace('#', args.constraints[0])
     }
 }
 
@@ -42,7 +42,7 @@ class IsEmailValidator implements ValidatorConstraintInterface {
     }
 
     defaultMessage(): string {
-        return ValidationMsgEnUS.isEmail
+        return hjValidator.getErrorMessage('isEmail')
     }
 }
 
@@ -62,7 +62,7 @@ class IsRequiredValidator implements ValidatorConstraintInterface {
     }
 
     defaultMessage(): string {
-        return ValidationMsgEnUS.isRequired
+        return hjValidator.getErrorMessage('isRequired')
     }
 }
 
@@ -82,7 +82,7 @@ class IsStringValidator implements ValidatorConstraintInterface {
     }
 
     defaultMessage(): string {
-        return ValidationMsgEnUS.isString
+        return hjValidator.getErrorMessage('isString')
     }
 }
 
@@ -102,7 +102,7 @@ class MinLengthValidator implements ValidatorConstraintInterface {
     }
 
     defaultMessage(args: ValidationArguments): string {
-        return ValidationMsgEnUS.isString.replace('#', args.constraints[0])
+        return hjValidator.getErrorMessage('isString').replace('#', args.constraints[0])
     }
 }
 

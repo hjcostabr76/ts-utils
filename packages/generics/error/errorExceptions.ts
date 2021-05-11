@@ -1,8 +1,5 @@
-import { I18n } from '@hjcostabr76/i18n'
-
 import { HttpStatusEnum } from '../enum'
-
-import { HttpStatusMsg } from './HttpStatusMsg'
+import { HttpStatusMsgEnUS } from './HttpStatusMsg'
 
 /**
  * EXCECAO
@@ -19,6 +16,8 @@ abstract class HttpError extends Error {
     }
 }
 
+/* eslint-disable unicorn/custom-error-definition */
+
 /**
  * EXCECAO
  * Falha do tipo: Requisicao invalida.
@@ -28,8 +27,8 @@ export class BadRequestError extends HttpError {
     readonly name: string
 
     constructor(message?: string, name?: string) {
-        super(message ?? I18n.getText<HttpStatusMsg>(HttpStatusMsg.CONTEXT, 'badRequest'), HttpStatusEnum.BAD_REQUEST)
-        this.name = name ?? 'BadRequestError' // eslint-disable-line unicorn/custom-error-definition
+        super(message ?? HttpStatusMsgEnUS.badRequest, HttpStatusEnum.BAD_REQUEST)
+        this.name = name ?? 'BadRequestError'
     }
 }
 
@@ -42,7 +41,7 @@ export class ForbiddenError extends HttpError {
     readonly name = 'ForbiddenError'
 
     constructor(message?: string) {
-        super(message ?? I18n.getText<HttpStatusMsg>(HttpStatusMsg.CONTEXT, 'forbidden'), HttpStatusEnum.FORBIDDEN)
+        super(message ?? HttpStatusMsgEnUS.forbidden, HttpStatusEnum.FORBIDDEN)
     }
 }
 
@@ -55,7 +54,7 @@ export class UnauthorizedError extends HttpError {
     readonly name = 'UnauthorizedError'
 
     constructor(message?: string) {
-        super(message ?? I18n.getText<HttpStatusMsg>(HttpStatusMsg.CONTEXT, 'unauthorized'), HttpStatusEnum.UNAUTHORIZED)
+        super(message ?? HttpStatusMsgEnUS.unauthorized, HttpStatusEnum.UNAUTHORIZED)
     }
 }
 
@@ -98,7 +97,7 @@ export class InvalidActionError extends Error {
     readonly name = 'InvalidActionError'
 
     constructor(message?: string) {
-        super(message ?? I18n.getText<HttpStatusMsg>(HttpStatusMsg.CONTEXT, 'unprocessableEntity'))
+        super(message ?? HttpStatusMsgEnUS.unprocessableEntity)
     }
 }
 
@@ -119,3 +118,5 @@ export class InvalidArgsError extends Error {
         this.data = data ?? param1
     }
 }
+
+/* eslint-enable unicorn/custom-error-definition */

@@ -1,3 +1,5 @@
+import figlet from 'figlet'
+
 /**
  * UTILITARIOS
  * Define funcoes utilitarias para manipular strings.
@@ -144,5 +146,13 @@ export const StringUtils = {
      */
     stripRepeatedEnding(text: string, ending: string): string {
         return text.replace(new RegExp(`(${ending})+$`), '$1')
+    },
+
+    /**
+     * Retorna string com o texto solicitado formatado como uma string 'bonitinha' no estilo caracteristico
+     * para exibicao via terminal.
+     */
+    getPrettyTerminalText(text: string): string {
+        return figlet.textSync(text, 'Ogre').replace(/\n/g, '\n    ') as string
     },
 }

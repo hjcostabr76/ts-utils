@@ -1,67 +1,167 @@
 {
     "compilerOptions": {
-        
-        /* Basic Options */
-        "target": "es2018",         // Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017','ES2018' or 'ESNEXT'.
-        "module": "es2015",         // Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', or 'ESNext'.
-        "lib": ["dom"],   // ?
-        // "resolveJsonModule": false, // ?
-        
-        /* Specify library files to be included in the compilation. */
-        "allowJs": false,               // Allow javascript files to be compiled.
-        // "checkJs": false,            // Report errors in .js files.
-        // "jsx": "react-native",       // Specify JSX code generation: 'preserve', 'react-native', or 'react'.
-        "declaration": true,            // Generates corresponding '.d.ts' file.
-        "sourceMap": false,             // Generates corresponding '.map' file.
-        // "outFile": "./dist/index.js",   // Concatenate and emit output to single file.
-        "outDir": "./dist/",         // Redirect output structure to the directory.
-        "rootDir": "./",                // Specify the root directory of input files. Use to control the output directory structure with --outDir.
-        "removeComments": false,         // Do not emit comments to output.
-        // "noEmit": true,                // Do not emit outputs.
-        // "incremental": true,         // Enable incremental compilation
-        // "importHelpers": true,          // Import emit helpers from 'tslib'.
-        // "downlevelIteration": true,     // Provide full support for iterables in 'for-of', spread, and destructuring when targeting 'ES5' or 'ES3'.
-        "isolatedModules": false,       // Transpile each file as a separate module (similar to 'ts.transpileModule').
-        
-        /* Strict Type-Checking Options */
-        "strict": true,                             // Enable all strict type-checking options.
-        // "strictNullChecks": true,                // Enable strict null checks.
-        // "strictFunctionTypes": true,             // Enable strict checking of function types.
-        // "strictPropertyInitialization": true,    // Enable strict checking of property initialization in classes.
-        
-        "noImplicitAny": true,  // Raise error on expressions and declarations with an implied 'any' type.
-        "noImplicitThis": true, // Raise error on 'this' expressions with an implied 'any' type.
-        "alwaysStrict": true,   // Parse in strict mode and emit "use strict" for each source file.
-        
-        /* Additional Checks */
-        "noUnusedLocals": true,                 // Report errors on unused locals.
-        "noUnusedParameters": true,             // Report errors on unused parameters.
-        "noImplicitReturns": false,             // Report error when not all code paths in function return a value.
-        "noFallthroughCasesInSwitch": false,    // Report errors for fallthrough cases in switch statement.
-        
-        /* Module Resolution Options */
-        "moduleResolution": "node",             // Specify module resolution strategy: 'node' (Node.js) or 'classic' (TypeScript pre-1.6).
-        // "baseUrl": "./",                        // Base directory to resolve non-absolute module names.
-        // "rootDirs": [],                      // List of root folders whose combined content represents the structure of the project at runtime.
-        // "typeRoots": [],                     // List of folders to include type definitions from.
-        // "types": [],                         // Type declaration files to be included in compilation.
-        "allowSyntheticDefaultImports": false,  // Allow default imports from modules with no default export. This does not affect code emit, just typechecking.
-        "esModuleInterop": false,               // Enables emit interoperability between CommonJS and ES Modules via creation of namespace objects for all imports. Implies
-        // "preserveSymlinks": true,            // Do not resolve the real path of symlinks.
-        
-        /* Source Map Options */
-        // "sourceRoot": "./",         // Specify the location where debugger should locate TypeScript files instead of source locations.
-        // "mapRoot": "./",            // Specify the location where debugger should locate map files instead of generated locations.
-        // "inlineSourceMap": true,    // Emit a single file with source maps instead of having a separate file.
-        // "inlineSources": true,      // Emit the source alongside the sourcemaps within a single file; requires '--inlineSourceMap' or '--sourceMap' to be set.
-        
-        /* Experimental Options */
-        "experimentalDecorators": true,    // Enables experimental support for ES7 decorators.
-        "emitDecoratorMetadata": true,   // Enables experimental support for emitting type metadata for decorators.
-        
-        /* Unclassified */
-        "forceConsistentCasingInFileNames": true,   // ?
+
+      /**
+       * ===================================
+       * -- General ------------------------
+       * ===================================
+       */
+
+      // ---
+      "allowJs": false, // https://www.typescriptlang.org/tsconfig#allowJs
+      "checkJs": false, // https://www.typescriptlang.org/tsconfig#checkJs
+      // ---
+
+      "disableSizeLimit": false, // https://www.typescriptlang.org/tsconfig#disableSizeLimit
+      "emitDecoratorMetadata": true, // https://www.typescriptlang.org/tsconfig#emitDecoratorMetadata
+      "experimentalDecorators": true, // https://www.typescriptlang.org/tsconfig#experimentalDecorators
+      "plugins": [], // https://www.typescriptlang.org/tsconfig#plugins
+      "preserveSymlinks": false, // https://www.typescriptlang.org/tsconfig#preserveSymlinks
+      "resolveJsonModule": true, // https://www.typescriptlang.org/tsconfig#resolveJsonModule
+
+      // ---
+      "target": "ES2018", // https://www.typescriptlang.org/tsconfig#target
+      "lib": ["ESNext"], // https://www.typescriptlang.org/tsconfig#lib
+      // ---
+
+      /**
+       * ===================================
+       * -- Paths --------------------------
+       * ===================================
+       */
+
+       "declarationDir": ".declarations", // https://www.typescriptlang.org/tsconfig#declarationDir
+       "outDir": ".dist", // https://www.typescriptlang.org/tsconfig#outDir
+       "rootDir": "src", // https://www.typescriptlang.org/tsconfig#rootDir
+       "rootDirs": [], // https://www.typescriptlang.org/tsconfig#rootDirs
+       "typeRoots": [], // https://www.typescriptlang.org/tsconfig#typeRoots
+       "types": [], // https://www.typescriptlang.org/tsconfig#types
+       // "outFile": "", // https://www.typescriptlang.org/tsconfig#outFile
+
+       // Node Server
+       "baseUrl": "src", // https://www.typescriptlang.org/tsconfig#baseUrl
+       "paths": { // https://www.typescriptlang.org/tsconfig#paths
+            "@config/*": ["config/*"],
+            "@module/*": ["module/*"],
+            "@system/*": ["system/*"],
+            "@project/*": ["project/*"],
+       },
+
+       /**
+        * ===================================
+        * -- Linting ------------------------
+        * ===================================
+        */
+
+       "allowSyntheticDefaultImports": true, // https://www.typescriptlang.org/tsconfig#allowSyntheticDefaultImports
+       "allowUnreachableCode": false, // https://www.typescriptlang.org/tsconfig#allowUnreachableCode
+       "allowUnusedLabels": false, // https://www.typescriptlang.org/tsconfig#allowUnusedLabels
+       "isolatedModules": false, // https://www.typescriptlang.org/tsconfig#isolatedModules
+       "noFallthroughCasesInSwitch": false, // https://www.typescriptlang.org/tsconfig#noFallthroughCasesInSwitch
+       "noImplicitAny": true, // https://www.typescriptlang.org/tsconfig#noImplicitAny
+       // "noImplicitOverride": true, // https://www.typescriptlang.org/tsconfig#noImplicitOverride
+       "noImplicitReturns": true, // https://www.typescriptlang.org/tsconfig#noImplicitReturns
+       "noImplicitThis": true, // https://www.typescriptlang.org/tsconfig#noImplicitThis
+       // "noPropertyAccessFromIndexSignature": true, // https://www.typescriptlang.org/tsconfig#noPropertyAccessFromIndexSignature
+       // "noUncheckedIndexedAccess": true, // https://www.typescriptlang.org/tsconfig#noUncheckedIndexedAccess
+       "noUnusedLocals": true, // https://www.typescriptlang.org/tsconfig#noUnusedLocals
+       "noUnusedParameters": true, // https://www.typescriptlang.org/tsconfig#noUnusedParameters
+       "strict": true, // https://www.typescriptlang.org/tsconfig#strict
+       "strictBindCallApply": true, // https://www.typescriptlang.org/tsconfig#strictBindCallApply
+       "strictFunctionTypes": true, // https://www.typescriptlang.org/tsconfig#strictFunctionTypes
+       "strictNullChecks": true, // https://www.typescriptlang.org/tsconfig#strictNullChecks
+       "strictPropertyInitialization": true, // https://www.typescriptlang.org/tsconfig#strictPropertyInitialization
+
+      /**
+       * ===================================
+       * -- Output -------------------------
+       * ===================================
+       */
+
+       // --
+       "alwaysStrict": true, // https://www.typescriptlang.org/tsconfig#alwaysStrict
+       "noImplicitUseStrict": false, // https://www.typescriptlang.org/tsconfig#noImplicitUseStrict
+       // --
+
+      "declaration": true, // https://www.typescriptlang.org/tsconfig#declaration
+      "declarationMap": false, // https://www.typescriptlang.org/tsconfig#declarationMap
+      "emitBOM": false, // https://www.typescriptlang.org/tsconfig#emitBOM
+      "emitDeclarationOnly": false, // https://www.typescriptlang.org/tsconfig#emitDeclarationOnly
+      "esModuleInterop": true, // https://www.typescriptlang.org/tsconfig#esModuleInterop
+      "inlineSourceMap": false, // https://www.typescriptlang.org/tsconfig#inlineSourceMap
+      "inlineSources": false, // https://www.typescriptlang.org/tsconfig#inlineSources
+      "mapRoot": "", // https://www.typescriptlang.org/tsconfig#mapRoot
+      "noEmit": false, // https://www.typescriptlang.org/tsconfig#noEmit
+      "preserveConstEnums": false, // https://www.typescriptlang.org/tsconfig#preserveConstEnums
+      "removeComments": true, // https://www.typescriptlang.org/tsconfig#removeComments
+      "sourceMap": true, // https://www.typescriptlang.org/tsconfig#sourceMap
+      "sourceRoot": "", // https://www.typescriptlang.org/tsconfig#sourceRoot
+      // "newLine": "", // https://www.typescriptlang.org/tsconfig#newLine
+
+       /**
+       * ===================================
+       * -- Compiling ----------------------
+       * ===================================
+       */
+
+      // ---
+      "downlevelIteration": false, // https://www.typescriptlang.org/tsconfig#downlevelIteration
+      "importHelpers": false, // https://www.typescriptlang.org/tsconfig#importHelpers
+      "noEmitHelpers": false, // https://www.typescriptlang.org/tsconfig#noEmitHelpers
+      // ---
+
+      "assumeChangesOnlyAffectDirectDependencies": true, // https://www.typescriptlang.org/tsconfig#assumeChangesOnlyAffectDirectDependencies
+      "forceConsistentCasingInFileNames": true, // https://www.typescriptlang.org/tsconfig#forceConsistentCasingInFileNames
+      "incremental": true, // https://www.typescriptlang.org/tsconfig#incremental
+      "maxNodeModuleJsDepth": 0, // https://www.typescriptlang.org/tsconfig#maxNodeModuleJsDepth
+      "noEmitOnError": false, // https://www.typescriptlang.org/tsconfig#noEmitOnError
+      "noLib": false, // https://www.typescriptlang.org/tsconfig#noLib
+      "noResolve": false, // https://www.typescriptlang.org/tsconfig#noResolve
+      "noStrictGenericChecks": false, // https://www.typescriptlang.org/tsconfig#noStrictGenericChecks
+      "skipLibCheck": true, // https://www.typescriptlang.org/tsconfig#skipLibCheck
+      "suppressExcessPropertyErrors": false, // https://www.typescriptlang.org/tsconfig#suppressExcessPropertyErrors
+      "suppressImplicitAnyIndexErrors": false, // https://www.typescriptlang.org/tsconfig#suppressImplicitAnyIndexErrors
+      "useDefineForClassFields": false, // https://www.typescriptlang.org/tsconfig#useDefineForClassFields
+      // "importsNotUsedAsValues": false, // https://www.typescriptlang.org/tsconfig#importsNotUsedAsValues
+
+      /**
+       * ===================================
+       * -- Compiling Debug ----------------
+       * ===================================
+       */
+
+      // "explainFiles": false, // https://www.typescriptlang.org/tsconfig#explainFiles
+      "extendedDiagnostics": false, // https://www.typescriptlang.org/tsconfig#extendedDiagnostics
+      "listEmittedFiles": false, // https://www.typescriptlang.org/tsconfig#listEmittedFiles
+      "listFiles": false, // https://www.typescriptlang.org/tsconfig#listFiles
+      "traceResolution": false, // https://www.typescriptlang.org/tsconfig#traceResolution
+      // "generateCpuProfile": "", // https://www.typescriptlang.org/tsconfig#generateCpuProfile
+
+      /**
+       * ===================================
+       * -- Modules ------------------------
+       * ===================================
+       */
+
+      "allowUmdGlobalAccess": false, // https://www.typescriptlang.org/tsconfig#allowUmdGlobalAccess
+      "module": "CommonJS", // https://www.typescriptlang.org/tsconfig#module
+      "moduleResolution": "Node", // https://www.typescriptlang.org/tsconfig#moduleResolution
+
+      /**
+       * ===================================
+       * -- Composite Project --------------
+       * ===================================
+       */
+
+      "composite": false, // https://www.typescriptlang.org/tsconfig#composite
+      // "disableReferencedProjectLoad": false, // https://www.typescriptlang.org/tsconfig#disableReferencedProjectLoad
+      "disableSolutionSearching": false, // https://www.typescriptlang.org/tsconfig#disableSolutionSearching
+      "disableSourceOfProjectReferenceRedirect": false, // https://www.typescriptlang.org/tsconfig#disableSourceOfProjectReferenceRedirect
+      // "tsBuildInfoFile": "", // https://www.typescriptlang.org/tsconfig#tsBuildInfoFile
+
     },
-    "include": ["packages", "index.ts", ".eslintrc.js"],
-    "exclude": ["node_modules", "dist", "generate-naming-convention.js"]
-}
+    "include": [
+        "src/**/*.ts",
+        ".eslintrc.js",
+    ]
+  }

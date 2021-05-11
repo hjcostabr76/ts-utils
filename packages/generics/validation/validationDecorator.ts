@@ -1,4 +1,4 @@
-import { registerDecorator, ValidationArguments, ValidatorConstraint, ValidatorConstraintInterface } from 'class-validator'
+import { registerDecorator, ValidationArguments, ValidatorConstraint, ValidatorConstraintInterface, isEmail } from 'class-validator'
 
 import { AnyObjT, ConstructorT } from '../type'
 import { Validator as hjValidator } from './Validator'
@@ -38,7 +38,7 @@ export function IsEmail(params?: ValidationDecoratorConfigT) {
 class IsEmailValidator implements ValidatorConstraintInterface {
 
     validate(value: unknown): boolean {
-        return classValidator.isEmail(value)
+        return isEmail(value)
     }
 
     defaultMessage(): string {

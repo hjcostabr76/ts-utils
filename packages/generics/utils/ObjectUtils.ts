@@ -17,7 +17,7 @@ export const ObjectUtils = {
 
         for (const key of Object.keys(obj)) {
             if (typeof obj[key] === 'object')
-                depth = Math.max((ObjectUtils.getDepth(obj[key]) + 1), depth)
+                depth = Math.max((ObjectUtils.getDepth(obj[key] as AnyObjT) + 1), depth)
         }
 
         return depth

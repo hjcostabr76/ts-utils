@@ -83,11 +83,11 @@ type EnumConfigT = TypeLikeBaseT
 
 type TypeLikeBaseT<ModifierT extends OrUndefT<ClassModifierT> = undefined> = ConfigBaseT<ModifierT, undefined>
 
-type ConfigBaseT<ModifierT extends OrUndefT<ClassModifierT> = ClassModifierT, TypeGTP extends OrUndefT<VarTypeT> = VarTypeT> = {
+type ConfigBaseT<ModifierT extends OrUndefT<ClassModifierT> = ClassModifierT, TypeT extends OrUndefT<VarTypeT> = VarTypeT> = {
 
     selector?: SelectorT | 'default',
     modifiers?: ModifierT[],
-    types?: TypeGTP[],
+    types?: TypeT[],
 
     format?: FormatT[],
     custom?: CustomRegexT,

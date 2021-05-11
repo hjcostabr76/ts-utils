@@ -1,3 +1,5 @@
+import { OrUndefT } from '@hjcostabr76/generics/type'
+
 import { nc_DEFAULT_SETTINGS } from './ncDefaultSettings'
 import { ncSettingsT, ncConfigT, nc_GeneralSettingsT, ncVarsT, nc_GeneralForRegexT, nc_GeneralForArrayT } from './ncTypes'
 
@@ -245,7 +247,7 @@ function getValueForArrayList(key: keyof nc_GeneralForArrayT, generalSettings?: 
     return generalSettings?.[key] ?? nc_DEFAULT_SETTINGS[key]
 }
 
-function getValueForRegexList(key: keyof nc_GeneralForRegexT, generalSettings?: nc_GeneralSettingsT): string | undefined {
+function getValueForRegexList(key: keyof nc_GeneralForRegexT, generalSettings?: nc_GeneralSettingsT): OrUndefT<string> {
     const list = generalSettings?.[key] ?? nc_DEFAULT_SETTINGS[key]
     if (list.length)
         return `${list.join('|')}`

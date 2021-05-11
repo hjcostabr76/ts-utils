@@ -1,6 +1,6 @@
 import * as _ from 'lodash'
 
-import { tvt_ArrayInputConfigT, tvt_ConfigT, tvt_DebugActiveT } from './tvt_types'
+import { tvtArrayInputConfigT, tvtConfigT, tvtDebugActiveT } from './tvtTypes'
 
 /**
  * Eliminador de valor transitorio:
@@ -21,9 +21,9 @@ export class TransientValueTrimmer<InputT, OutputT = InputT> {
     private readonly shouldDebugTransient: boolean
     private readonly shouldDebugPermanent: boolean
     private readonly debugNameTxt: string
-    private readonly arrayInputConfig?: tvt_ArrayInputConfigT
+    private readonly arrayInputConfig?: tvtArrayInputConfigT
 
-    constructor(config: tvt_ConfigT<OutputT>) {
+    constructor(config: tvtConfigT<OutputT>) {
 
         this.delay = config.delay
         this.onFinish = config.onFinish
@@ -132,7 +132,7 @@ export class TransientValueTrimmer<InputT, OutputT = InputT> {
             throw new Error('Valor inválido para "value"')
 
         return (valueAsArray as any[])
-            .filter((value: any, index: number) => this.arrayInputConfig!.valuesToUseList!.includes(index)) as OutputT
+            .filter((value: any, index: number) => this.arrayInputConfig.valuesToUseList!.includes(index)) as OutputT
     }
 
     private debugTransient(transientValue: InputT): void {
@@ -145,7 +145,7 @@ export class TransientValueTrimmer<InputT, OutputT = InputT> {
         console.log(`${baseLogMsg} | stored value: `, this.value, ' | output: ', this.getPermanentValue())    // eslint-disable-line no-console
     }
 
-    private getDebugChangeMsg(type: tvt_DebugActiveT): string {
+    private getDebugChangeMsg(type: tvtDebugActiveT): string {
         const reversedSign = this.isReversed ? '(reversed)' : ''
         return `DEBUG | (${type}) ${reversedSign} TransientValueTrimmer${this.debugNameTxt}`
     }

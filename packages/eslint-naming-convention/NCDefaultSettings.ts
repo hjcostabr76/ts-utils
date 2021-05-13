@@ -1,6 +1,6 @@
-import { nc_GeneralSettingsT } from './ncTypes'
+import { ncGeneralSettingsT } from './ncTypes'
 
-export const nc_DEFAULT_SETTINGS: Required<nc_GeneralSettingsT> = { // eslint-disable-line @typescript-eslint/naming-convention
+export const NC_DEFAULT_SETTINGS: Required<ncGeneralSettingsT> = {
 
     classSuffixes: [],
 
@@ -12,8 +12,8 @@ export const nc_DEFAULT_SETTINGS: Required<nc_GeneralSettingsT> = { // eslint-di
     /* eslint-disable @typescript-eslint/naming-convention */
     arraySuffixesUC: ['S', 'ARRAY', 'LIST'],
     arraySuffixesLC: ['s', 'Array', 'List'],
-    booleanPrefixesUC: ['IS', 'ENABLE', 'REQUIRE', 'FORCE', 'DONT'],
-    booleanPrefixesLC: ['is', 'are', 'should', 'must', 'can', 'have', 'has', 'did', 'dont', 'will', 'enable', 'require', 'force'],
+    booleanPrefixesUC: ['IS', 'ENABLE', 'REQUIRE', 'FORCE', 'DONT', 'USE'],
+    booleanPrefixesLC: ['are', 'can', 'did', 'dont', 'enable', 'force', 'has', 'have', 'is', 'must', 'require', 'should', 'use', 'will'],
     /* eslint-enable @typescript-eslint/naming-convention */
 
     functionPrefixes: [

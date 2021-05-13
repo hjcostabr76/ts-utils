@@ -1,7 +1,7 @@
 import { OrUndefT } from '@hjcostabr76/generics/type'
 
-import { nc_DEFAULT_SETTINGS } from './ncDefaultSettings'
-import { ncSettingsT, ncConfigT, nc_GeneralSettingsT, ncVarsT, nc_GeneralForRegexT, nc_GeneralForArrayT } from './ncTypes'
+import { NC_DEFAULT_SETTINGS } from './NCDefaultSettings'
+import { ncSettingsT, ncConfigT, ncGeneralSettingsT, ncVarsT, ncGeneralForRegexT, ncGeneralForArrayT } from './ncTypes'
 
 /** Gera & retorna configuracao da regra. */
 export function ncGetConfigs(settings?: Partial<ncSettingsT>): ncConfigT[] { // eslint-disable-line max-lines-per-function
@@ -200,7 +200,7 @@ export function ncGetConfigs(settings?: Partial<ncSettingsT>): ncConfigT[] { // 
 }
 
 /** Processa & retorna variaveis utilizadas na configuracao da regra. */
-function getVars(generalSettings?: nc_GeneralSettingsT): ncVarsT {
+function getVars(generalSettings?: ncGeneralSettingsT): ncVarsT {
 
     // Booleanos concatenados
     const booleanPrefixesLC = getValueForRegexList('booleanPrefixesLC', generalSettings)
@@ -211,15 +211,15 @@ function getVars(generalSettings?: nc_GeneralSettingsT): ncVarsT {
         booleanPrefixes = booleanPrefixes ? `${booleanPrefixes}|${booleanPrefixesUC}` : booleanPrefixesUC
 
     // Vetores
-    const arraySuffixesLC = generalSettings?.arraySuffixesLC ?? nc_DEFAULT_SETTINGS.arraySuffixesLC
-    const arraySuffixesUC = generalSettings?.arraySuffixesUC ?? nc_DEFAULT_SETTINGS.arraySuffixesUC
+    const arraySuffixesLC = generalSettings?.arraySuffixesLC ?? NC_DEFAULT_SETTINGS.arraySuffixesLC
+    const arraySuffixesUC = generalSettings?.arraySuffixesUC ?? NC_DEFAULT_SETTINGS.arraySuffixesUC
 
     const arrayRegexLC = `(list|array|([a-z\\d]+([A-Z][a-z\\d]+)*(${arraySuffixesLC.join('|')})))`
     const arrayRegexUC = `(LIST|ARRAY|([A-Z\\d]+(_[A-Z\\d]+)*(${arraySuffixesUC.map(suffix => (suffix === 'S' ? suffix : `_${suffix}`)).join('|')})))`
     const arrayRegex = `${arrayRegexLC}|${arrayRegexUC}`
 
     // Generic Types
-    const genericSuffixes = generalSettings?.typeSuffixesGenerics ?? nc_DEFAULT_SETTINGS.typeSuffixesGenerics
+    const genericSuffixes = generalSettings?.typeSuffixesGenerics ?? NC_DEFAULT_SETTINGS.typeSuffixesGenerics
     const typeGenericsRegex = genericSuffixes.length ? `^([A-Z]|([A-Z][a-z\\d]+)*[A-Z]?(${genericSuffixes.join('|')}))$` : undefined
 
     return {
@@ -243,12 +243,12 @@ function getVars(generalSettings?: nc_GeneralSettingsT): ncVarsT {
     }
 }
 
-function getValueForArrayList(key: keyof nc_GeneralForArrayT, generalSettings?: nc_GeneralSettingsT): string[] {
-    return generalSettings?.[key] ?? nc_DEFAULT_SETTINGS[key]
+function getValueForArrayList(key: keyof ncGeneralForArrayT, generalSettings?: ncGeneralSettingsT): string[] {
+    return generalSettings?.[key] ?? NC_DEFAULT_SETTINGS[key]
 }
 
-function getValueForRegexList(key: keyof nc_GeneralForRegexT, generalSettings?: nc_GeneralSettingsT): OrUndefT<string> {
-    const list = generalSettings?.[key] ?? nc_DEFAULT_SETTINGS[key]
+function getValueForRegexList(key: keyof ncGeneralForRegexT, generalSettings?: ncGeneralSettingsT): OrUndefT<string> {
+    const list = generalSettings?.[key] ?? NC_DEFAULT_SETTINGS[key]
     if (list.length)
         return `${list.join('|')}`
 }

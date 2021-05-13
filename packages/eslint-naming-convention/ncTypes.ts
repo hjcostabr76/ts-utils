@@ -9,19 +9,19 @@ import { OrUndefT } from '@hjcostabr76/generics/type'
 export type ncSettingsT = {
     reportLevel: ncReportLevelT,
     filePath?: string,
-    general?: nc_GeneralSettingsT,
+    general?: ncGeneralSettingsT,
     specifics?: ncConfigT[],
 }
 
 export type ncVarsT =
-    & Required<Omit<nc_GeneralForArrayT, 'typeSuffixesGenerics'>>
-    & Record<keyof Omit<nc_GeneralForRegexT, 'arraySuffixesLC' | 'arraySuffixesUC'>, OrUndefT<string>>
+    & Required<Omit<ncGeneralForArrayT, 'typeSuffixesGenerics'>>
+    & Record<keyof Omit<ncGeneralForRegexT, 'arraySuffixesLC' | 'arraySuffixesUC'>, OrUndefT<string>>
     & Record<'typeGenericsRegex' | 'booleanPrefixes' | 'arrayRegex' | 'arrayRegexUC' | 'arrayRegexLC', OrUndefT<string>>
 
-export type nc_GeneralSettingsT = Partial<Record<keyof nc_GeneralForRegexT | keyof nc_GeneralForArrayT, string[]>>
+export type ncGeneralSettingsT = Partial<Record<keyof ncGeneralForRegexT | keyof ncGeneralForArrayT, string[]>>
 
 // General settings configured as regex
-export type nc_GeneralForRegexT = {
+export type ncGeneralForRegexT = {
 
     functionPrefixes?: string[],
 
@@ -34,7 +34,7 @@ export type nc_GeneralForRegexT = {
 }
 
 // General settings configured as arrays
-export type nc_GeneralForArrayT = {
+export type ncGeneralForArrayT = {
     interfacePrefixes?: string[],
     enumSuffixes?: string[],
     classSuffixes?: string[],

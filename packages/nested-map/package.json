@@ -23,10 +23,10 @@
     "map"
   ],
   "files”": [
-    "dist/*"
+    ".dist/*"
   ],
   "dependencies": {
-    "@hjcostabr76/generics": "^0.0.1"
+    "@hjcostabr76/generics": "file:../generics"
   },
   "devDependencies": {
     "typescript": "^4.2.4"

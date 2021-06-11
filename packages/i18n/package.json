@@ -1,4 +1,5 @@
 {
+    "private": true,
     "name": "@hjcostabr76/i18n",
     "description": "The easiest way to make make a multi language application",
     "homepage": "https://github.com/hjcostabr76/ts-utils/packages/i18n#readme",
@@ -17,7 +18,7 @@
         "publish:local": "npm run build & npx yalc push --changed --update"
     },
     "dependencies": {
-        "@hjcostabr76/generics": "^0.0.1"
+        "@hjcostabr76/generics": "file:../generics"
     },
     "devDependencies": {
         "typescript": "^4.2.4"
@@ -26,7 +27,7 @@
         "i18n"
     ],
     "files”": [
-        "dist/*"
+        ".dist/index.js"
     ],
     "license": "MIT"
 }

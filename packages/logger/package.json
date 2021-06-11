@@ -1,11 +1,12 @@
 {
+    "private": true,
     "name": "@hjcostabr76/logger",
     "description": "One more logging library",
     "homepage": "https://github.com/hjcostabr76/ts-utils/packages/logger#readme",
     "author": "hjcostabr76 <hjcosta.dev@gmail.com>",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
-    "version": "1.2.1",
+    "version": "0.0.1",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/hjcostabr76/ts-utils.git"
@@ -17,7 +18,7 @@
         "publish:local": "npm run build & npx yalc push --changed --update"
     },
     "dependencies": {
-        "@hjcostabr76/generics": "^0.0.1",
+        "@hjcostabr76/generics": "file:../generics",
         "colors": "^1.4.0"
     },
     "devDependencies": {
@@ -25,13 +26,13 @@
         "ts-node": "^9.1.1",
         "typescript": "^4.2.4"
     },
+    "files”": [
+        ".dist/index.js"
+    ],
     "keywords": [
         "logs",
         "logging",
         "logger"
-    ],
-    "files”": [
-        "dist/*"
     ],
     "license": "MIT"
 }

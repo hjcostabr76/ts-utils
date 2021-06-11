@@ -1,4 +1,5 @@
 {
+  "private": true,
   "name": "transient-value-trimmer",
   "version": "1.0.0",
   "description": "Allows to catch the 'permanent' value of something after a specified delay avoiding undesired transient changes.",
@@ -7,8 +8,8 @@
     "type": "git",
     "url": "git+https://github.com/hjcostabr76/ts-utils.git"
   },
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": ".dist/index.js",
+  "types": ".dist/index.d.ts",
   "author": "hjcostabr76 <hjcosta.dev@gmail.com>",
   "bugs": {
     "email": "hjcosta.dev@gmail.com"
@@ -19,6 +20,15 @@
     "upgrade": "npx npm-check-updates -u && npm i",
     "publish:local": "npm run build & npx yalc push --changed --update"
   },
+  "dependencies": {
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "typescript": "^4.2.4"
+  },
+  "files”": [
+    ".dist/index.js"
+  ],
   "keywords": [
     "trimmer",
     "transient",
@@ -26,14 +36,5 @@
     "transitory",
     "debounce"
   ],
-  "files”": [
-    "dist/*"
-  ],
-  "devDependencies": {
-    "typescript": "^4.2.4"
-  },
-  "dependencies": {
-    "lodash": "^4.17.21"
-  },
   "license": "MIT"
 }

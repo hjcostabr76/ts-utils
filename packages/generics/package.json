@@ -5,7 +5,7 @@
     "author": "hjcostabr76 <hjcosta.dev@gmail.com>",
     "main": ".dist/index.js",
     "types": ".dist/index.d.ts",
-    "version": "0.1.0",
+    "version": "0.1.0-beta",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/hjcostabr76/ts-utils.git"

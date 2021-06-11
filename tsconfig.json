@@ -35,7 +35,7 @@
       "rootDir": "packages", // https://www.typescriptlang.org/tsconfig#rootDir
       "rootDirs": [], // https://www.typescriptlang.org/tsconfig#rootDirs
       "typeRoots": [], // https://www.typescriptlang.org/tsconfig#typeRoots
-      "types": [], // https://www.typescriptlang.org/tsconfig#types
+      "types": ["node"], // https://www.typescriptlang.org/tsconfig#types
       // "outFile": "", // https://www.typescriptlang.org/tsconfig#outFile
 
       // Node Server

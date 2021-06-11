@@ -13,7 +13,6 @@
   },
   "scripts": {
     "test": "echo \"Error: So far, not good... There ain't no tests yet :(\" && exit 1",
-    "build": "npm i && npx tsc",
     "bootstrap": "npx lerna bootstrap --hoist --strict --force-local",
     "version": "npx lerna version --conventional-commits",
     "version:beta": "npx lerna version --conventional-commits --conventional-prerelease --preid beta",
@@ -31,7 +30,7 @@
   },
   "devDependencies": {
     "@commitlint/config-lerna-scopes": "^12.1.1",
-    "@types/node": "^15.0.2",
+    "@types/node": "^15.12.2",
     "commitizen": "^4.2.3",
     "commitlint": "^12.1.1",
     "cz-conventional-changelog": "^3.3.0",

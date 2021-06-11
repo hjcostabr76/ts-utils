@@ -8,5 +8,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* **i18n:** incluir pacote ([921b5cb](https://github.com/hjcostabr76/ts-utils/commit/921b5cb665a1bb21e8cbebb13496e0f7e8c6bd60))
-* **i18n:** transformar simples arquivos num pacote ([9dc0213](https://github.com/hjcostabr76/ts-utils/commit/9dc0213be65e02264b773266c6fde43d7c70b5c6))
+* incluir pacote ([921b5cb](https://github.com/hjcostabr76/ts-utils/commit/921b5cb665a1bb21e8cbebb13496e0f7e8c6bd60))

@@ -18,6 +18,7 @@
     "build": "npm i && npx tsc",
     "bootstrap": "npx lerna bootstrap --hoist --strict --force-local",
     "version": "npx lerna version --conventional-commits",
+    "version:beta": "npx lerna version --conventional-commits --conventional-prerelease --preid beta",
     "version:release": "npm run version --conventional-commits --create-release github",
     "publish:beta": "npx lerna publish --dist-tag beta",
     "publish:bypass": "npx lerna publish --ignore-scripts",

@@ -1,4 +1,5 @@
 {
+    "private": true,
     "name": "eslint-ts-naming-convention",
     "description": "Builds config for @typescript-eslint/naming-convention rule",
     "homepage": "https://github.com/hjcostabr76/ts-utils/packages/eslint-naming-conventions#readme",

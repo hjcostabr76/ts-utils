@@ -1,4 +1,4 @@
 
 # Generics
 
-- TODO: Add descrição
+Set of utils, helping functions and abstract types

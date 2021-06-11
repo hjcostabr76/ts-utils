@@ -50,6 +50,7 @@ buck-out/
 # lock files
 yalc.lock
 package-lock.json
+yarn.lock
 
 # Compiled
 node_modules/
@@ -58,8 +59,7 @@ node_modules/
 /.dist
 /.declarations
 
-# yalc
+# other
 .yalc
-
-# build
 *.tsbuildinfo
+.npmrc

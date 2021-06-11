@@ -49,7 +49,7 @@ buck-out/
 
 # lock files
 yalc.lock
-package-json.lock
+package-lock.json
 
 # Compiled
 node_modules/

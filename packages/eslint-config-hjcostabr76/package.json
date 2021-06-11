@@ -1,0 +1,63 @@
+{
+  "name": "eslint-config-hjcostabr76",
+  "version": "2.0.0",
+  "description": "Custom eslint configurations",
+  "main": ".dist/index.js",
+  "author": "hjcostabr76 <hjcosta.dev@gmail.com>",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "upgrade": "npx npm-check-updates -u && npm i",
+    "publish:local": "npx yalc push --changed --replace"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hjcostabr76/ts-utils.git"
+  },
+  "engines": {
+    "node": ">= 12.0.0",
+    "npm": ">= 5.6.0",
+    "typescript": ">= 4.0.0"
+  },
+  "peerDependencies": {
+    "eslint": ">=7"
+  },
+  "dependencies": {
+    "@getify/eslint-plugin-proper-arrows": "^11.0.3",
+    "@typescript-eslint/eslint-plugin": "^4.26.1",
+    "@typescript-eslint/parser": "^4.26.1",
+    "eslint": "^7.25.0",
+    "eslint-import-resolver-typescript": "^2.4.0",
+    "eslint-plugin-array-func": "^3.1.7",
+    "eslint-plugin-deprecation": "^1.2.1",
+    "eslint-plugin-eslint-comments": "^3.2.0",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.1.0",
+    "eslint-plugin-sonarjs": "^0.7.0",
+    "eslint-plugin-spellcheck": "^0.0.17",
+    "eslint-plugin-unicorn": "^33.0.1",
+    "typescript": "^4.3.2"
+  },
+  "devDependencies": {
+    "eslint-find-rules": "^3.6.1"
+  },
+  "files": [
+    ".dist/index.js",
+    ".dist/spellcheck.js",
+    ".dist/ts-node.js",
+    ".dist/ts-package.js",
+    ".dist/ts.js",
+    ".dist/tsx.js"
+  ],
+  "keywords": [
+    "eslint",
+    "lint",
+    "typescript",
+    "node",
+    "nodejs",
+    "react",
+    "react-js",
+    "react-native"
+  ],
+  "license": "MIT"
+}

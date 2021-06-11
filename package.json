@@ -7,8 +7,6 @@
     "type": "git",
     "url": "git+https://github.com/hjcostabr76/ts-utils.git"
   },
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
   "author": "hjcostabr76 <hjcosta.dev@gmail.com>",
   "bugs": {
     "email": "hjcosta.dev@gmail.com"
@@ -20,8 +18,9 @@
     "version": "npx lerna version --conventional-commits",
     "version:beta": "npx lerna version --conventional-commits --conventional-prerelease --preid beta",
     "version:release": "npm run version --conventional-commits --create-release github",
-    "publish:beta": "npx lerna publish --dist-tag beta",
+    "publish:beta": "npx lerna publish --pre-dist-tag beta",
     "publish:bypass": "npx lerna publish --ignore-scripts",
+    "publish:prd": "npx lerna publish",
     "naming": "npx ts-node generate-naming-convention.ts",
     "lint": "npx eslint --color --format table --quiet --fix --ext .ts .",
     "lint:full": "npx eslint --color --format table --ext .ts .",
@@ -43,12 +42,5 @@
     "ts-node": "^9.1.1",
     "typescript": "^4.2.4"
   },
-  "keywords": [
-    "utils"
-  ],
-  "files”": [
-    "dist/*"
-  ],
-  "license": "MIT",
-  "dependencies": {}
+  "license": "MIT"
 }

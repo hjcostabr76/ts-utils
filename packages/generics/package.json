@@ -5,7 +5,7 @@
     "author": "hjcostabr76 <hjcosta.dev@gmail.com>",
     "main": ".dist/index.js",
     "types": ".dist/index.d.ts",
-    "version": "0.0.1",
+    "version": "0.1.0",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/hjcostabr76/ts-utils.git"
@@ -28,7 +28,7 @@
         "typescript": "^4.2.4"
     },
     "publishConfig": {
-        "registry":"https://npm.pkg.github.com"
+        "registry": "https://npm.pkg.github.com"
     },
     "files”": [
         ".dist/index.js",

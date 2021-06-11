@@ -1,10 +1,10 @@
 {
     "name": "@hjcostabr76/generics",
-    "description": "Utilitários & tipos abstratos comuns",
+    "description": "Set of utils, helping functions & abstract types",
     "homepage": "https://github.com/hjcostabr76/ts-utils/packages/generics#readme",
     "author": "hjcostabr76 <hjcosta.dev@gmail.com>",
-    "main": "dist/index.js",
-    "types": "dist/index.d.ts",
+    "main": ".dist/index.js",
+    "types": ".dist/index.d.ts",
     "version": "0.0.1",
     "repository": {
         "type": "git",
@@ -27,9 +27,25 @@
         "ts-node": "^9.1.1",
         "typescript": "^4.2.4"
     },
-    "keywords": [],
+    "publishConfig": {
+        "registry":"https://npm.pkg.github.com"
+    },
     "files”": [
-        ".dist/*"
+        ".dist/index.js",
+        ".dist/enum.js",
+        ".dist/error.js",
+        ".dist/type.js",
+        ".dist/utils.js",
+        ".dist/validation.js"
+    ],
+    "keywords": [
+        "utils",
+        "enum",
+        "type",
+        "helper",
+        "error",
+        "validation",
+        "typescript"
     ],
     "license": "MIT"
 }

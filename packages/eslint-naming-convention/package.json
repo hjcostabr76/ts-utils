@@ -3,8 +3,8 @@
     "description": "Builds config for @typescript-eslint/naming-convention rule",
     "homepage": "https://github.com/hjcostabr76/ts-utils/packages/eslint-naming-conventions#readme",
     "author": "hjcostabr76 <hjcosta.dev@gmail.com>",
-    "main": "dist/index.js",
-    "types": "dist/index.d.ts",
+    "main": ".dist/index.js",
+    "types": ".dist/index.d.ts",
     "version": "1.2.1",
     "repository": {
         "type": "git",
@@ -17,7 +17,7 @@
         "publish:local": "npm run build & npx yalc push --changed --replace"
     },
     "dependencies": {
-        "@hjcostabr76/generics": "^0.0.1"
+        "@hjcostabr76/generics": "@hjcostabr76/generics"
     },
     "devDependencies": {
         "@types/node": "^15.0.2",
@@ -31,7 +31,7 @@
         "naming-convention"
     ],
     "files”": [
-        "dist/*"
+        ".dist/index.js"
     ],
     "license": "MIT"
 }

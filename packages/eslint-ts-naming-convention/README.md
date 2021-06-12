@@ -17,7 +17,7 @@ Allows full customization upon its default config.
 
 ## Installation
 ```
-$ yarn install eslint-ts-naming-conventions
+$ npm i eslint-ts-naming-conventions
 ```
 
 ## Usage

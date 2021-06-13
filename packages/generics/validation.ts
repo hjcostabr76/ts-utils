@@ -1,3 +1,3 @@
 export * from './validation/Validator'
-export * from './validation/validationDecorator'
-export * from './validation/validationTypes'
+export * from './validation/validation_decorator'
+export * from './validation/validation_types'

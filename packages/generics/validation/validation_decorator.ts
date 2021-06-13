@@ -2,7 +2,7 @@ import { registerDecorator, ValidationArguments, ValidatorConstraint, ValidatorC
 
 import { AnyObjT, ConstructorT } from '../type'
 import { Validator as hjValidator } from './Validator'
-import { ValidationDecoratorConfigT } from './validationTypes'
+import { ValidationDecoratorConfigT } from './validation_types'
 
 /* eslint-disable class-methods-use-this, @typescript-eslint/naming-convention */
 

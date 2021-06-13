@@ -1,2 +1,2 @@
 export * from './error/HttpStatusMsg'
-export * from './error/errorExceptions'
+export * from './error/error_exceptions'

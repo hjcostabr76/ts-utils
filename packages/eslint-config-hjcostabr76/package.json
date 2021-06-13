@@ -1,17 +1,18 @@
 {
   "name": "eslint-config-hjcostabr76",
-  "version": "2.0.0",
   "description": "Custom eslint configurations",
-  "main": ".dist/index.js",
+  "version": "2.0.1-beta",
   "author": "hjcostabr76 <hjcosta.dev@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hjcostabr76/ts-utils.git"
+  },
+  "homepage": "https://github.com/hjcostabr76/ts-utils/tree/main/packages/eslint-config-hjcostabr76#eslint-config-hjcostabr76",
+  "main": ".dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "upgrade": "npx npm-check-updates -u && npm i",
     "publish:local": "npx yalc push --changed --replace"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/hjcostabr76/ts-utils.git"
   },
   "engines": {
     "node": ">= 12.0.0",

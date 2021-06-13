@@ -171,7 +171,7 @@ module.exports = {
         'max-len': ['warn', {  // max de caracteres por linha
             code: 165,
             tabWidth: 4,
-            // comments: 123,
+            comments: 165,
             // ignorePattern: 123,
             ignoreComments: true,
             ignoreTrailingComments: true,

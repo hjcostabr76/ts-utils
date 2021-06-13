@@ -112,15 +112,18 @@ module.exports = {
         /* ==== Naming ==================================== */
 
         'unicorn/prevent-abbreviations': ['error', {
-            extendDefaultWhitelist: true,
+            
             extendDefaultReplacements: false,
-            checkDefaultAndNamespaceImports: 'internal',
-            checkShorthandImports: 'internal',
-            checkShorthandProperties: false,
+            extendDefaultAllowList: true,
+            
+            checkDefaultAndNamespaceImports: 'internal', // nao valida variaveis de modulos externos importados
+            checkShorthandImports: 'internal', // nao valida variaveis de modulos externos importados
+            checkShorthandProperties: false, // nao valida props de obj explodido
             checkFilenames: false,
-            checkProperties: true,
-            checkVariables: true,
-            whitelist: {},
+            
+            allowList: {}, // nao entendi
+            ignore: [],
+
             replacements: {
                 arr: { array: true },
                 cb: { callback: true },
@@ -135,19 +138,30 @@ module.exports = {
                 el: { element: true },
                 elem: { element: true },
                 envs: { environments: true },
+                ev: { event: true },
+                evt: { event: true },
                 ext: { extension: true },
                 exts: { extensions: true },
+                fn: { func: true },
                 len: { length: true },
                 mod: { module: true },
                 num: { number: true },
+                pkg: { package: true },
                 prod: { production: true },
-                rel: { relationship: true },
+
+                rel: {
+                    related: true,
+                    relationship: true,
+                },
+
                 ret: { returnValue: true },
                 retval: { returnValue: true },
                 sep: { separator: true },
                 stdDev: { stdDeviation: true },
                 tbl: { table: true },
                 tit: { title: true },
+                val: { value: true },
+                ver: { version: true }
             },
         }],
 

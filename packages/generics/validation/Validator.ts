@@ -33,8 +33,9 @@ export class Validator {
     }
 
     private static getParsedError(error: ValidationError): ValidationErrorT {
+
         return {
-            target: error.target,
+            target: error.target as OrUndefT<AnyObjT>,
             property: error.property,
             failedValue: error.value,
             failedTests: error.constraints as Record<keyof ValidationMsgT, string>,

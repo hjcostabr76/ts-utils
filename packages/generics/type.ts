@@ -65,3 +65,16 @@ export type SequentialStepErrorConfigT<StepT> = {
     errorHandler?: (err: any, errMsg: string) => void,
     exception?: ConstructorT<Error>,
 }
+
+/** Niveis para emissao de logs. */
+export type LogLevelT = 'info' | 'warn' | 'error'
+
+/**
+ * Equivalente 01 tipo utilitario nativo 'pick' mas com as props compartilhadas opcionais.
+ *
+ * TODO: 2021-06-12 - Atualizar lint
+ *
+ * Thanks to:
+ * @see https://www.designcise.com/web/tutorial/how-to-pick-some-properties-of-a-typescript-type-and-make-them-optional
+ */
+export type PartialPickT<T, K extends keyof T> = { [P in K]?: T[P]; }

@@ -1,0 +1,18 @@
+{
+    "name": "naming-generator",
+    "description": "Gerador de configuracoes da regra 'naming convention' de eslint para typescript",
+    "author": "hjcostabr76",
+    "version": "0.0.1",
+    "scripts": {
+        "build": "npx ts-node -r tsconfig-paths/register main.ts"
+    },
+    "devDependencies": {
+        "@types/node": "^15.0.1"
+    },
+    "dependencies": {
+        "eslint-ts-naming-convention": "file:../eslint-ts-naming-convention",
+        "ts-node": "^9.1.1",
+        "tsconfig-paths": "^3.9.0",
+        "typescript": "^4.2.4"
+    }
+}

@@ -1,0 +1,164 @@
+{
+    "compilerOptions": {
+
+      /**
+      * ===================================
+      * -- General ------------------------
+      * ===================================
+      */
+
+      // ---
+      "allowJs": false, // https://www.typescriptlang.org/tsconfig#allowJs
+      "checkJs": false, // https://www.typescriptlang.org/tsconfig#checkJs
+      // ---
+
+      "disableSizeLimit": false, // https://www.typescriptlang.org/tsconfig#disableSizeLimit
+      "emitDecoratorMetadata": true, // https://www.typescriptlang.org/tsconfig#emitDecoratorMetadata
+      "experimentalDecorators": true, // https://www.typescriptlang.org/tsconfig#experimentalDecorators
+      "plugins": [], // https://www.typescriptlang.org/tsconfig#plugins
+      "preserveSymlinks": false, // https://www.typescriptlang.org/tsconfig#preserveSymlinks
+      "resolveJsonModule": true, // https://www.typescriptlang.org/tsconfig#resolveJsonModule
+
+      // ---
+      "target": "ES2018", // https://www.typescriptlang.org/tsconfig#target
+      "lib": ["ESNext", "DOM"], // https://www.typescriptlang.org/tsconfig#lib
+      // ---
+
+      /**
+      * ===================================
+      * -- Paths --------------------------
+      * ===================================
+      */
+
+      "declarationDir": ".declarations", // https://www.typescriptlang.org/tsconfig#declarationDir
+      "outDir": ".dist", // https://www.typescriptlang.org/tsconfig#outDir
+      "rootDir": "src", // https://www.typescriptlang.org/tsconfig#rootDir
+      "rootDirs": [], // https://www.typescriptlang.org/tsconfig#rootDirs
+      "typeRoots": [], // https://www.typescriptlang.org/tsconfig#typeRoots
+      "types": ["node"], // https://www.typescriptlang.org/tsconfig#types
+      // "outFile": "", // https://www.typescriptlang.org/tsconfig#outFile
+
+      // Node Server
+      "baseUrl": "src", // https://www.typescriptlang.org/tsconfig#baseUrl
+      "paths": { // https://www.typescriptlang.org/tsconfig#paths
+        "@config/*": ["config/*"],
+        "@module/*": ["module/*"],
+        "@system/*": ["system/*"],
+        "@project/*": ["project/*"],
+      },
+
+      /**
+      * ===================================
+      * -- Linting ------------------------
+      * ===================================
+      */
+
+      "allowSyntheticDefaultImports": true, // https://www.typescriptlang.org/tsconfig#allowSyntheticDefaultImports
+      "allowUnreachableCode": false, // https://www.typescriptlang.org/tsconfig#allowUnreachableCode
+      "allowUnusedLabels": false, // https://www.typescriptlang.org/tsconfig#allowUnusedLabels
+      "isolatedModules": false, // https://www.typescriptlang.org/tsconfig#isolatedModules
+      "noFallthroughCasesInSwitch": false, // https://www.typescriptlang.org/tsconfig#noFallthroughCasesInSwitch
+      "noImplicitAny": true, // https://www.typescriptlang.org/tsconfig#noImplicitAny
+      // "noImplicitOverride": true, // https://www.typescriptlang.org/tsconfig#noImplicitOverride
+      "noImplicitReturns": false, // https://www.typescriptlang.org/tsconfig#noImplicitReturns
+      "noImplicitThis": true, // https://www.typescriptlang.org/tsconfig#noImplicitThis
+      // "noPropertyAccessFromIndexSignature": true, // https://www.typescriptlang.org/tsconfig#noPropertyAccessFromIndexSignature
+      // "noUncheckedIndexedAccess": true, // https://www.typescriptlang.org/tsconfig#noUncheckedIndexedAccess
+      "noUnusedLocals": true, // https://www.typescriptlang.org/tsconfig#noUnusedLocals
+      "noUnusedParameters": false, // https://www.typescriptlang.org/tsconfig#noUnusedParameters
+      "strict": true, // https://www.typescriptlang.org/tsconfig#strict
+      "strictBindCallApply": true, // https://www.typescriptlang.org/tsconfig#strictBindCallApply
+      "strictFunctionTypes": true, // https://www.typescriptlang.org/tsconfig#strictFunctionTypes
+      "strictNullChecks": true, // https://www.typescriptlang.org/tsconfig#strictNullChecks
+      "strictPropertyInitialization": true, // https://www.typescriptlang.org/tsconfig#strictPropertyInitialization
+
+      /**
+      * ===================================
+      * -- Output -------------------------
+      * ===================================
+      */
+
+      // --
+      "alwaysStrict": true, // https://www.typescriptlang.org/tsconfig#alwaysStrict
+      "noImplicitUseStrict": false, // https://www.typescriptlang.org/tsconfig#noImplicitUseStrict
+      // --
+
+      "declaration": true, // https://www.typescriptlang.org/tsconfig#declaration
+      "declarationMap": false, // https://www.typescriptlang.org/tsconfig#declarationMap
+      "emitBOM": false, // https://www.typescriptlang.org/tsconfig#emitBOM
+      "emitDeclarationOnly": false, // https://www.typescriptlang.org/tsconfig#emitDeclarationOnly
+      "esModuleInterop": true, // https://www.typescriptlang.org/tsconfig#esModuleInterop
+      "inlineSourceMap": false, // https://www.typescriptlang.org/tsconfig#inlineSourceMap
+      "inlineSources": false, // https://www.typescriptlang.org/tsconfig#inlineSources
+      "mapRoot": "", // https://www.typescriptlang.org/tsconfig#mapRoot
+      "noEmit": false, // https://www.typescriptlang.org/tsconfig#noEmit
+      "preserveConstEnums": false, // https://www.typescriptlang.org/tsconfig#preserveConstEnums
+      "removeComments": true, // https://www.typescriptlang.org/tsconfig#removeComments
+      "sourceMap": true, // https://www.typescriptlang.org/tsconfig#sourceMap
+      "sourceRoot": "", // https://www.typescriptlang.org/tsconfig#sourceRoot
+      // "newLine": "", // https://www.typescriptlang.org/tsconfig#newLine
+
+      /**
+      * ===================================
+      * -- Compiling ----------------------
+      * ===================================
+      */
+
+      // ---
+      "downlevelIteration": false, // https://www.typescriptlang.org/tsconfig#downlevelIteration
+      "importHelpers": false, // https://www.typescriptlang.org/tsconfig#importHelpers
+      "noEmitHelpers": false, // https://www.typescriptlang.org/tsconfig#noEmitHelpers
+      // ---
+
+      "assumeChangesOnlyAffectDirectDependencies": true, // https://www.typescriptlang.org/tsconfig#assumeChangesOnlyAffectDirectDependencies
+      "forceConsistentCasingInFileNames": true, // https://www.typescriptlang.org/tsconfig#forceConsistentCasingInFileNames
+      "incremental": true, // https://www.typescriptlang.org/tsconfig#incremental
+      "maxNodeModuleJsDepth": 0, // https://www.typescriptlang.org/tsconfig#maxNodeModuleJsDepth
+      "noEmitOnError": false, // https://www.typescriptlang.org/tsconfig#noEmitOnError
+      "noLib": false, // https://www.typescriptlang.org/tsconfig#noLib
+      "noResolve": false, // https://www.typescriptlang.org/tsconfig#noResolve
+      "noStrictGenericChecks": false, // https://www.typescriptlang.org/tsconfig#noStrictGenericChecks
+      "skipLibCheck": true, // https://www.typescriptlang.org/tsconfig#skipLibCheck
+      "suppressExcessPropertyErrors": false, // https://www.typescriptlang.org/tsconfig#suppressExcessPropertyErrors
+      "suppressImplicitAnyIndexErrors": false, // https://www.typescriptlang.org/tsconfig#suppressImplicitAnyIndexErrors
+      "useDefineForClassFields": false, // https://www.typescriptlang.org/tsconfig#useDefineForClassFields
+      // "importsNotUsedAsValues": false, // https://www.typescriptlang.org/tsconfig#importsNotUsedAsValues
+
+      /**
+      * ===================================
+      * -- Compiling Debug ----------------
+      * ===================================
+      */
+
+      // "explainFiles": false, // https://www.typescriptlang.org/tsconfig#explainFiles
+      "extendedDiagnostics": false, // https://www.typescriptlang.org/tsconfig#extendedDiagnostics
+      "listEmittedFiles": false, // https://www.typescriptlang.org/tsconfig#listEmittedFiles
+      "listFiles": false, // https://www.typescriptlang.org/tsconfig#listFiles
+      "traceResolution": false, // https://www.typescriptlang.org/tsconfig#traceResolution
+      // "generateCpuProfile": "", // https://www.typescriptlang.org/tsconfig#generateCpuProfile
+
+      /**
+      * ===================================
+      * -- Modules ------------------------
+      * ===================================
+      */
+
+      "allowUmdGlobalAccess": false, // https://www.typescriptlang.org/tsconfig#allowUmdGlobalAccess
+      "module": "CommonJS", // https://www.typescriptlang.org/tsconfig#module
+      "moduleResolution": "Node", // https://www.typescriptlang.org/tsconfig#moduleResolution
+
+      /**
+      * ===================================
+      * -- Composite Project --------------
+      * ===================================
+      */
+
+      "composite": false, // https://www.typescriptlang.org/tsconfig#composite
+      // "disableReferencedProjectLoad": false, // https://www.typescriptlang.org/tsconfig#disableReferencedProjectLoad
+      "disableSolutionSearching": false, // https://www.typescriptlang.org/tsconfig#disableSolutionSearching
+      "disableSourceOfProjectReferenceRedirect": false, // https://www.typescriptlang.org/tsconfig#disableSourceOfProjectReferenceRedirect
+      // "tsBuildInfoFile": "", // https://www.typescriptlang.org/tsconfig#tsBuildInfoFile
+
+    },
+    "include": ["*.ts"]
+  }

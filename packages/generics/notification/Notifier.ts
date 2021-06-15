@@ -86,9 +86,6 @@ export class Notifier {
         Notifier.notify({ ...config, type: 'success' })
     }
 
-    /**
-     * TODO: 2021-06-12 - Atualizar lint
-     */
     private static notify(config: Partial<FullConfigT>): void {
 
         const completeConfig: Required<FullConfigT> = { ...DEFAULT_CONFIG, ...config }

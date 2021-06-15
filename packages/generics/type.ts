@@ -72,8 +72,6 @@ export type LogLevelT = 'info' | 'warn' | 'error'
 /**
  * Equivalente 01 tipo utilitario nativo 'pick' mas com as props compartilhadas opcionais.
  *
- * TODO: 2021-06-12 - Atualizar lint
- *
  * Thanks to:
  * @see https://www.designcise.com/web/tutorial/how-to-pick-some-properties-of-a-typescript-type-and-make-them-optional
  */

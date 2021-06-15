@@ -1,6 +1,8 @@
 import { HttpMethodEnum, HttpStatusEnum } from '@hjcostabr76/generics/enum'
 import { AxiosResponse } from 'axios'
 
+import { RequestStateT } from './reqmanager_types_private'
+
 /** Define parametros para configurar 01 requisicao http executada atraves da 'gerenciadora de requisicoes'. */
 export type RequestConfigT<ResDataT = any, ReqDataT = any> = {
 
@@ -62,4 +64,4 @@ export type RequestT<ResDataT> = RequestStateT<ResDataT> & {
 export type ResponseHandlerT<R = any> = (response: RawResponseT) => Promise<R>
 
 /** Resultado puro de 01 requicao http. */
-export type RawResponseT = Pick<AxiosResponse, 'data' | 'status' | 'headers'>
+export type RawResponseT<R = any> = Pick<AxiosResponse<R>, 'data' | 'status' | 'headers'>

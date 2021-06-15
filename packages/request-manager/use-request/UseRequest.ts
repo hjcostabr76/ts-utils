@@ -2,7 +2,8 @@ import _ from 'lodash'
 import { Reducer, useEffect, useReducer, useState } from 'react'
 
 import { RequestManager } from '../RequestManager'
-import { RawResponseT, RequestConfigT, RequestStateT, RequestT, UseRequestActionT, UseRequestIdT } from '../reqmanager_types_public'
+import { RequestStateT, UseRequestActionT, UseRequestIdT } from '../reqmanager_types_private'
+import { RawResponseT, RequestConfigT, RequestT } from '../reqmanager_types_public'
 import { UseRequestDebuggingUtils } from './UseRequestDebuggingUtils'
 import { UseRequestHelper } from './UseRequestHelper'
 
@@ -10,16 +11,9 @@ type RequestIdReducerT = Reducer<UseRequestIdT, void>
 type RequestStateReducerT<ResDataT> = Reducer<RequestStateT<ResDataT>, UseRequestActionT<ResDataT>>
 
 /**
- * HOOK
- * Encapsula gestao de 01 requisicao HTTP generica:
- * Pensado prioritariamente para tratar requisicoes a api(s) nerit.
- *
- * TODO: Rabilitar regra desativada
- * TODO: Rabilitar Checar metodo de habilitacao de debug
- *
- * @see IApiReturn
+ * HOOK de gestao de requisicoes HTTP assincronas.
  */
-export function useRequest<ResDataT>(initialConfig?: RequestConfigT, debugMode?: 'by-id' | 'all', debugId?: string): RequestT<ResDataT> { // eslint-disable-line max-lines-per-function
+export function useRequest<ResDataT>(initialConfig?: RequestConfigT, debugMode?: 'by-id' | 'all', debugId?: string): RequestT<ResDataT> { // eslint-disable-line @typescript-eslint/naming-convention, max-lines-per-function
 
     const [id, incrementCancellationCount] = useReducer<RequestIdReducerT>(UseRequestHelper.requestIdReducer, UseRequestHelper.getInitialId())
     const [requestState, dispatch] = useReducer<RequestStateReducerT<ResDataT>>(UseRequestHelper.requestStateReducer, UseRequestHelper.INITIAL_STATE)
@@ -31,7 +25,7 @@ export function useRequest<ResDataT>(initialConfig?: RequestConfigT, debugMode?:
 
     const enableDebug = (debugMode === 'all' || (debugMode === 'by-id' && !!debugId))
 
-    function onRunningStateChange(): void {
+    function onRunningStateChange(): void { // eslint-disable-line @typescript-eslint/naming-convention
 
         if (enableDebug)
             UseRequestDebuggingUtils.computeCalling(onRunningStateChange.name, id, debugId)
@@ -60,9 +54,6 @@ export function useRequest<ResDataT>(initialConfig?: RequestConfigT, debugMode?:
         setMustRun(true)
     }
 
-    /**
-     * TODO: 2021-06-12 - Checar isso aqui
-     */
     async function runRequest(): Promise<void> {
 
         if (!requestConfig)
@@ -78,9 +69,9 @@ export function useRequest<ResDataT>(initialConfig?: RequestConfigT, debugMode?:
             const config: RequestConfigT = { ...requestConfig }
             delete config.responseHandler
 
-            const response = await RequestManager.run(requestConfig, UseRequestHelper.getIdString(id))
+            const response = await RequestManager.run<RawResponseT<ResDataT>>(requestConfig, UseRequestHelper.getIdString(id))
             UseRequestHelper.validateResponse(response)
-            await onIsSuccess(response)
+            await onIsSuccess(response as RawResponseT<ResDataT>)
 
         } catch (error) {
 
@@ -97,7 +88,7 @@ export function useRequest<ResDataT>(initialConfig?: RequestConfigT, debugMode?:
         RequestManager.cancelRequest(UseRequestHelper.getIdString(id))
     }
 
-    async function onIsSuccess(response: RawResponseT): Promise<void> {
+    async function onIsSuccess(response: RawResponseT<ResDataT>): Promise<void> { // eslint-disable-line @typescript-eslint/naming-convention
 
         if (enableDebug)
             UseRequestDebuggingUtils.computeCalling(onIsSuccess.name, id, debugId)
@@ -106,13 +97,11 @@ export function useRequest<ResDataT>(initialConfig?: RequestConfigT, debugMode?:
             isSuccess: true,
             responseStatus: response.status,
             responseType: UseRequestHelper.getResponseContentType(response.headers),
-            responseData: requestConfig?.responseHandler
-                ? await requestConfig.responseHandler(response)
-                : await RequestManager.handleResponse<ResDataT>(response)
+            responseData: requestConfig?.responseHandler ? await requestConfig.responseHandler(response) : await RequestManager.handleResponse<ResDataT>(response),
         })
     }
 
-    function onIsFailure(error: any): void {
+    function onIsFailure(error: any): void { // eslint-disable-line @typescript-eslint/naming-convention
 
         if (enableDebug)
             UseRequestDebuggingUtils.computeCalling(onIsFailure.name, id, debugId)
@@ -124,21 +113,21 @@ export function useRequest<ResDataT>(initialConfig?: RequestConfigT, debugMode?:
         })
     }
 
-    function onIsCancelled(): void {
+    function onIsCancelled(): void { // eslint-disable-line @typescript-eslint/naming-convention
         if (enableDebug)
             UseRequestDebuggingUtils.computeCalling(onIsCancelled.name, id, debugId)
         incrementCancellationCount()
         onWillFinish({ isCancelled: true })
     }
 
-    function onWillStart(): void {
+    function onWillStart(): void { // eslint-disable-line @typescript-eslint/naming-convention
         if (enableDebug)
             UseRequestDebuggingUtils.start(id, debugId)
         dispatch({ type: 'start', payload: { method: requestConfig?.method }})
         setMustRun(false)
     }
 
-    function onWillFinish(finalState: Partial<RequestStateT<ResDataT>>): void {
+    function onWillFinish(finalState: Partial<RequestStateT<ResDataT>>): void { // eslint-disable-line @typescript-eslint/naming-convention
 
         if (enableDebug) {
             UseRequestDebuggingUtils.computeCalling(onWillFinish.name, id, debugId)

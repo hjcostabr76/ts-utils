@@ -2,13 +2,14 @@ import { HttpMethodEnum, MimeTypeEnum, OrUndefT, SystemUtils } from '@hjcostabr7
 
 import axios, { AxiosRequestConfig, CancelToken, CancelTokenSource } from 'axios'
 
+import { RequestMangerUtils } from './RequestMangerUtils'
 import { RawResponseT, RequestConfigT, RequestHeaderT, RequestResponseT, ResponseErrorCustomActionT, ResponseHandlerT } from './reqmanager_types_public'
 
 /**
  * MANAGER
  * Encapsula metodos para gestao de requisicoes http.
  */
-export class RequestManager { // TODO: Checar no lint
+export class RequestManager {
 
     static readonly CANCELLED_RESPONSE = '[cancelled-request]'
 
@@ -35,7 +36,7 @@ export class RequestManager { // TODO: Checar no lint
     }
 
     static async handleResponse<R = RawResponseT>(response: RawResponseT): Promise<R> {
-        return this.responseHandler ? this.responseHandler<R>(response) : response as unknown as R
+        return this.responseHandler ? (this.responseHandler as ResponseHandlerT<R>)(response) : response as unknown as R
     }
 
     static getNewRequestId(): string {
@@ -44,9 +45,6 @@ export class RequestManager { // TODO: Checar no lint
         return `request-${idNumberString}`
     }
 
-    /**
-     * TODO: 2021-06-12 - Atualizar lint
-     */
     static resetRequestCount(): void {
         this.reqIdsCount = 0
     }
@@ -68,11 +66,7 @@ export class RequestManager { // TODO: Checar no lint
     static async run<R = RawResponseT>(config: RequestConfigT<R>, enableCancellation: boolean, id?: string): Promise<OrUndefT<R>>
     static async run<R = RawResponseT>(config: RequestConfigT<R>, onCancel: () => void, id?: string): Promise<OrUndefT<R>>
 
-    /**
-     * Executa 01 requisicao http generica parametrizada.
-     * TODO: 2021-06-12 - Resolver tipagem
-     * TODO: 2021-06-12 - Corrigir lint
-     */
+    /** Executa 01 requisicao http generica parametrizada. */
     static async run<R = RawResponseT>(config: RequestConfigT<R>, param2?: string | (() => void) | boolean, id?: string): Promise<OrUndefT<R>> {
 
         // Define parametros
@@ -100,7 +94,8 @@ export class RequestManager { // TODO: Checar no lint
             }
 
             // Executa & retorna dados da requisicao
-            const rawResponse = await axios.request<R>(requestParams)
+            const axiosResponse = await axios.request<R>(requestParams)
+            const rawResponse = RequestMangerUtils.getRawResponseFromAxiosResponse<R>(axiosResponse)
             return await (config.responseHandler ? config.responseHandler(rawResponse) : this.handleResponse<R>(rawResponse))
 
         } catch (error) {
@@ -117,10 +112,7 @@ export class RequestManager { // TODO: Checar no lint
         }
     }
 
-    /**
-     * Cancela 01 requisicao, identificada por seu ID, caso esteja em andamento.
-     * TODO: 2021-06-12 - Atualizar lint
-     */
+    /** Cancela 01 requisicao, identificada por seu ID, caso esteja em andamento. */
     static cancelRequest(requestId: string, logMessage?: string): void {
         this.cancellationTokenMap.get(requestId)?.cancel(logMessage ?? `Requisicao "${requestId}" cancelada...`)
     }
@@ -130,11 +122,7 @@ export class RequestManager { // TODO: Checar no lint
         this.cancellationTokenMap.forEach((cancelTokenSource, requestId) => this.cancelRequest(requestId))
     }
 
-    /**
-     * Cancela todas as requisicoes que estiverem em andamento & reinicializa estado de controle de andamento de requisicoes, na classe.
-     * TODO: 2021-06-12 - Atualizar lint (naming)
-     * TODO: 2021-06-12 - Atualizar lint (mad-len)
-     */
+    /** Cancela todas as requisicoes que estiverem em andamento & reinicializa estado de controle de andamento de requisicoes, na classe. */
     static async reset(): Promise<void> {
         this.cancelAllRequests()
         await SystemUtils.sleep(this.cancellationTokenMap.size * 25)

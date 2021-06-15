@@ -14,10 +14,6 @@ export class UseRequestHelper {
         isCancelled: false,
         isAwaiting: false,
         isSuccess: false,
-
-        /**
-         * TODO: 2021-06-12 - Corrigir lint
-         */
         wasTried: true,
     }
 

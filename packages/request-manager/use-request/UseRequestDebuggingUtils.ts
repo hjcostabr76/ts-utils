@@ -1,10 +1,8 @@
-import { UseRequestIdT } from '../reqmanager_types_public'
+import { UseRequestIdT } from '../reqmanager_types_private'
 import { useRequest } from './UseRequest'
 import { UseRequestHelper } from './UseRequestHelper'
 
-/**
- * TODO: 2021-06-12 - ADD Descricao
- */
+/** Classe de utilitarios para depuracao do hook useRequest */
 export class UseRequestDebuggingUtils {
 
     /* eslint-disable no-console */
@@ -21,11 +19,7 @@ export class UseRequestDebuggingUtils {
         console.log('-')
     }
 
-    /**
-     * Exibe contagem atualizada de chamadas para 01 mesma funcao.
-     *
-     * TODO: 2021-06-12 - Corrigir lint
-     */
+    /** Exibe contagem atualizada de chamadas para 01 mesma funcao. */
     static computeCalling(functionName: string, identification: UseRequestIdT, debugId?: string): void {
         console.count(this.getDebugMsgLabel(functionName, identification, debugId))
     }

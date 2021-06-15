@@ -9,14 +9,10 @@ type RequestAssistParamsT = {
 
 /**
  * UTILITARIOS para lidar com requisicoes http realizadas utilizando as funcoes do modulo 'requests helpers'.
- * TODO: 2021-06-12 - Ver o que fazer com isso aqui
  */
 export class RequestUtils {
 
-    /**
-     * Exibe mensagem de notificacao de falha em requisicao determinada via procedimento generico.
-     * TODO: Corrigir lint
-     */
+    /** Exibe mensagem de notificacao de falha em requisicao determinada via procedimento generico. */
     static showDefaultErrorNotification(error: any, defaultMsg: string, notificationTitle = 'Ops!'): void {
         const apiErrorMsg = error?.data?.message
         const errorMsg = (typeof apiErrorMsg === 'string') ? apiErrorMsg : defaultMsg
@@ -25,17 +21,17 @@ export class RequestUtils {
 
     /** Determina se execucao de 01 requisicao foi concluida. */
     static isRequestConcluded(request: RequestT<any>): boolean {
-        return (request.wasTried && !request.isAwaiting)
+        return request.wasTried && !request.isAwaiting
     }
 
     /** Avalia 01 requisicao & determina se foi bem sucedida. */
     static isRequestSuccess(request: RequestT<any>, isVoidRequest = false): boolean {
-        return (this.isRequestConcluded(request) && request.isSuccess && (isVoidRequest || !!request.responseData))
+        return this.isRequestConcluded(request) && request.isSuccess && (isVoidRequest || !!request.responseData)
     }
 
     /** Avalia 01 requisicao & determina se houve erro durante a execucao (cancelamento nao eh considerado erro). */
     static isRequestError(request: RequestT<any>, isVoidRequest?: boolean): boolean {
-        return (this.isRequestConcluded(request) && !this.isRequestSuccess(request, isVoidRequest) && !request.isCancelled)
+        return this.isRequestConcluded(request) && !this.isRequestSuccess(request, isVoidRequest) && !request.isCancelled
     }
 
     static handleError(request: RequestT<any>, defaultMsg: string): void
@@ -45,14 +41,14 @@ export class RequestUtils {
     static handleError(param1: RequestT<any> | IsValidReqReturnConfigT, defaultMsg?: string): void {
 
         const params = this.getRequestAssistParams(param1)
-        const _errorMsg = params.config?.errorMsg ?? defaultMsg
+        const errorMsg = params.config?.errorMsg ?? defaultMsg
 
-        const failureLogMsg = params.config?.failureLogMsg ?? _errorMsg
+        const failureLogMsg = params.config?.failureLogMsg ?? errorMsg
         if (failureLogMsg)
             console.error(failureLogMsg, params.request.responseData, params.request.error) // eslint-disable-line no-console
 
-        if (!!_errorMsg && this.shouldReportFailure(params.config, params.request.responseStatus))
-            RequestUtils.showDefaultErrorNotification(params.request.error, _errorMsg)
+        if (!!errorMsg && this.shouldReportFailure(params.config, params.request.responseStatus))
+            RequestUtils.showDefaultErrorNotification(params.request.error, errorMsg)
     }
 
     static isValidRequestReturn(config: IsValidReqReturnConfigT): boolean;
@@ -107,7 +103,7 @@ export class RequestUtils {
 
     private static getRequestAssistParams(param: RequestT<any> | IsValidReqReturnConfigT): RequestAssistParamsT {
         const config = (param as IsValidReqReturnConfigT)?.request ? param as IsValidReqReturnConfigT : undefined
-        const request = (config?.request ?? param)
+        const request = config?.request ?? param as RequestT<any>
         return { config, request }
     }
 }

@@ -1,6 +1,5 @@
 /**
  * TODO: Checar os todo's
- * TODO: Isolar regras cujo a configuracao esta acoplada com particularidades de projetos
  */
  module.exports = {
     env: {

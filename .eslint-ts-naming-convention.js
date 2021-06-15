@@ -5,7 +5,7 @@
  *
  * NOTE: This file is generated
  */
- module.exports = {
+module.exports = {
     rules: {
     "@typescript-eslint/naming-convention": [
         "error",
@@ -38,7 +38,7 @@
             ],
             "custom": {
                 "match": true,
-                "regex": "^(is|are|should|must|can|have|has|did|dont|will|enable|require|force|IS|ENABLE|REQUIRE|FORCE|DONT)"
+                "regex": "^(are|can|did|disable|dont|enable|force|has|have|is|match|must|require|should|use|was|will|IS|ENABLE|REQUIRE|FORCE|DONT|USE)"
             }
         },
         {
@@ -58,7 +58,13 @@
         },
         {
             "selector": "function",
-            "format": ["camelCase"],
+            "format": [
+                "camelCase"
+            ],
+            "custom": {
+                "match": true,
+                "regex": "^(add|alert|are|ask|begin|bind|bond|break|build|cancel|change|check|close|compute|concat|conclude|connect|create|debug|delete|derive|did|didnt|direct|disable|disconnect|divide|do|does|doesnt|dont|double|drive|enable|engage|erase|execute|explode|extract|find|finish|fix|get|give|grab|grant|handle|has|have|hide|initialize|install|is|list|lock|make|match|merge|mix|mount|move|multiply|notify|onChange|onClick|onClose|onCreate|onDelete|onError|onFinish|onUpdate|open|parse|pick|place|preValidate|print|pull|put|quit|raise|redirect|redo|register|remove|reset|revert|run|save|search|select|sell|send|set|should|show|solve|sort|split|start|strip|subscribe|subtract|sum|take|throw|to|transform|treat|truncate|unbind|uncheck|undo|uninstall|unmount|unregister|unsubscribe|upsert|validate|verify|warn|was|wasnt|will|witch|write|zero)"
+            }
         },
         {
             "selector": "parameter",
@@ -78,7 +84,7 @@
             "leadingUnderscore": "allow",
             "custom": {
                 "match": true,
-                "regex": "^(is|are|should|must|can|have|has|did|dont|will|enable|require|force)"
+                "regex": "^(are|can|did|disable|dont|enable|force|has|have|is|match|must|require|should|use|was|will)"
             }
         },
         {
@@ -139,7 +145,7 @@
             "leadingUnderscore": "forbid",
             "custom": {
                 "match": true,
-                "regex": "^(is|are|should|must|can|have|has|did|dont|will|enable|require|force)"
+                "regex": "^(are|can|did|disable|dont|enable|force|has|have|is|match|must|require|should|use|was|will)"
             }
         },
         {
@@ -202,15 +208,17 @@
             "leadingUnderscore": "forbid",
             "custom": {
                 "match": true,
-                "regex": "^(is|are|should|must|can|have|has|did|dont|will|enable|require|force|IS|ENABLE|REQUIRE|FORCE|DONT)"
+                "regex": "^(are|can|did|disable|dont|enable|force|has|have|is|match|must|require|should|use|was|will|IS|ENABLE|REQUIRE|FORCE|DONT|USE)"
             }
         },
         {
             "selector": "method",
-            "format": ["camelCase"],
+            "format": [
+                "camelCase"
+            ],
             "custom": {
                 "match": true,
-                "regex": "^(add|are|bond|build|check|concat|create|debug|delete|disable|divide|does|enable|execute|find|finish|fix|get|grant|handle|has|initialize|is|list|merge|mount|multiply|onChange|onError|parse|preValidate|register|remove|run|save|search|send|set|sort|split|start|strip|subtract|sum|throw|to|transform|update|validate|verify|warn)"
+                "regex": "^(add|alert|are|ask|begin|bind|bond|break|build|cancel|change|check|close|compute|concat|conclude|connect|create|debug|delete|derive|did|didnt|direct|disable|disconnect|divide|do|does|doesnt|dont|double|drive|enable|engage|erase|execute|explode|extract|find|finish|fix|get|give|grab|grant|handle|has|have|hide|initialize|install|is|list|lock|make|match|merge|mix|mount|move|multiply|notify|onChange|onClick|onClose|onCreate|onDelete|onError|onFinish|onUpdate|open|parse|pick|place|preValidate|print|pull|put|quit|raise|redirect|redo|register|remove|reset|revert|run|save|search|select|sell|send|set|should|show|solve|sort|split|start|strip|subscribe|subtract|sum|take|throw|to|transform|treat|truncate|unbind|uncheck|undo|uninstall|unmount|unregister|unsubscribe|upsert|validate|verify|warn|was|wasnt|will|witch|write|zero)"
             }
         },
         {
@@ -232,7 +240,8 @@
             "selector": "class",
             "format": [
                 "PascalCase"
-            ]
+            ],
+            "suffix": []
         },
         {
             "selector": "interface",
@@ -245,7 +254,9 @@
         },
         {
             "selector": "typeAlias",
-            "format": [],
+            "format": [
+                "PascalCase"
+            ],
             "suffix": [
                 "T"
             ],
@@ -253,12 +264,16 @@
         },
         {
             "selector": "typeParameter",
-            "format": [],
-            "suffix": [
-                "T"
+            "format": [
+                "PascalCase"
             ],
+            "custom": {
+                "match": true,
+                "regex": "^([A-Z]|([A-Z][a-z\\d]+)*[A-Z]?(T))$"
+            },
             "leadingUnderscore": "forbid"
         }
     ]
 },
 };
+        

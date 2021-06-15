@@ -1,10 +1,10 @@
 import { OrUndefT } from '@hjcostabr76/generics/type'
 
-import { NC_DEFAULT_SETTINGS } from './NCDefaultSettings'
-import { ncSettingsT, ncConfigT, ncGeneralSettingsT, ncVarsT, ncGeneralForRegexT, ncGeneralForArrayT } from './ncTypes'
+import { NC_DEFAULT_SETTINGS } from './nc_default_settings'
+import { NCSettingsT, NCConfigT, NCGeneralSettingsT, NCVarsT, NCGeneralForRegexT, NCGeneralForArrayT } from './nc_types'
 
 /** Gera & retorna configuracao da regra. */
-export function ncGetConfigs(settings?: Partial<ncSettingsT>): ncConfigT[] { // eslint-disable-line max-lines-per-function
+export function ncGetConfigs(settings?: Partial<NCSettingsT>): NCConfigT[] { // eslint-disable-line max-lines-per-function, @typescript-eslint/naming-convention
 
     const vars = getVars(settings?.general)
 
@@ -200,7 +200,7 @@ export function ncGetConfigs(settings?: Partial<ncSettingsT>): ncConfigT[] { // 
 }
 
 /** Processa & retorna variaveis utilizadas na configuracao da regra. */
-function getVars(generalSettings?: ncGeneralSettingsT): ncVarsT {
+function getVars(generalSettings?: NCGeneralSettingsT): NCVarsT {
 
     // Booleanos concatenados
     const booleanPrefixesLC = getValueForRegexList('booleanPrefixesLC', generalSettings)
@@ -243,11 +243,11 @@ function getVars(generalSettings?: ncGeneralSettingsT): ncVarsT {
     }
 }
 
-function getValueForArrayList(key: keyof ncGeneralForArrayT, generalSettings?: ncGeneralSettingsT): string[] {
+function getValueForArrayList(key: keyof NCGeneralForArrayT, generalSettings?: NCGeneralSettingsT): string[] {
     return generalSettings?.[key] ?? NC_DEFAULT_SETTINGS[key]
 }
 
-function getValueForRegexList(key: keyof ncGeneralForRegexT, generalSettings?: ncGeneralSettingsT): OrUndefT<string> {
+function getValueForRegexList(key: keyof NCGeneralForRegexT, generalSettings?: NCGeneralSettingsT): OrUndefT<string> {
     const list = generalSettings?.[key] ?? NC_DEFAULT_SETTINGS[key]
     if (list.length)
         return `${list.join('|')}`

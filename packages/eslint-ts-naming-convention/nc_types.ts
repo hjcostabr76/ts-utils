@@ -6,22 +6,22 @@ import { OrUndefT } from '@hjcostabr76/generics/type'
  * ======================================================
  */
 
-export type ncSettingsT = {
-    reportLevel: ncReportLevelT,
+export type NCSettingsT = {
+    reportLevel: NCReportLevelT,
     filePath?: string,
-    general?: ncGeneralSettingsT,
-    specifics?: ncConfigT[],
+    general?: NCGeneralSettingsT,
+    specifics?: NCConfigT[],
 }
 
-export type ncVarsT =
-    & Required<Omit<ncGeneralForArrayT, 'typeSuffixesGenerics'>>
-    & Record<keyof Omit<ncGeneralForRegexT, 'arraySuffixesLC' | 'arraySuffixesUC'>, OrUndefT<string>>
+export type NCVarsT =
+    & Required<Omit<NCGeneralForArrayT, 'typeSuffixesGenerics'>>
+    & Record<keyof Omit<NCGeneralForRegexT, 'arraySuffixesLC' | 'arraySuffixesUC'>, OrUndefT<string>>
     & Record<'typeGenericsRegex' | 'booleanPrefixes' | 'arrayRegex' | 'arrayRegexUC' | 'arrayRegexLC', OrUndefT<string>>
 
-export type ncGeneralSettingsT = Partial<Record<keyof ncGeneralForRegexT | keyof ncGeneralForArrayT, string[]>>
+export type NCGeneralSettingsT = Partial<Record<keyof NCGeneralForRegexT | keyof NCGeneralForArrayT, string[]>>
 
 // General settings configured as regex
-export type ncGeneralForRegexT = {
+export type NCGeneralForRegexT = {
 
     functionPrefixes?: string[],
 
@@ -34,7 +34,7 @@ export type ncGeneralForRegexT = {
 }
 
 // General settings configured as arrays
-export type ncGeneralForArrayT = {
+export type NCGeneralForArrayT = {
     interfacePrefixes?: string[],
     enumSuffixes?: string[],
     classSuffixes?: string[],
@@ -48,11 +48,11 @@ export type ncGeneralForArrayT = {
  * ======================================================
  */
 
-export type ncRuleT = {
-    '@typescript-eslint/naming-convention': [ncReportLevelT, ...ncConfigT[]], // eslint-disable-line @typescript-eslint/naming-convention
+export type NCRuleT = {
+    '@typescript-eslint/naming-convention': [NCReportLevelT, ...NCConfigT[]], // eslint-disable-line @typescript-eslint/naming-convention
 }
 
-export type ncConfigT = VarLikeConfigT | MemberLikeConfigT | TypeLikeConfigT
+export type NCConfigT = VarLikeConfigT | MemberLikeConfigT | TypeLikeConfigT
 
 type VarLikeConfigT = VariableConfigT | ParameterConfigT | FunctionConfigT
 type TypeLikeConfigT = ClassConfigT | InterfaceConfigT | TypeAliasConfigT | TypeParamConfigT | EnumConfigT
@@ -85,18 +85,20 @@ type TypeLikeBaseT<ModifierT extends OrUndefT<ClassModifierT> = undefined> = Con
 
 type ConfigBaseT<ModifierT extends OrUndefT<ClassModifierT> = ClassModifierT, TypeT extends OrUndefT<VarTypeT> = VarTypeT> = {
 
-    selector?: SelectorT | 'default',
-    modifiers?: ModifierT[],
+    selector?: SelectorT | 'default' | undefined,
+    modifiers?: ModifierT[] | undefined,
     types?: TypeT[],
 
-    format?: FormatT[],
-    custom?: CustomRegexT,
-    prefix?: string[],
-    suffix?: string[],
+    /* eslint-disable @typescript-eslint/naming-convention */
+    format?: FormatT[] | undefined,
+    custom?: CustomRegexT | undefined,
+    prefix?: string[] | undefined,
+    suffix?: string[] | undefined,
 
-    leadingUnderscore?: UnderscoreT,
-    trailingUnderscore?: UnderscoreT,
+    leadingUnderscore?: UnderscoreT | undefined,
+    trailingUnderscore?: UnderscoreT | undefined,
     // filter?: any,   // NOTE: Existe mas nao vamos utilzar
+    /* eslint-enable @typescript-eslint/naming-convention */
 }
 
 type CustomRegexT = { regex: string, match: boolean }
@@ -117,4 +119,4 @@ type SelectorMemberLikeT = 'property' | 'parameterProperty' | 'method' | 'access
  * ======================================================
  */
 
-export type ncReportLevelT = 'error' | 'warn' | 'off'
+export type NCReportLevelT = 'error' | 'warn' | 'off'

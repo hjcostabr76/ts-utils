@@ -60,7 +60,7 @@
       // "noPropertyAccessFromIndexSignature": true, // https://www.typescriptlang.org/tsconfig#noPropertyAccessFromIndexSignature
       // "noUncheckedIndexedAccess": true, // https://www.typescriptlang.org/tsconfig#noUncheckedIndexedAccess
       "noUnusedLocals": true, // https://www.typescriptlang.org/tsconfig#noUnusedLocals
-      "noUnusedParameters": true, // https://www.typescriptlang.org/tsconfig#noUnusedParameters
+      "noUnusedParameters": false, // https://www.typescriptlang.org/tsconfig#noUnusedParameters
       "strict": true, // https://www.typescriptlang.org/tsconfig#strict
       "strictBindCallApply": true, // https://www.typescriptlang.org/tsconfig#strictBindCallApply
       "strictFunctionTypes": true, // https://www.typescriptlang.org/tsconfig#strictFunctionTypes

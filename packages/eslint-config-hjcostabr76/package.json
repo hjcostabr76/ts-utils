@@ -1,7 +1,7 @@
 {
   "name": "eslint-config-hjcostabr76",
   "description": "Custom eslint configurations",
-  "version": "2.0.1-beta",
+  "version": "3.0.0-beta",
   "author": "hjcostabr76 <hjcosta.dev@gmail.com>",
   "repository": {
     "type": "git",

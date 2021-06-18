@@ -1,6 +1,6 @@
 import { UseRequestIdT } from '../reqmanager_types_private'
-import { useRequest } from './UseRequest'
 import { UseRequestHelper } from './UseRequestHelper'
+import { useRequest } from './use_request'
 
 /** Classe de utilitarios para depuracao do hook useRequest */
 export class UseRequestDebuggingUtils {

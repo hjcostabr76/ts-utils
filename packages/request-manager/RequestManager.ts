@@ -62,6 +62,10 @@ export class RequestManager {
         this.defaultHeaders.push({ headerName, headerValue })
     }
 
+    static setDefaultBearerAuthToken(token: string): void {
+        this.addDefaultHeader('Authorization', `Bearer ${token}`)
+    }
+
     static async run<R = RawResponseT>(config: RequestConfigT<R>, id?: string): Promise<OrUndefT<R>>
     static async run<R = RawResponseT>(config: RequestConfigT<R>, enableCancellation: boolean, id?: string): Promise<OrUndefT<R>>
     static async run<R = RawResponseT>(config: RequestConfigT<R>, onCancel: () => void, id?: string): Promise<OrUndefT<R>>

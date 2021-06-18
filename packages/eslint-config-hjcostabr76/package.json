@@ -8,7 +8,7 @@
     "url": "git+https://github.com/hjcostabr76/ts-utils.git"
   },
   "homepage": "https://github.com/hjcostabr76/ts-utils/tree/main/packages/eslint-config-hjcostabr76#eslint-config-hjcostabr76",
-  "main": ".dist/index.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "upgrade": "npx npm-check-updates -u && npm i",
@@ -43,12 +43,13 @@
     "eslint-find-rules": "^3.6.1"
   },
   "files": [
-    ".dist/index.js",
-    ".dist/spellcheck.js",
-    ".dist/ts-node.js",
-    ".dist/ts-package.js",
-    ".dist/ts.js",
-    ".dist/tsx.js"
+    "index.js",
+    "spellcheck.js",
+    "ts-node.js",
+    "ts-package.js",
+    "ts.js",
+    "tsx.js",
+    "rules/*"
   ],
   "keywords": [
     "eslint",

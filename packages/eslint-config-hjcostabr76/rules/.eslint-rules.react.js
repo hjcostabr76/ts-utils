@@ -16,7 +16,6 @@ module.exports = {
         'react/no-unused-state': 'error',
         'react/no-find-dom-node': 'error',
         'react/no-children-prop': 'error',
-        'react/react-in-jsx-scope': 'error',
         'react/no-array-index-key': 'error',
         'react/jsx-no-useless-fragment': 'error',
         'react/no-danger-with-children': 'error',
@@ -42,17 +41,15 @@ module.exports = {
         'react/jsx-fragments': ['error', 'syntax'],
         'react/jsx-boolean-value': ['error', 'always'],
         'react/jsx-equals-spacing': ['error', 'never'],
-        'react/jsx-space-before-closing': ['error', 'never'],
         'react/destructuring-assignment': ['error', 'never'],
         'react/jsx-closing-bracket-location': ['error', 'line-aligned'],
-        'react/no-did-mount-set-state': ['error', 'disallow-in-func-mode'],
-        'react/no-did-update-set-state': ['error', 'disallow-in-func-mode'],
-        'react/no-will-update-set-state': ['error', 'disallow-in-func-mode'],
+        'react/no-did-mount-set-state': ['error', 'disallow-in-func'],
+        'react/no-did-update-set-state': ['error', 'disallow-in-func'],
+        'react/no-will-update-set-state': ['error', 'disallow-in-func'],
 
         'react/jsx-max-depth': ['error', { max: 6 }],
         'react/no-unsafe': ['error', { checkAliases: true }],
         'react/button-has-type': ['error', { reset: false }],
-        'react/jsx-no-literals': ['warn', { noStrings: true }],
         'react/jsx-no-undef': ['error', { allowGlobals: true }],
         'react/jsx-key': ['error', { checkFragmentShorthand: true }],
         'react/jsx-no-duplicate-props': ['error', { ignoreCase: false }],
@@ -66,13 +63,20 @@ module.exports = {
         }],
         
         'react/jsx-curly-spacing': ['error', 'never', {
-            allowMultiline: false,
+            allowMultiline: true,
             spacing: { objectLiterals: 'never' }
         }],
         
         'react/function-component-definition': ['error', {
             namedComponents: 'function-declaration',
             unnamedComponents: 'arrow-function',
+        }],
+
+        'react/jsx-no-literals': ['warn', {
+            noStrings: true,           // no string literals used as children, wrapped or unwrapped
+            ignoreProps: false,        // ignore literals used in props, wrapped or unwrapped
+            allowedStrings: [],        // array of unique string values that would otherwise warn, but will be ignored
+            noAttributeStrings: false, // no string literals used in attributes
         }],
         
         'react/jsx-tag-spacing': ['error', {
@@ -107,14 +111,20 @@ module.exports = {
                 { message: 'Use styled-components. Always.', element: 'table' },
                 { message: 'Use styled-components. Always.', element: 'thead' },
                 { message: 'Use styled-components. Always.', element: 'tbody' },
+                { message: 'Use styled-components. Always.', element: 'footer' },
+                { message: 'Use styled-components. Always.', element: 'header' },
                 { message: 'Use styled-components. Always.', element: 'button' },
                 { message: 'Use styled-components. Always.', element: 'section' },
                 { message: 'Use styled-components. Always.', element: 'textarea' },
             ],
         }],
+
+        // OFF: deprecado
+        // 'react/jsx-space-before-closing': ['off'],
         
         // OFF: Por preferencia
         'react/no-set-state': 'off',                         // NAO se aplica ao uso que fazemos
+        'react/react-in-jsx-scope': 'off',                   // NAO ha mais necessidade de haver esse import
         'react/no-render-return-value': 'off',               // NAO se aplica ao uso que fazemos
         'react/prefer-read-only-props': 'off',               // NAO se aplica ao uso que fazemos
         'react/jsx-child-element-spacing': 'off',            // NAO funciona legal. Faz o codigo ficar muito feio
@@ -128,7 +138,7 @@ module.exports = {
         'react/jsx-no-script-url': ['off'],         // NAO permite configurar para uso dentro do padrao empregado
         'react/static-property-placement': ['off'], // NAO se aplica ao uso que fazemos
         'react/prefer-stateless-function': ['off'],
-        'react/jsx-one-expression-per-line': ['error'], // Fica ruim para inclusao de strings
+        'react/jsx-one-expression-per-line': ['off'], // Fica ruim para inclusao de strings
 
         // OFF: Abrangido por outra(s) regra(s)
         'react/jsx-props-no-multi-spaces': 'off', // no-multi-spaces

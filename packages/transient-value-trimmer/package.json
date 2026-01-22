@@ -21,7 +21,7 @@
     "publish:local": "npm run build & npx yalc push --changed --update"
   },
   "dependencies": {
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.23"
   },
   "devDependencies": {
     "typescript": "^4.2.4"
